@@ -1,0 +1,24 @@
+{
+    "$schema": "https://game-object.com/tobidot-project-schema.json",
+    "title": "html-adventure",
+    "informal": {
+        "description": "",
+        "categories": [
+            "generated"
+        ]
+    },
+    "development": {
+        "status": "draft"
+    },
+    "execution": {
+        "type": "website",
+        "resources": "dist",
+        "index": "index.html"
+    },
+    "history": [
+
+    ],
+    "code": {
+        "language": "typescript"
+    }
+}
