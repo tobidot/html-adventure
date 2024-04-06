@@ -1,0 +1,77 @@
+<div id="scene-town" class="scene">
+    <img
+        class="background"
+        src="./src/images/town.png"
+        alt="(Town with 3 houses and a gate::2 ), (people::-0.75 ), Dos Adventure Game, Background scene, Low Definition, Low Quality Art, Dithering"
+    />
+    <div id="bread" class="object" style="top: 75%; left: 88%; width: 8%">
+        <div class="data">
+            <div data-action="pick-up">
+                Bread
+            </div>
+            <div data-action="inspect">
+                <div data-type="sequence">
+                    <div data-type="output">
+                        A loaf of bread. It looks fresh and tasty.
+                    </div>
+                    <div data-type="output">
+                        It smells like it was baked this morning.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img
+            class="image"
+            src="./src/images/bread.png"
+            alt="a loaf of bread, white background, sprite-sheet, Dos Adventure Game, Low Definition, Low Quality Art, Dithering, cropped out, object only"
+        />
+        <object
+            class="click-area"
+            data="./src/images/bread.svg"
+            type="image/svg+xml"
+        ></object>
+    </div>
+    <div id="guard-1" class="object" style="top: 88%; left: 33%; width: 50%">
+        <div class="data">
+            <div data-action="pick-up">$FAIL</div>
+            <div data-action="inspect">
+                <div data-type="sequence">
+                    <div data-type="output">
+                        A guard, guarding the gate of gardenville.
+                    </div>
+                    <div data-type="output">
+                        Seems like he has nothing better to do than to keep
+                        people out.
+                    </div>
+                </div>
+            </div>
+            <div data-action="talk">
+                <div data-type="output">
+                  Guard: "Hello traveller."
+                </div>
+                Guard: "Hello traveller."
+            </div>
+            <div data-action="interact">
+                <div data-type="output">
+                    Guard: "Halt! Who goes there?"
+                </div>
+                
+            </div>
+        </div>
+        <img
+            class="image"
+            src="./src/images/guard.png"
+            alt="guard whith plate-armor and a spear, white background, sprite-sheet, Dos Adventure Game, Low Definition, Low Quality Art, Dithering, cropped out, person only"
+        />
+        <img
+            class="profile"
+            src="./src/images/guard-profile.png"
+            alt="a protective medieval guard's head, (sword::-0.25), (helmet::-0.5), as a closeup portrait, face revealed, white background, sprite-sheet, Dos Adventure Game, Low Definition, Low Quality Art, Dithering, cropped out, face only"
+        />
+        <object
+            class="click-area"
+            data="./src/images/guard.svg"
+            type="image/svg+xml"
+        ></object>
+    </div>
+</div>

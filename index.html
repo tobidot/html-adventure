@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--suppress CheckEmptyScriptTag -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HTML-Adventure</title>
+        <link rel="stylesheet" href="./src/css/index.scss" />
+        <script src="./src/js/index.ts" defer type="module"></script>
+        <script src="./src/js/debug.ts" defer type="module"></script>
+    </head>
+    <body>
+        <div id="game">
+            <div id="scene"></div>
+            <div id="popup"></div>
+            <div id="text"></div>
+            <load src="./src/html/cursor.html"/>
+            <load src="./src/html/game-menu.html"/>
+            <audio id="audio" loop controls>
+                <source src="./src/music/town.mp3" type="audio/mpeg" />
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div id="scene-list">
+            <load src="./src/html/map.html"/>
+            <load src="./src/html/town.html"/>
+        </div>
+        <div id="popup-list">
+            <load src="./src/html/inventory.html"/>
+            <load src="./src/html/menu.html"/>
+        </div>
+        <div id="audio-list" hidden>
+            <load src="./src/html/audio-list.html"/>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+#popup {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 50px);
+    pointer-events: none;
+}
+
+.popup {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    display: flex;
+    width: auto;
+    height: auto;
+    padding: 1rem;
+    border-radius: 0.25rem;
+
+    pointer-events: all;
+    background-color: whitesmoke;
+
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: 1.5rem;
+        margin-top: 0rem;
+    }
+
+    > form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu-item {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+}

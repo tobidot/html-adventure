@@ -1,0 +1,17 @@
+#game {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    max-width: calc((100vh - 50px) / 9 * 16);
+    height: auto;
+    margin: 0;
+    padding: 0;
+    // margin-bottom: 50px;
+    cursor: none;
+
+    aspect-ratio: 16 / 9;
+
+    background-color: #000;
+
+    flex-direction: column;
+}
