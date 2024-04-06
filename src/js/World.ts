@@ -98,13 +98,13 @@ export class World {
         this.$scene.appendChild(new_scene.$root);
         this.$active_scene = new_scene;
 
+        window.music.change_scene();
         // Todo change music
     }
 
     public has_scene(scene: string): boolean {
         return this.scenes_map.has(scene);
     }
-
 
     public load_settings() {
         const $settings = get_element_by_id('settings', HTMLFormElement);

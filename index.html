@@ -14,24 +14,29 @@
             <div id="scene"></div>
             <div id="popup"></div>
             <div id="text"></div>
-            <load src="./src/html/cursor.html"/>
-            <load src="./src/html/game-menu.html"/>
-            <audio id="audio" loop controls>
-                <source src="./src/music/town.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-            </audio>
+            <load src="./src/html/partials/cursor.html"/>
+            <load src="./src/html/partials/game-menu.html"/>
         </div>
 
         <div id="scene-list">
-            <load src="./src/html/map.html"/>
-            <load src="./src/html/town.html"/>
+            <load src="./src/html/locations/map.html"/>
+            <load src="./src/html/locations/town.html"/>
+            <load src="./src/html/locations/church.html"/>
+            <load src="./src/html/locations/guard-post.html"/>
+            <load src="./src/html/locations/home.html"/>
+            <load src="./src/html/locations/village.html"/>
+            <load src="./src/html/locations/mines.html"/>
+            <load src="./src/html/locations/witch-hut.html"/>
         </div>
         <div id="popup-list">
-            <load src="./src/html/inventory.html"/>
-            <load src="./src/html/menu.html"/>
+            <load src="./src/html/partials/inventory.html"/>
+            <load src="./src/html/partials/menu.html"/>
+        </div>
+        <div id="music-list" hidden>
+            <load src="./src/html/partials/music-list.html"/>
         </div>
         <div id="audio-list" hidden>
-            <load src="./src/html/audio-list.html"/>
+            <load src="./src/html/partials/audio-list.html"/>
         </div>
     </body>
 </html>

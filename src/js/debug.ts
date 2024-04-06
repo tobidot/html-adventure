@@ -30,7 +30,26 @@ function on_first_user_interact() {
         const audios = document.querySelectorAll(`audio[data-text="${encoded_text}"]`);
         if (audios.length <= 0) {
             missing_audios.push(content);
-            // console.error(`No audio file found for text: ${inner_text}`);
+        } else {
+            console.log(`found audio for text: ${content}`);
+        }
+    }
+    const scenes = document.querySelectorAll('[data-music]');
+    for(let i = 0; i < scenes.length; i++) {
+        const $scene = scenes.item(i);
+        if (!($scene instanceof HTMLElement)) {
+            continue;
+        }
+        const music = $scene.getAttribute('data-music');
+        const tracks = music?.split(',') ?? [];
+        for(let j = 0; j < tracks.length; j++) {
+            const track = tracks[j];
+            const audios = document.querySelectorAll(`audio[data-track="${track}"]`);
+            if (audios.length <= 0) {
+                missing_audios.push(track);
+            } else {
+                console.log(`found music for track: ${track}`);
+            }
         }
     }
     if (missing_audios.length > 0) {

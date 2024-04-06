@@ -47,10 +47,9 @@ export class Popup {
     }
 
     protected start() {
-        console.log('Start');
         window.world.hide_popup(PopupName.MENU);
-        window.world.show_scene(SceneName.TOWN);
-        window.audio.play();
+        window.world.show_scene(SceneName.HOME);
+        window.music.play();
     }
 
     protected menu() {

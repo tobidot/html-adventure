@@ -1,7 +1,7 @@
-<div id="scene-town" class="scene">
+<div id="scene-town" class="scene" data-music="town">
     <img
         class="background"
-        src="./src/images/town.png"
+        src="./src/images/backgrounds/town.png"
         alt="(Town with 3 houses and a gate::2 ), (people::-0.75 ), Dos Adventure Game, Background scene, Low Definition, Low Quality Art, Dithering"
     />
     <div id="bread" class="object" style="top: 75%; left: 88%; width: 8%">
@@ -13,23 +13,21 @@
                 <div data-type="sequence">
                     <div data-type="output">
                         A loaf of bread. It looks fresh and tasty.
-                        <audio src="./src/audio/a_loaf_of_bread__it_looks_fresh_and_tasty_.mp3" hidden>
                     </div>
                     <div data-type="output">
                         It smells like it was baked this morning.
-                        <audio src="./src/audio/it_smells_like_it_was_baked_this_morning_.mp3" hidden>
                     </div>
                 </div>
             </div>
         </div>
         <img
             class="image"
-            src="./src/images/bread.png"
+            src="./src/images/objects/bread/bread.png"
             alt="a loaf of bread, white background, sprite-sheet, Dos Adventure Game, Low Definition, Low Quality Art, Dithering, cropped out, object only"
         />
         <object
             class="click-area"
-            data="./src/images/bread.svg"
+            data="./src/images/objects/bread/bread.svg"
             type="image/svg+xml"
         ></object>
     </div>
@@ -40,33 +38,29 @@
                 <div data-type="sequence">
                     <div data-type="output">
                         A guard, guarding the gate of gardenville.
-                        <audio src="./src/audio/A_guard__guarding_the_gate_of_gardenville__.mp3" hidden>
                     </div>
                     <div data-type="output">
                         Seems like he has nothing better to do than to keep
                         people out.
-                        <audio src="./src/audio/seems_like_he_has_nothing_better_to_do_than_to_kee.mp3" hidden>
                     </div>
                 </div>
             </div>
             <div data-action="talk">
                 <div data-type="output">
-                    Guard: "Hello traveller."
-                    <audio src="./src/audio/guard____hello_traveller___.mp3" hidden>
+                  Guard: "Hello traveller."
                 </div>
                 Guard: "Hello traveller."
             </div>
             <div data-action="interact">
                 <div data-type="output">
                     Guard: "Halt! Who goes there?"
-                    <audio src="./src/audio/guard____halt__who_goes_there___.mp3" hidden>
                 </div>
                 
             </div>
         </div>
         <img
             class="image"
-            src="./src/images/guard.png"
+            src="./src/images/objects/guard/guard.png"
             alt="guard whith plate-armor and a spear, white background, sprite-sheet, Dos Adventure Game, Low Definition, Low Quality Art, Dithering, cropped out, person only"
         />
         <img
@@ -76,7 +70,7 @@
         />
         <object
             class="click-area"
-            data="./src/images/guard.svg"
+            data="./src/images/objects/guard/guard.svg"
             type="image/svg+xml"
         ></object>
     </div>
