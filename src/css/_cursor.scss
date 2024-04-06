@@ -26,12 +26,6 @@
         }
     }
 
-    &[data-state="options"] {
-        > [data-state="options"] {
-            visibility: visible;
-        }
-    }
-
     > * {
         display: flex;
         width: 100%;
@@ -42,20 +36,37 @@
         visibility: hidden;
     }
 
+    &[data-state="options"] {
+        > [data-state="options"] {
+            display: grid;
+            grid-template-columns: 50px 50px;
+            grid-template-rows: 50px 50px;
+            transform: translate(-50%, -50%);
+
+            &:after {
+                display: flex;
+            }
+
+            > * {
+                display: flex;
+            }
+        }
+    }
+
     > [data-state="options"] {
-        display: grid;
-        grid-template-columns: 50px 50px;
-        grid-template-rows: 50px 50px;
+        visibility: visible;
+        transform: translate(50%, 0%) scale(0.5);
 
         > * {
-            display: flex;
+            display: none;
             width: 100%;
             height: 100%;
             filter: grayscale(1);
         }
 
         &:after {
-            content: "";
+            display: none;
+            content: " ";
             top: 50%;
             left: 50%;
             position: absolute;
@@ -63,26 +74,26 @@
             height: 50px;
             border: 3px solid white;
             border-radius: 50px;
-            // transform: translate(-50%, -50%);
         }
 
         &.top-left > .top-left,
         &.top-right > .top-right,
         &.bottom-left > .bottom-left,
         &.bottom-right > .bottom-right {
+            display: flex;
             filter: grayscale(0) brightness(1.5) drop-shadow(3px 3px 0px black);
         }
 
         &.top-left {
             &:after {
-                top: 0%;
-                left: 0%;
+                top: 0;
+                left: 0;
             }
         }
 
         &.top-right {
             &:after {
-                top: 0%;
+                top: 0;
                 left: 100%;
             }
         }
@@ -90,7 +101,7 @@
         &.bottom-left {
             &:after {
                 top: 100%;
-                left: 0%;
+                left: 0;
             }
         }
 

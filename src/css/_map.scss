@@ -23,6 +23,7 @@
         > .click-area {
             visibility: visible;
             opacity: 0.5;
+            filter: blur(5px);
         }
     }
 }

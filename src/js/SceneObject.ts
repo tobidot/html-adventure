@@ -36,7 +36,7 @@ export class SceneObject {
                     this.traverseScript($action.childNodes);
                 }
             } catch (e) {
-                this.doOutput(this.getCommonOutput("$FAIL"));
+                this.doOutput(SceneObject.getCommonOutput("$FAIL"));
             }
         };
 
@@ -62,7 +62,7 @@ export class SceneObject {
                 return;
             }
         }
-        this.doOutput(this.getCommonOutput("$FAIL"));
+        this.doOutput(SceneObject.getCommonOutput("$FAIL"));
     }
 
     public playScript(node: HTMLElement): boolean {
@@ -126,30 +126,38 @@ export class SceneObject {
         return this.doOutput(node.innerText.trim());
     }
 
-    public doOutput(text: string): boolean {
-        // console.log('playOutput', node);
-        // const text = node.innerText.trim();
-        if (text.startsWith("$")) {
-            text = this.getCommonOutput(text);
+    public static contentToText(content: string): string {
+        content = content.trim();
+        if (content.startsWith("$")) {
+            content = SceneObject.getCommonOutput(content);
         }
-        if (text.length <= 0) {
-            return false;
+        return content.split("!#")[0];
+    }
+
+    public static contentToAudio(content: string): string {
+        content = content.trim();
+        if (content.startsWith("$")) {
+            content = SceneObject.getCommonOutput(content);
         }
-        const real_text = text.split("!#")[0];
-        window.text.write(real_text);
+        content = content
+            .replace(/\s+/g, " ")
+            .replace(/>/g, "&lt;")
+            .replace(/</g, "&gt;")
+            .replace(/"/g, "'");
+        return content;
+    }
+
+    public doOutput(content: string): boolean {
+        window.text.write(SceneObject.contentToText(content));
         try {
             // encode the text to be used as a selector, to html special entities
-            const encoded_text = text
-                .replace(/\s/g, " ")
-                .replace(/>/g, "&lt;")
-                .replace(/</g, "&gt;")
-                .replace(/"/g, "'");
-            const audios = document.querySelectorAll(`audio[data-text="${encoded_text}"]`);
+            const audio_text = SceneObject.contentToAudio(content);
+            const audios = document.querySelectorAll(`audio[data-text="${audio_text}"]`);
             const index = Math.floor(Math.random() * audios.length);
             if (audios[index] instanceof HTMLAudioElement) {
                 const $audio = audios[index];
                 if ($audio instanceof HTMLAudioElement) {
-                    this.playAudio($audio);
+                    this.doAudio($audio);
                 }
             }
         } catch (e) {
@@ -158,7 +166,7 @@ export class SceneObject {
         return true;
     }
 
-    public getCommonOutput(id: string) {
+    public static getCommonOutput(id: string) : string {
         const options = {
             "$FAIL": [
                 "I can't do that.",
@@ -169,7 +177,7 @@ export class SceneObject {
         return options[Math.floor(Math.random() * options.length)];
     }
 
-    public playAudio($audio: HTMLAudioElement) {
+    public doAudio($audio: HTMLAudioElement) {
         window.is_playing_audio = true;
         $audio.volume = window.settings.sfx_volume;
         $audio.play().then(() => {

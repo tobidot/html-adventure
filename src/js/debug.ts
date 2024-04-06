@@ -1,3 +1,5 @@
+import { SceneObject } from "./SceneObject";
+
 function on_first_user_interact() {
     console.info("Checking Validity of Audio Files and Text Outputs...");
 
@@ -23,15 +25,11 @@ function on_first_user_interact() {
         if (!($output instanceof HTMLElement)) {
             continue;
         }
-        const inner_text = $output.innerText.trim();
-        const encoded_text = inner_text
-            .replaceAll(/\s/g, " ")
-            .replaceAll(/>/g, "&lt;")
-            .replaceAll(/</g, "&gt;")
-            .replaceAll(/"/g, "'");
+        const content = $output.innerText.trim();
+        const encoded_text = SceneObject.contentToAudio(content)
         const audios = document.querySelectorAll(`audio[data-text="${encoded_text}"]`);
         if (audios.length <= 0) {
-            missing_audios.push(inner_text);
+            missing_audios.push(content);
             // console.error(`No audio file found for text: ${inner_text}`);
         }
     }
@@ -39,6 +37,7 @@ function on_first_user_interact() {
         console.error(`No audio files found for the following texts: `, missing_audios);
     }
 
+    window.is_playing_audio = false;
 }
 
 document.addEventListener('click', on_first_user_interact, { once: true });
