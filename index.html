@@ -2,10 +2,13 @@
 <!--suppress CheckEmptyScriptTag -->
 <html lang="en">
     <head>
+        <!-- favicon -->
+        <link rel="icon" href="./favicon.ico" type="image/x-icon" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>HTML-Adventure</title>
         <link rel="stylesheet" href="./src/css/index.scss" />
+        <script src="./src/js/register-custom-elements.ts" type="module"></script>
         <script src="./src/js/index.ts" defer type="module"></script>
         <script src="./src/js/debug.ts" defer type="module"></script>
     </head>
@@ -13,30 +16,33 @@
         <div id="game">
             <div id="scene"></div>
             <div id="popup"></div>
-            <div id="text"></div>
-            <load src="./src/html/partials/cursor.html"/>
-            <load src="./src/html/partials/game-menu.html"/>
+            <div id="interaction">
+                <div id="interaction-output"></div>
+                <div id="interaction-options"></div>
+            </div>
+            <load src="/src/html/partials/cursor.html"/>
+            <load src="/src/html/partials/game-menu.html"/>
         </div>
 
         <div id="scene-list">
-            <load src="./src/html/locations/map.html"/>
-            <load src="./src/html/locations/town.html"/>
-            <load src="./src/html/locations/church.html"/>
-            <load src="./src/html/locations/guard-post.html"/>
-            <load src="./src/html/locations/home.html"/>
-            <load src="./src/html/locations/village.html"/>
-            <load src="./src/html/locations/mines.html"/>
-            <load src="./src/html/locations/witch-hut.html"/>
+            <load src="/src/html/locations/map.xhtml"/>
+            <load src="/src/html/locations/town.xhtml"/>
+            <load src="/src/html/locations/church.xhtml"/>
+            <load src="/src/html/locations/guard-post.xhtml"/>
+            <load src="/src/html/locations/home.xhtml"/>
+            <load src="/src/html/locations/village.xhtml"/>
+            <load src="/src/html/locations/mines.xhtml"/>
+            <load src="/src/html/locations/witch-hut.xhtml"/>
         </div>
         <div id="popup-list">
-            <load src="./src/html/partials/inventory.html"/>
-            <load src="./src/html/partials/menu.html"/>
+            <load src="/src/html/partials/inventory.html"/>
+            <load src="/src/html/partials/menu.html"/>
         </div>
         <div id="music-list" hidden>
-            <load src="./src/html/partials/music-list.html"/>
+            <load src="/src/html/partials/music-list.html"/>
         </div>
         <div id="audio-list" hidden>
-            <load src="./src/html/partials/audio-list.html"/>
+            <load src="/src/html/partials/audio-list.html"/>
         </div>
     </body>
 </html>

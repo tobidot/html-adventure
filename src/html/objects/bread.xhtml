@@ -1,0 +1,37 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable id="bread" class="object" style="{=$style}">
+    <game-data class="data">
+        <game-data-action type="pick-up">
+            <game-logic type="first">
+                <game-logic type="once">
+                    <game-logic type="all">
+                        <game-logic-action type="add-inventory" value="bread"/>
+                        <game-logic-action type="output">I cannot wait to eat this.</game-logic-action>
+                        <game-logic-action type="set-variable" key="has_bread" value="TRUE"/>
+                    </game-logic>
+                </game-logic>
+                <game-logic-action type="add-cursor" value="bread"/>
+            </game-logic>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic type="sequence">
+                <game-logic-action type="output">
+                    A loaf of bread. It looks fresh and tasty.
+                </game-logic-action>
+                <game-logic-action type="output">
+                    It smells like it was baked this morning.
+                </game-logic-action>
+            </game-logic>
+        </game-data-action>
+    </game-data>
+    <img
+        class="image"
+        src="./images/objects/bread/bread.png"
+        alt="a loaf of bread, white background, sprite-sheet, Dos Adventure Game, Low Definition, Low Quality Art, Dithering, cropped out, object only"
+    />
+    <object
+        class="click-area"
+        data="./images/objects/bread/bread.svg"
+        type="image/svg+xml"
+    ></object>
+</game-interactable>

@@ -88,6 +88,10 @@ export class World {
     }
 
     public show_scene(scene_id: string) {
+        // if scene did not change return
+        if (this.$active_scene && this.$active_scene.id === scene_id) {
+            return;
+        }
         const new_scene = this.scenes_map.get(scene_id) ?? null;
         if (!new_scene) {
             throw new Error(`Scene not found: ${scene_id}`);
@@ -114,6 +118,10 @@ export class World {
                 $item.value = (window.settings[key] * 100).toString();
             }
         }
+    }
+
+    public get_mouse(): Cursor {
+        return this.mouse;
     }
 
     public get_active_scene( ): Scene|null {

@@ -7,7 +7,4 @@ export default defineConfig({
 	// set the public directory to relative path when building for production
 	base: './',
 	assetsInclude: ['**/*.svg'],
-	publicDir: [
-		'src/images'
-	]
 });

@@ -5,6 +5,8 @@ import { Settings } from "./Settings";
 import { Keyboard } from "./Keyboard";
 import { SceneName } from "./enums/SceneName";
 import { PopupName } from "./enums/PopupName";
+import { Inventory } from "./Inventory";
+import { get_element_by_id } from "@game.object/ts-game-toolbox/dist";
 // import map_church from "./src/images/map/map-church.svg";
 
 declare global {
@@ -14,14 +16,30 @@ declare global {
         text: InfoText;
         music: Music;
         keyboard: Keyboard;
+        inventory: Inventory;
+        debug: boolean;
     }
 }
 
+window.debug = true;
 window.settings = new Settings();
 window.world = new World();
 window.music = new Music();
 window.text = new InfoText();
 window.keyboard = new Keyboard();
+window.inventory = new Inventory();
 window.world.load_settings();
-window.world.show_popup(PopupName.MENU);
-// window.world.show_scene(SceneName.MAP);
+// window.world.show_popup(PopupName.INVENTORY);
+window.world.show_scene(SceneName.TOWN);
+
+// const bread = get_element_by_id('bread');
+// window.inventory.add_item(bread);
+// window.world.get_mouse().set_combine_option(bread);
+
+// window.text.write("Hello World!");
+// window.text.option("Option 1", () => {
+//     window.text.write("Not a chance!");
+// });
+// window.text.option("Option 2", () => {
+//     window.text.write("Okee!");
+// });

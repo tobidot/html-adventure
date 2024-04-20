@@ -8,7 +8,11 @@ export class Keyboard {
     protected on_keydown = (event: KeyboardEvent) => {
         switch (event.key) {
             case 'Escape':
-                window.world.toggle_popup(PopupName.MENU);
+                if (window.text.has_options()) {
+                    window.text.clear_options();
+                } else {
+                    window.world.toggle_popup(PopupName.MENU);
+                }
                 break;
             default:
                 console.log('Unknown key:', event.key);

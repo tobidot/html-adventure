@@ -1,0 +1,22 @@
+<!ELEMENT game-location (
+        img, load+
+        )>
+        <!ELEMENT img EMPTY>
+        <!ELEMENT load EMPTY>
+
+        <!ATTLIST game-location
+                id     ID        #REQUIRED
+                class  PCDATA    #FIXED "scene"
+                music  NMTOKENS  #REQUIRED
+                >
+        <!ATTLIST img
+                id     ID        #IMPLIED
+                class  PCDATA    #FIXED "image"
+                src    PCDATA    #REQUIRED
+                alt    PCDATA    #REQUIRED
+                >
+
+        <!ATTLIST load
+                src    PCDATA    #REQUIRED
+                style  PCDATA    #IMPLIED
+                >

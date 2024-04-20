@@ -1,54 +1,71 @@
 import { get_element_by_id, get_element_by_query_selector } from "@game.object/ts-game-toolbox";
 import { SceneObject } from "./SceneObject";
+import { get_element_by_class_name } from "@game.object/ts-game-toolbox/dist";
+import { CSSToken } from "./enums/CSSToken";
 
 export enum CursorState {
     DEFAULT = "default",
     HOVER = "hover",
     CLICK = "click",
     OPTIONS = "options",
-};
+}
 
 export enum CursorOptionState {
     NONE = "none",
     INTERACT = "interact",
+    INSPECT = "inspect",
     TALK = "talk",
     PICK_UP = "pick-up",
-    INSPECT = "inspect",
-};
+    COMBINE = "combine",
+}
 
 export class Cursor {
+    // elements
     protected $game: HTMLElement;
     protected $mouse: HTMLElement;
     protected $options: HTMLElement;
+    protected $active_option_image: HTMLImageElement;
+    // update handle
     protected update_handle: number = 0;
+    protected last_event: MouseEvent | null = null;
+    // mouse state
     protected mouse_x: number = 0;
     protected mouse_y: number = 0;
     protected mouse_left_down: boolean = false;
     protected mouse_right_down: boolean = false;
-    protected last_event: MouseEvent | null = null;
+    // the current state of the cursor: hover, click, options
     protected state: CursorState = CursorState.DEFAULT;
+    // the current option that the user wants to perform
     protected option_state: CursorOptionState = CursorOptionState.NONE;
+    // the element the mouse is currently hovering over
     protected $hovering: HTMLElement | null = null;
+    // if the user is carrying an item
+    protected $attached: HTMLElement | null = null;
 
     constructor() {
-        console.log("Mouse");
         this.$game = get_element_by_id("game");
         this.$mouse = get_element_by_id("cursor");
         this.$options = get_element_by_query_selector(this.$mouse, "[data-state=\"options\"]");
+        this.$active_option_image = get_element_by_query_selector(this.$mouse, ".active-option", HTMLImageElement);
         this.$game.addEventListener("mousemove", this.on_mouse_move, { passive: true });
         this.$game.addEventListener("mousedown", this.on_mouse_down, { passive: true });
         this.$game.addEventListener("mouseup", this.on_mouse_up, { passive: true });
         this.$game.addEventListener("mouseleave", this.on_mouse_leave, { passive: true });
         this.$game.addEventListener("wheel", this.on_mouse_wheel, { passive: true });
-        this.set_option_state( "top-right");
+        this.set_option_state(CursorOptionState.INTERACT);
     }
 
     public on_mouse_wheel = (event: WheelEvent) => {
-        const order = ["top-left", "top-right", "bottom-left", "bottom-right"] as const;
+        const order = [
+            CursorOptionState.INTERACT,
+            CursorOptionState.INSPECT,
+            CursorOptionState.PICK_UP,
+            CursorOptionState.TALK
+        ] as const;
         const index = order.indexOf(this.$options.className as typeof order[number]);
         const new_index = (index + (event.deltaY > 0 ? 1 : -1) + order.length) % order.length;
-        this.set_option_state(order[new_index] as "top-left" | "top-right" | "bottom-left" | "bottom-right");
-    }
+        this.set_option_state(order[new_index]);
+    };
 
     public on_mouse_leave = (event: MouseEvent) => {
         this.state = CursorState.DEFAULT;
@@ -58,6 +75,9 @@ export class Cursor {
     };
 
     public on_mouse_down = (event: MouseEvent) => {
+        if (window.text.has_options()) {
+            return;
+        }
         switch (event.button) {
             case 0:
                 this.mouse_left_down = true;
@@ -73,6 +93,9 @@ export class Cursor {
     };
 
     public on_mouse_up = (event: MouseEvent) => {
+        if (window.text.has_options()) {
+            return;
+        }
         switch (event.button) {
             case 0:
                 this.mouse_left_down = false;
@@ -112,6 +135,12 @@ export class Cursor {
         if (!this.mouse_right_down) {
             this.move(this.last_event.clientX - this.$game.offsetLeft, this.last_event.clientY - this.$game.offsetTop);
         }
+        if (this.last_event.target instanceof HTMLElement && this.last_event.target.closest("#interaction-options")) {
+            this.$mouse.classList.add(CSSToken.CURSOR_HOVER_TEXT);
+            return;
+        } else {
+            this.$mouse.classList.remove(CSSToken.CURSOR_HOVER_TEXT);
+        }
         if (this.mouse_left_down) {
             this.state = CursorState.CLICK;
             this.$mouse.dataset.state = CursorState.CLICK;
@@ -122,8 +151,11 @@ export class Cursor {
             this.$mouse.dataset.state = CursorState.OPTIONS;
             const px = this.last_event.clientX - this.$game.offsetLeft;
             const py = this.last_event.clientY - this.$game.offsetTop;
-            const classname = [(py > this.mouse_y ? "bottom" : "top"), (px > this.mouse_x ? "right" : "left")].join("-");
-            this.set_option_state(classname as "top-left" | "top-right" | "bottom-left" | "bottom-right");
+            const option = [
+                [CursorOptionState.INTERACT, CursorOptionState.INSPECT],
+                [CursorOptionState.PICK_UP, CursorOptionState.TALK]
+            ][py > this.mouse_y ? 1 : 0][px > this.mouse_x ? 1 : 0];
+            this.set_option_state(option);
             return;
         }
         if (this.is_hovering()) {
@@ -138,18 +170,11 @@ export class Cursor {
         }
     }
 
-    public set_option_state(direction: "top-left" | "top-right" | "bottom-left" | "bottom-right") {
-        this.option_state = {
-            "top-left": CursorOptionState.INTERACT,
-            "top-right": CursorOptionState.INSPECT,
-            "bottom-left": CursorOptionState.PICK_UP,
-            "bottom-right": CursorOptionState.TALK
-        }[direction] ?? CursorOptionState.NONE;
-        this.$options.className = direction;
-    }
 
     public is_hovering(): boolean {
-        const $objects = window.world.get_active_scene()?.$root.querySelectorAll(".object");
+        const $objects = window.inventory.is_open()
+            ? window.inventory.$items.querySelectorAll(".object")
+            : window.world.get_active_scene()?.$root.querySelectorAll(".object");
         if (!$objects) {
             return false;
         }
@@ -216,5 +241,29 @@ export class Cursor {
         this.$mouse.style.top = `${y}px`;
         this.mouse_x = x;
         this.mouse_y = y;
+    }
+
+
+    public set_option_state(option: CursorOptionState) {
+        this.option_state = option;
+        this.$options.dataset.option = option;
+        const $image = get_element_by_query_selector(
+            this.$options,
+            `[data-action="${option}"]`,
+            HTMLImageElement
+        );
+        this.$active_option_image.src = $image.src;
+
+    }
+
+    public set_combine_option(item: HTMLElement) {
+        if (this.$attached) {
+            // drop the item back into inventory
+            window.inventory.add_item(this.$attached);
+        }
+        this.option_state = CursorOptionState.COMBINE;
+        this.$attached = item;
+        const $image = get_element_by_class_name(item, "image", HTMLImageElement);
+        this.$active_option_image.src = $image.src;
     }
 }

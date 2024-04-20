@@ -1,0 +1,18 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable id="map-village" class="object map-object">
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic-action type="change-scene" value="scene-village"></game-logic-action>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                A local village, lately the people have been unhappy with the King there.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <object
+            class="click-area"
+            data="./images/map/map-village.svg"
+            type="image/svg+xml"
+    ></object>
+</game-interactable>

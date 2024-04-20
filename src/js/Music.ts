@@ -82,7 +82,6 @@ export class Music {
         }
         const t = (percent - 0.5) * 2;
         const t2 = t * t;
-        console.log("Volume",  t2);
         this.$current_track.volume = window.settings.music_volume * t2;
         requestAnimationFrame(this.handle_volume);
     };

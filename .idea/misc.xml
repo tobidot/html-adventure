@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectResources">
+    <resource url="mine" location="$PROJECT_DIR$/src/schema/object.xml" />
+    <default-html-doctype>mine</default-html-doctype>
+  </component>
+</project>

@@ -34,6 +34,25 @@ function on_first_user_interact() {
             console.log(`found audio for text: ${content}`);
         }
     }
+
+    // all talking text of the player
+    const options = document.querySelectorAll('[data-type="option"]');
+    for(let i = 0; i < options.length; i++) {
+        const $option = options.item(i);
+        if (!($option instanceof HTMLElement)) {
+            continue;
+        }
+        const content = $option.dataset.text?.trim() ?? '';
+        const encoded_text = SceneObject.contentToAudio(content)
+        const audios = document.querySelectorAll(`audio[data-text="${encoded_text}"]`);
+        if (audios.length <= 0) {
+            missing_audios.push(content);
+        } else {
+            console.log(`found audio for text: ${content}`);
+        }
+    }
+
+
     const scenes = document.querySelectorAll('[data-music]');
     for(let i = 0; i < scenes.length; i++) {
         const $scene = scenes.item(i);
@@ -56,7 +75,7 @@ function on_first_user_interact() {
         console.error(`No audio files found for the following texts: `, missing_audios);
     }
 
-    window.is_playing_audio = false;
+    window.animation_until = null;
 }
 
 document.addEventListener('click', on_first_user_interact, { once: true });

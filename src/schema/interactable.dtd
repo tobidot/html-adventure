@@ -1,0 +1,73 @@
+<!ELEMENT game-interactable (
+        game-data, img, object
+        )>
+        <!ELEMENT div (#PCDATA)>
+        <!ELEMENT object (#PCDATA)>
+        <!ELEMENT img (#PCDATA)>
+        <!ELEMENT game-data (game-data-property*,game-data-action*)>
+        <!ELEMENT game-data-property EMPTY>
+        <!ELEMENT game-data-action (game-logic|game-logic-condition|game-logic-action|game-logic-option)+>
+        <!ELEMENT game-logic (game-logic|game-logic-condition|game-logic-action|game-logic-option)+>
+        <!ELEMENT game-logic-option (game-logic|game-logic-condition|game-logic-action|game-logic-option)+>
+        <!ELEMENT game-logic-condition (game-logic|game-logic-condition|game-logic-action|game-logic-option)+>
+        <!ELEMENT game-logic-action (#PCDATA)>
+
+        <!ATTLIST game-interactable
+                id     ID       #REQUIRED
+                style  PCDATA    #IMPLIED
+                class  PCDATA    #REQUIRED
+                >
+
+        <!ATTLIST game-data
+                class  PCDATA    #FIXED "data"
+                >
+
+        <!ATTLIST game-data-property
+                key    PCDATA    #REQUIRED
+                value  PCDATA    #REQUIRED
+                >
+
+        <!ATTLIST game-data-action
+                type   PCDATA    #REQUIRED
+                using  PCDATA    #IMPLIED
+                ref NMTOKEN #IMPLIED
+                >
+
+        <!ATTLIST game-logic
+                type   PCDATA    #REQUIRED
+                ref NMTOKEN #IMPLIED
+                >
+
+        <!ATTLIST game-logic-condition
+                key             PCDATA      #REQUIRED
+                value           PCDATA      #REQUIRED
+                operator        PCDATA      #IMPLIED
+                ref   NMTOKEN     #IMPLIED
+                >
+
+        <!ATTLIST game-logic-option
+                text   PCDATA    #REQUIRED
+                index  PCDATA    #IMPLIED
+                ref NMTOKEN #IMPLIED
+                >
+
+        <!ATTLIST game-logic-action
+                type   PCDATA    #REQUIRED
+                key   PCDATA    #IMPLIED
+                value PCDATA    #IMPLIED
+                >
+
+
+        <!ATTLIST img
+                id     ID       #IMPLIED
+                class  PCDATA    #FIXED "image"
+                src    PCDATA    #REQUIRED
+                alt    PCDATA    #REQUIRED
+                >
+
+        <!ATTLIST object
+                id     ID       #IMPLIED
+                class  PCDATA    #FIXED "click-area"
+                type   PCDATA    #FIXED "image/svg+xml"
+                data   PCDATA    #REQUIRED
+                >

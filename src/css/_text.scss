@@ -1,16 +1,48 @@
-#text {
+#interaction {
     position: absolute;
     bottom: 1rem;
     display: flex;
     width: 100%;
     height: auto;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 50px;
+    padding: 0 ;
+    margin: 0 0 50px;
 
-    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: all;
+
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#interaction-options {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.output-entry, .options-entry {
+    display: block;
+    padding: 0 0.25rem ;
+
     font-size: 1.5em;
-    color: #333;
     text-align: left;
     font-family: "Open Sans", sans-serif;
+}
+
+.output-entry {
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.options-entry {
+    color: #bbb;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-bottom: 2px solid #333;
+
+    text-align: center;
+}
+
+.options-entry:hover {
+    background: black;
+    color: white;
+    border-color: white;
 }

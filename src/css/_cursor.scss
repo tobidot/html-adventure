@@ -36,80 +36,68 @@
         visibility: hidden;
     }
 
-    &[data-state="options"] {
+    &.js-mouse-hover-text {
+        > .active-option {
+            visibility: hidden;
+        }
+
+        > [data-state="default"] {
+            visibility: visible;
+        }
+
+        > [data-state="click"], > [data-state="hover"] {
+            visibility: hidden;
+        }
+    }
+
+    > .active-option {
+        position: absolute;
+        top: 50%;
+        left: 120%;
+        display: flex;
+        width: 35px;
+        height: auto;
+
+        visibility: visible;
+
+        transform: translate(-50%, -50%);
+
+        &[src=""] {
+            display: none;
+        }
+    }
+
+    &[data-state="options"]:not(.js-mouse-hover-text) {
         > [data-state="options"] {
-            display: grid;
-            grid-template-columns: 50px 50px;
-            grid-template-rows: 50px 50px;
-            transform: translate(-50%, -50%);
+            visibility: visible;
+        }
 
-            &:after {
-                display: flex;
-            }
-
-            > * {
-                display: flex;
-            }
+        > .active-option {
+            display: none;
         }
     }
 
     > [data-state="options"] {
-        visibility: visible;
-        transform: translate(50%, 0%) scale(0.5);
+        display: grid;
+        grid-template-columns: 50px 50px;
+        grid-template-rows: 50px 50px;
 
         > * {
-            display: none;
             width: 100%;
             height: 100%;
+            box-sizing: content-box;
             filter: grayscale(1);
+            border: 3px solid transparent;
         }
 
-        &:after {
-            display: none;
-            content: " ";
-            top: 50%;
-            left: 50%;
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border: 3px solid white;
-            border-radius: 50px;
-        }
-
-        &.top-left > .top-left,
-        &.top-right > .top-right,
-        &.bottom-left > .bottom-left,
-        &.bottom-right > .bottom-right {
+        &[data-option="interact"] > [data-action="interact"],
+        &[data-option="inspect"] > [data-action="inspect"],
+        &[data-option="pick-up"] > [data-action="pick-up"],
+        &[data-option="talk"] > [data-action="talk"], {
             display: flex;
             filter: grayscale(0) brightness(1.5) drop-shadow(3px 3px 0px black);
-        }
-
-        &.top-left {
-            &:after {
-                top: 0;
-                left: 0;
-            }
-        }
-
-        &.top-right {
-            &:after {
-                top: 0;
-                left: 100%;
-            }
-        }
-
-        &.bottom-left {
-            &:after {
-                top: 100%;
-                left: 0;
-            }
-        }
-
-        &.bottom-right {
-            &:after {
-                top: 100%;
-                left: 100%;
-            }
+            border-radius: 50%;
+            border: 3px solid white;
         }
     }
 }
