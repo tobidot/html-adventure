@@ -1,0 +1,30 @@
+<!DOCTYPE game-interactable SYSTEM "interactable.dtd">
+<game-interactable id="unknown" class="object" style="{=$style}">
+    <!-- This is a template object. replace the 'unknown' in this file -->
+    <game-data class="data">
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                ...
+            </game-logic-action>
+        </game-data-action>
+        <game-data-action type="interact">
+        </game-data-action>
+        <game-data-action type="pick-up">
+        </game-data-action>
+        <game-data-action type="talk">
+            <game-logic-action type="output">
+                ...
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <img
+            class="image"
+            src="./images/objects/unknown/unknown.png"
+            alt=""
+    />
+    <object
+            class="click-area"
+            data="./images/objects/unknown/unknown.svg"
+            type="image/svg+xml"
+    />
+</game-interactable>

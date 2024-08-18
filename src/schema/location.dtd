@@ -11,7 +11,7 @@
                 >
         <!ATTLIST img
                 id     ID        #IMPLIED
-                class  PCDATA    #FIXED "image"
+                class  PCDATA    #FIXED "background"
                 src    PCDATA    #REQUIRED
                 alt    PCDATA    #REQUIRED
                 >

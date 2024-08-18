@@ -1,4 +1,6 @@
 import { SceneObject } from "./SceneObject";
+import { ActionHelper } from "./ActionHelper";
+import { HTMLGameLogicOption } from "./custom-elements/HTMLGameLogicOption";
 
 function on_first_user_interact() {
     console.info("Checking Validity of Audio Files and Text Outputs...");
@@ -18,7 +20,7 @@ function on_first_user_interact() {
     }
 
     // check if all text outputs have a corresponding audio file
-    const text = document.querySelectorAll('[data-type="output"]');
+    const text = document.querySelectorAll('game-logic-action[type="output"]');
     const missing_audios = [];
     for(let i = 0; i < text.length; i++) {
         const $output = text.item(i);
@@ -26,7 +28,7 @@ function on_first_user_interact() {
             continue;
         }
         const content = $output.innerText.trim();
-        const encoded_text = SceneObject.contentToAudio(content)
+        const encoded_text = ActionHelper.contentToAudio(content)
         const audios = document.querySelectorAll(`audio[data-text="${encoded_text}"]`);
         if (audios.length <= 0) {
             missing_audios.push(content);
@@ -36,14 +38,14 @@ function on_first_user_interact() {
     }
 
     // all talking text of the player
-    const options = document.querySelectorAll('[data-type="option"]');
+    const options = document.querySelectorAll('game-logic-option');
     for(let i = 0; i < options.length; i++) {
         const $option = options.item(i);
-        if (!($option instanceof HTMLElement)) {
+        if (!($option instanceof HTMLGameLogicOption)) {
             continue;
         }
-        const content = $option.dataset.text?.trim() ?? '';
-        const encoded_text = SceneObject.contentToAudio(content)
+        const content = $option.text;
+        const encoded_text = ActionHelper.contentToAudio(content)
         const audios = document.querySelectorAll(`audio[data-text="${encoded_text}"]`);
         if (audios.length <= 0) {
             missing_audios.push(content);
@@ -53,7 +55,7 @@ function on_first_user_interact() {
     }
 
 
-    const scenes = document.querySelectorAll('[data-music]');
+    const scenes = document.querySelectorAll('[music]');
     for(let i = 0; i < scenes.length; i++) {
         const $scene = scenes.item(i);
         if (!($scene instanceof HTMLElement)) {
@@ -75,7 +77,7 @@ function on_first_user_interact() {
         console.error(`No audio files found for the following texts: `, missing_audios);
     }
 
-    window.animation_until = null;
+    // window.animation_until = null;
 }
 
 document.addEventListener('click', on_first_user_interact, { once: true });

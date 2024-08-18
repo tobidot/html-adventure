@@ -2,7 +2,9 @@
 <game-interactable id="guard-1" class="object" style="{=$style}">
     <game-data class="data">
         <game-data-property key="intimidating" value="TRUE"/>
-        <game-data-action type="pick-up">$FAIL</game-data-action>
+        <game-data-action type="pick-up">
+            <game-logic-action type="output">$FAIL</game-logic-action>
+        </game-data-action>
         <game-data-action type="inspect">
             <game-logic type="sequence">
                 <game-logic-action type="output">
@@ -20,10 +22,10 @@
                     Guard: "Hello traveller."
                 </game-logic-action>
                 <game-logic-option text="I have to go now." index="10">
+                    <game-logic-action type="end-interaction"/>
                     <game-logic-action type="output">
                         Guard: "Travel safe!"
                     </game-logic-action>
-                    <game-logic-action type="end-interaction"/>
                 </game-logic-option>
                 <game-logic-condition key="$has_bread" value="TRUE" ref="bread">
                     <game-logic-action type="output">

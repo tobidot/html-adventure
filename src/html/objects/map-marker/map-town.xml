@@ -2,7 +2,7 @@
 <game-interactable id="map-town" class="object map-object">
     <game-data class="data">
         <game-data-action type="interact">
-            <game-logic-action type="change-scene" value="scene-village"></game-logic-action>
+            <game-logic-action type="change-scene" value="scene-town"></game-logic-action>
         </game-data-action>
         <game-data-action type="inspect">
             <game-logic-action type="output">

@@ -2,6 +2,7 @@ import { get_element_by_id, get_element_by_query_selector } from "@game.object/t
 import { SceneObject } from "./SceneObject";
 import { get_element_by_class_name } from "@game.object/ts-game-toolbox/dist";
 import { CSSToken } from "./enums/CSSToken";
+import { HTMLGameInteractable } from "./custom-elements/HTMLGameInteractable";
 
 export enum CursorState {
     DEFAULT = "default",
@@ -62,7 +63,7 @@ export class Cursor {
             CursorOptionState.PICK_UP,
             CursorOptionState.TALK
         ] as const;
-        const index = order.indexOf(this.$options.className as typeof order[number]);
+        const index = order.indexOf(this.$options.dataset.option as typeof order[number]);
         const new_index = (index + (event.deltaY > 0 ? 1 : -1) + order.length) % order.length;
         this.set_option_state(order[new_index]);
     };
@@ -121,7 +122,7 @@ export class Cursor {
     };
 
     public handle_action() {
-        if (this.$hovering && this.option_state !== CursorOptionState.NONE) {
+        if (this.$hovering && this.option_state !== CursorOptionState.NONE && this.$hovering instanceof HTMLGameInteractable) {
             const object = new SceneObject({ $object: this.$hovering });
             object.act(this.option_state);
         }

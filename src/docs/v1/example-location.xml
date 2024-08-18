@@ -1,0 +1,22 @@
+<!DOCTYPE game-location SYSTEM "http://www.game-object.com/dtd/location">
+<!--
+    The id for a location should be prefixed with 'scene-'.
+    The music attribute defines a comma seperated list of music files to be played in the background while this scene is shown.
+-->
+<game-location id="scene-example" class="scene" music="for-an-example,example-at-stake">
+    <!--
+      This is the background image for the scene.
+      The 'alt' attribute is used for midjourney to generate an image from for the scene.
+    -->
+    <img
+        class="background"
+        src="./images/backgrounds/example.png"
+        alt="(Example description of a background for an adventure game::2 ), (people::-0.75 ), Dos Adventure Game, Background scene, Low Definition, Low Quality Art, Dithering"
+    />
+    <!--
+      Load objects that have been defined into the scene.
+      Use the 'style' attribute to define the position and size of the object, where they should appear.
+      An interesting scene should have a variety of objects to interact with. (4 - 10)
+    -->
+    <load src="../objects/example-object.xml" style="top: 75%; left: 88%; width: 8%"/>
+</game-location>

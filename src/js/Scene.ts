@@ -1,17 +1,19 @@
+import { HTMLGameLocation } from "./custom-elements/HTMLGameLocation";
+
 export class Scene {
     public id: string;
-    public $root: HTMLElement;
-    public allowed_music: Array<string> = [];
+    public $root: HTMLGameLocation;
+    public allowed_tacks: Array<string> = [];
 
     constructor(settings: {
-        $root: HTMLElement;
+        $root: HTMLGameLocation;
     }) {
         this.$root = settings.$root;
         this.id = this.$root.id;
-        this.allowed_music = this.$root.dataset.music?.split(",") ?? [];
+        this.allowed_tacks = this.$root.allowed_tracks;
     }
 
     public get_allowed_tracks() {
-        return this.allowed_music;
+        return this.allowed_tacks;
     }
 }

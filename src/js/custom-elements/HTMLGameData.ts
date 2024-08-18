@@ -1,0 +1,1 @@
+export class HTMLGameData extends HTMLElement {}

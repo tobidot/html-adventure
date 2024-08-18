@@ -1,0 +1,112 @@
+<!DOCTYPE game-interactable SYSTEM "interactable.dtd">
+<game-interactable id="example" class="object" style="{=$style}">
+    <!-- This is an example object. See different parts of it to understand the logical behaviours -->
+    <!-- The game-data element contains the logic for the object, how does it interact with the world -->
+    <game-data class="data">
+        <!-- This is a property of the object, it can be referenced later in other logic -->
+        <game-data-property key="mood" value="angry"></game-data-property>
+        <!--
+            The <game-data-action> element is a starting point for interactive logic.
+            A <game-logic> element functions as a container for multiple logics to perform, it can define the flow of logic.
+            With <game-logic-condition> it is possible to branch the logic based on conditions.
+            On a <game-logic-option> the player can choose is provided the option to trigger the inner logic, it's used for dialogue.
+            The <game-logic-action> is the endpoint of a logic, it performs an actual change on the game.
+
+            The logic elements are executed in order and by default all children are executed.
+        -->
+        <!--
+            The "inspect" action is triggered when the player wants to know more about the object.
+            It should in most cases just output a description of the object.
+        -->
+        <game-data-action type="inspect">
+            <!-- The "output" action simply prints and reads the text inside it out loud. -->
+            <game-logic-action type="output">
+                The example object is a mystery to you. It is a strange object, you have never seen anything like it
+                before.
+            </game-logic-action>
+        </game-data-action>
+        <!--
+            The "interact" action is triggered when the player wants the object to do something.
+        -->
+        <game-data-action type="interact">
+            <!--
+                There are several ways to reference and obtain values inside a condition element.
+                The first character determines the source of the reference, the following characters determine the value itself.
+            -->
+            <!-- '@' is used to reference a property of the parent object, in this case the mood property declared above. -->
+            <!-- '!' is used to make sure this value is a raw value, not a reference. You can also just omit the '!' -->
+            <game-logic-condition key="@mood" value="!chill">
+                <!-- The 'set-variable' allows for changing values, here we set the mood property of this object to te literal value "angry" -->
+                <game-logic-action type="set-variable" key="@.mood" value="angry"></game-logic-action>
+                <game-logic-action type="output">The object is now angry</game-logic-action>
+            </game-logic-condition>
+            <!-- '#' can be used to reference a property of any object, in this case we are referencing by it id define in the 'game-interactable' element -->
+            <!-- After the source element is defined either by (#element or @) it can be followed by a '.' to simply select for a property with that key on that object -->
+            <game-logic-condition key="#example.mood" value="angry">
+                <game-logic-action type="output">Object: Summm!</game-logic-action>
+            </game-logic-condition>
+            <!-- If the element is followed by a '?' the rest will be interpreted as a query selector and the value will be the number of matches for that selector -->
+            <!-- In this case we are checking if the player has any bread in their inventory -->
+            <game-logic-condition key="#inventory?#bread" operator="greater" value="0">
+                <game-logic-action type="set-variable" key="@.mood" value="angry"></game-logic-action>
+                <game-logic-action type="output">Object: Swirrr...</game-logic-action>
+                <game-logic-action type="output">The object sounds happy now.</game-logic-action>
+            </game-logic-condition>
+        </game-data-action>
+        <!-- The "pick-up" action is triggered when the player wants to take the object with them into their inventory. -->
+        <game-data-action type="pick-up">
+            <!-- This should add the object to the player's inventory -->
+            <!-- value is the id of the object to be added to the inventory -->
+            <game-logic-action type="add-inventory" value="example"></game-logic-action>
+        </game-data-action>
+        <!-- The "talk" action is triggered when the player wants to start a dialogue. -->
+        <game-data-action type="talk">
+            <!-- This is an option for the player to choose from, it should be a question or a statement -->
+            <game-logic-option text="Hello?">
+                <!-- once an option is picked it will remove itself from the option-list and trigger the inner logic -->
+                <game-logic-action type="output">The object does not respond.</game-logic-action>
+            </game-logic-option>
+            <!-- The index attribute is used to determine the order of the options, the option to end a dialogue usually is at the end of the list -->
+            <game-logic-option text="(Leave it alone)" index="10" >
+                <!-- This action ends the interaction and removes all options -->
+                <game-logic-action type="end-interaction"></game-logic-action>
+            </game-logic-option>
+            <!-- The index attribute is used to determine the order of the options, the option to end a dialogue usually is at the end of the list -->
+            <game-logic-option text="Bring me to the town!">
+                <!-- This action is meant to open another scene, the value is the id of the scene, with an implicit 'scene-' as a prefix -->
+                <game-logic-action type="change-scene" value="town"></game-logic-action>
+            </game-logic-option>
+            <!-- The index attribute is used to determine the order of the options, the option to end a dialogue usually is at the end of the list -->
+            <game-logic-option text="(Show to)">
+                <!-- This action will attach the referenced object to the cursor, allowing the user to combine it with other objects -->
+                <game-logic-action type="add-cursor" value="example"></game-logic-action>
+            </game-logic-option>
+        </game-data-action>
+        <!-- The combine action is triggered, when the user currently carries another item and clicked on this object -->
+        <game-data-action type="combine">
+            <!-- the global variable $using is set to the id of the object the player is currently using -->
+            <game-logic-condition key="$using" value="bread">
+                <game-logic-action type="output">
+                    The object is not interested in the bread.
+                </game-logic-action>
+            </game-logic-condition>
+        </game-data-action>
+    </game-data>
+    <!--
+     The image element contains the visual representation of the object, it will be displayed on the screen
+     the 'alt' attribute is used for midjourney to generate an image from for the object.
+     -->
+    <img
+            class="image"
+            src="./images/objects/example/example.png"
+            alt="An image of the example object, white background, sprite-sheet, Dos Adventure Game, Low Definition, Low Quality Art, Dithering, cropped out, object only"
+    />
+    <!--
+            The object element is the clickable area of the object it will be generated from the image.
+            -->
+    <object
+            class="click-area"
+            data="./images/objects/example/example.svg"
+            type="image/svg+xml"
+    />
+</game-interactable>
