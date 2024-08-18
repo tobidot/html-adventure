@@ -15,8 +15,12 @@
     padding: 1rem;
     border-radius: 0.25rem;
 
+    font-weight: bold;
     pointer-events: all;
-    background-color: whitesmoke;
+    background-color: unset;
+    background-image : url(/public/images/backgrounds/popup-menu.png);
+    background-size: 100% 100%;
+
 
     transform: translate(-50%, -50%);
     flex-direction: column;
@@ -26,6 +30,17 @@
     h1 {
         font-size: 1.5rem;
         margin-top: 0rem;
+    }
+
+    a {
+        color: whitesmoke;
+        text-decoration: none;
+        font-weight: normal;
+        pointer-events: all;
+    }
+
+    a:visited {
+        color: whitesmoke;
     }
 
     > form {
@@ -39,5 +54,28 @@
         display: flex;
         width: 100%;
         justify-content: space-between;
+    }
+
+    button.menu-item {
+        height: 2rem;
+        width: auto;
+        border: unset;
+
+        background-color: unset;
+        background-image: url(/public/images/icons/button-2.png);
+        background-size: 100% 100%;
+
+        font-weight: bolder;
+        aspect-ratio: 2/1;
+
+        justify-content: center;
+        align-items: center;
+        &:hover {
+            color: whitesmoke;
+        }
+        &:focus {
+            outline: none;
+            color: whitesmoke;
+        }
     }
 }

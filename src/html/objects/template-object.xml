@@ -24,7 +24,7 @@
     />
     <object
             class="click-area"
-            data="./images/objects/unknown/unknown.svg"
+            data="/images/objects/unknown/unknown.svg"
             type="image/svg+xml"
-    />
+    > </object>
 </game-interactable>

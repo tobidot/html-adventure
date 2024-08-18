@@ -8,7 +8,6 @@ import { PopupName } from "./enums/PopupName";
 import { Inventory } from "./Inventory";
 import { get_element_by_id } from "@game.object/ts-game-toolbox/dist";
 import { Queue } from "./Queue";
-// import map_church from "./src/images/map/map-church.svg";
 
 declare global {
     interface Window {
@@ -27,7 +26,7 @@ window.debug = true;
 window.queue = new Queue();
 window.settings = new Settings();
 window.world = new World();
-window.music = new Music();
+window.music = new Music("title");
 window.text = new InfoText();
 window.keyboard = new Keyboard();
 window.inventory = new Inventory();
@@ -36,7 +35,7 @@ window.inventory = new Inventory();
     window.world.load_settings();
     await window.world.load_assets();
     // window.world.show_popup(PopupName.INVENTORY);
-    window.world.show_scene(SceneName.HOME);
+    // window.world.show_scene(SceneName.HOME);
 })();
 
 // const bread = get_element_by_id('bread');

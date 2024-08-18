@@ -48,7 +48,7 @@ export class Popup {
 
     protected start() {
         window.world.hide_popup(PopupName.MENU);
-        window.world.show_scene(SceneName.HOME);
+        window.world.show_scene(SceneName.START);
         window.music.play();
     }
 

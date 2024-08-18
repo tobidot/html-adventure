@@ -4,7 +4,8 @@
     height: 50px;
     padding: 2px 10px;
 
-    background-color: burlywood;
+    background-image: url(/public/images/backgrounds/border-bottom.png);
+    background-size: 100%   100%;
 
     grid-template-columns: 1fr 100px 100px;
     gap: 10px;
@@ -13,10 +14,27 @@
     align-items: center;
 
     > .menu-item {
-        height: 100%;
-        min-width: 100px;
+        height: 2rem;
+        width: auto;
+
+        padding: 0.5rem 1rem;
+
+        border: unset;
+        font-weight: bold;
+        background-color: unset;
+        background-image: url(/public/images/icons/button-2.png);
+        background-size: 100% 100%;
+
+        aspect-ratio: 2/1;
         &:first-child {
             justify-self: flex-start;
+        }
+        &:hover {
+            color: whitesmoke;
+        }
+        &:focus {
+            outline: none;
+            color: whitesmoke;
         }
     }
 }

@@ -5,13 +5,16 @@ export class Music {
     public $music_list: HTMLElement;
     public music_list: Array<HTMLAudioElement> = [];
     public named_tracks: Map<string, HTMLAudioElement> = new Map<string, HTMLAudioElement>();
-    public current_track: string = "town";
+    public current_track: string ;
     public $current_track: HTMLAudioElement;
     public music_transition_seconds: number = 0;
     public max_music_transition_seconds: number = 0.5;
-    public next_track : string = "town";
+    public next_track : string ;
 
-    constructor() {
+    constructor(
+        track:string
+    ) {
+        this.current_track = this.next_track= track;
         this.$music_list = get_element_by_id("music-list");
         this.music_list = [];
         this.$music_list.querySelectorAll("audio").forEach(($audio) => {

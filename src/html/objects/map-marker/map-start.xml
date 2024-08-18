@@ -1,0 +1,18 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable id="map-start" class="object map-object">
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic-action type="change-scene" value="scene-church"> </game-logic-action>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                That's where I woke up. I have no clue what happened before.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <object
+            class="click-area"
+            data="/images/map/map-church.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>
