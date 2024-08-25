@@ -1,4 +1,4 @@
 export enum SceneName {
     MAP = "scene-map",
-    START = "scene-start",
+    LOST_FOREST = "scene-lost-forest",
 }

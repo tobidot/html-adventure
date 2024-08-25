@@ -1,0 +1,49 @@
+# Primary Story Elements (Mandatory for Player Progression):
+
+## Lost Forest:
+
+Purpose: The player wakes up here, disoriented and driven by the need to understand their situation. It's the starting point of their journey.
+Key Interactions: Explore the forest, choose a direction, and discover clues that urge the player to keep moving.
+
+## Abandoned Hut:
+
+Purpose: Provides the first significant clues about the spirit that hunts those who become complacent. The player learns about the curse and the need to keep running.
+Key Interactions: Discover old journals, broken furniture, and remnants of past occupants. The player hears unsettling noises that push them to leave quickly.
+
+## Ancient Ruins:
+
+Purpose: A key location that ties the history of the spirit to the land. The player learns about the origin of the curse and its connection to the forest.
+Key Interactions: Decipher ancient symbols, uncover the spirit’s history, and possibly find a relic that will be important later.
+
+## Spirit’s Crossing:
+
+Purpose: A mystical, challenging area that tests the player's understanding of the spirit and their resolve to keep moving. It's both a physical and mental trial.
+Key Interactions: Navigate through shifting paths, solve puzzles related to the spirit, and encounter increasingly intense signs of being pursued.
+Optional Interactions (Affecting Endings):
+
+## Main Road:
+
+Purpose: Serves as a hub connecting the different locations. The player might encounter remnants of other travelers, further emphasizing the need to keep moving.
+Key Interactions: Explore remnants like abandoned carts or forgotten signposts. Hear or see signs of the spirit’s pursuit, which increase the sense of urgency.
+
+## Murky Swamp (Sidequest):
+
+Purpose: An optional area that offers an alternative path and potentially a different ending. The player might find a talisman or relic that can placate the spirit.
+Key Interactions: Navigate the treacherous swamp, encounter eerie whispers and hidden dangers. The player can find a talisman that may change the outcome of their encounter with the spirit.
+
+# Different Endings (Based on Player Choices):
+
+## Standard Ending:
+
+Trigger: The player follows the main story path, confronting the spirit at the Cursed Shrine without the optional talisman.
+Outcome: The player either decides to continue running, leading to a loop where they wake up again in the Lost Forest (implying the curse continues), or they confront the spirit and potentially sacrifice themselves to break the curse.
+
+## Alternate Ending (Swamp Path):
+
+Trigger: The player explores the Murky Swamp and finds the talisman, then confronts the spirit at the Cursed Shrine.
+Outcome: With the talisman, the player has a chance to appease the spirit, breaking the cycle without sacrifice. This might lead to the player escaping the forest or ending the curse for good.
+
+## Bad Ending:
+
+Trigger: If the player fails to keep moving (perhaps by spending too long in certain areas or failing key challenges), the spirit catches up to them.
+Outcome: The player is overtaken by the spirit, leading to their demise. The game might end with them becoming another lost soul in the forest, serving as a warning for others.

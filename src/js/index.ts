@@ -35,7 +35,7 @@ window.inventory = new Inventory();
     window.world.load_settings();
     await window.world.load_assets();
     // window.world.show_popup(PopupName.INVENTORY);
-    // window.world.show_scene(SceneName.HOME);
+    window.world.show_scene(SceneName.LOST_FOREST);
 })();
 
 // const bread = get_element_by_id('bread');

@@ -1,0 +1,21 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable id="map/abandoned-hut" class="object map-object">
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic-action type="change-scene" value="scene-abandoned-hut"> </game-logic-action>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                Looks like a hut, maybe I can get help there.
+            </game-logic-action>
+            <game-logic-action type="output">
+                It is an empty hut, the place gave me the chills earlier.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <object
+            class="click-area"
+            data="/images/map/map/abandoned-hut.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

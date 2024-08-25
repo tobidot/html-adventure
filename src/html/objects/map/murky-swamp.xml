@@ -1,0 +1,18 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable id="map/murky-swamp" class="object map-object">
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic-action type="change-scene" value="scene-murky-swamp"> </game-logic-action>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                The path seems to lead to a swamp, eurgh.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <object
+            class="click-area"
+            data="/images/map/map/murky-swamp.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

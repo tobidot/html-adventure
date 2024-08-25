@@ -59,7 +59,7 @@
             <!-- value is the id of the object to be added to the inventory -->
             <game-logic-action type="add-inventory" value="example"></game-logic-action>
         </game-data-action>
-        <!-- The "talk" action is triggered when the player wants to start a dialogue. -->
+        <!-- The "talk" action is triggered when the player wants to lost-forest a dialogue. -->
         <game-data-action type="talk">
             <!-- This is an option for the player to choose from, it should be a question or a statement -->
             <game-logic-option text="Hello?">

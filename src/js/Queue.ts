@@ -24,7 +24,7 @@ export class Queue {
         try {
             while (this._entries.length) {
                 const entry = this._entries.shift();
-                console.log("entry start", entry);
+                console.log("entry lost-forest", entry);
                 if (!entry) continue;
                 await (async () => {
                     this._is_about_to_finish = false;

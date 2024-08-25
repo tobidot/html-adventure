@@ -59,7 +59,7 @@ export class Music {
         }
 
         const allowed_tracks = scene.get_allowed_tracks();
-        if (!allowed_tracks.includes(this.current_track)) {
+        if (!allowed_tracks.includes(this.current_track) && !allowed_tracks.includes("*")) {
             this.music_transition_seconds = this.max_music_transition_seconds;
             // Track is not allowed here => switch
             this.next_track = allowed_tracks[Math.floor(Math.random() * allowed_tracks.length)];

@@ -1,0 +1,21 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable id="map/main-road" class="object map-object">
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic-action type="change-scene" value="scene-main-road"> </game-logic-action>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                Can't figure out what that is supposed to be. Looks like a dead end.
+            </game-logic-action>
+            <game-logic-action type="output">
+                It is the camps trash pile, the people here left all their junk there.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <object
+            class="click-area"
+            data="/images/map/map/main-road.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

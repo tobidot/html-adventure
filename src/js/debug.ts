@@ -75,6 +75,7 @@ function on_first_user_interact() {
     }
     if (missing_audios.length > 0) {
         console.error(`No audio files found for the following texts: `, missing_audios);
+        console.error( missing_audios.join('\n') );
     }
 
     // window.animation_until = null;

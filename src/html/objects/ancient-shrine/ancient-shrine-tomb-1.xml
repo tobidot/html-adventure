@@ -1,0 +1,23 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable id="ancient-shrine/ancient-shrine-tomb-1" class="object map-object">
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic type="all">
+                <game-logic-action type="output">
+                    [Footsteps]
+                </game-logic-action>
+                <game-logic-action type="change-scene" value="scene-ancient-shrine-tomb-1"> </game-logic-action>
+            </game-logic>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                Trees as far as I can see, and one small path.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <object
+            class="click-area"
+            data="/images/map/ancient-shrine/ancient-shrine-tomb-1.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

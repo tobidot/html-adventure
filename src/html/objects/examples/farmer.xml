@@ -1,0 +1,43 @@
+<!DOCTYPE game-interactable SYSTEM "interactable.dtd">
+<game-interactable id="farmer01" class="object" style="position: absolute; top: 100px; left: 200px;">
+    <game-data class="data">
+        <game-data-property key="mood" value="anxious"/>
+        <game-data-property key="occupation" value="farmer"/>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                You notice a jittery farmer pacing back and forth. Despite his rugged appearance, there's a palpable sense of unease about him as he mutters under his breath about his harvest.
+            </game-logic-action>
+        </game-data-action>
+        <game-data-action type="interact">
+            <game-logic-option text="The crops look healthy despite the tough season, how do you manage?">
+                <game-logic-action type="output">
+                    The farmer smiles weakly, "Thank you! It’s a secret, but hard work and a bit of old wisdom go a long way. And avoiding tall taxes when we can, which isn't often."
+                </game-logic-action>
+            </game-logic-option>
+            <game-logic-option text="Your family seems strong. How do they feel about all the hard work?">
+                <game-logic-action type="output">
+                    The farmer sighs, "They’re my pride. Hardworking and never complaining. But deep down, I know they wish for a life beyond these fields and unfair decrees."
+                </game-logic-action>
+            </game-logic-option>
+            <game-logic-option text="What’s your opinion on the king’s ruling?">
+                <game-logic-condition key="fear" value="10" operator="more_than">
+                    <game-logic-action type="output">
+                        The farmer glances around fearfully, "Best not to ask such things, stranger. Walls have ears and the trees, eyes."
+                    </game-logic-action>
+                </game-logic-condition>
+                <game-logic-condition key="fear" value="5" operator="less_than">
+                    <game-logic-action type="output">
+                        The farmer leans in, whispering cautiously, "Our king? More a tyrant than a ruler. But don’t spread that, I have my children to think about."
+                    </game-logic-action>
+                </game-logic-condition>
+            </game-logic-option>
+            <game-logic-option text="Can I assist you in any way against these oppressions?">
+                <game-logic-action type="output">
+                    The farmer's eyes light up with a spark of hope, "Bless you! Perhaps, spread the word? Or just keep buying our produce. Every bit helps."
+                </game-logic-action>
+            </game-logic-option>
+        </game-data-action>
+    </game-data>
+    <img id="farmer01Image" class="image" src="farmer.svg" alt="Wizened Farmer"/>
+    <object id="farmer01Object" class="click-area" type="image/svg+xml" data="farmerInteractive.svg"/>
+</game-interactable>

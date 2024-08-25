@@ -8,6 +8,7 @@ import {HTMLGameLocation} from "./custom-elements/HTMLGameLocation";
 export class World {
     //
     protected $active_scene: Scene | null = null;
+    protected $previous_scene: Scene | null = null;
     protected $scene: HTMLElement;
     protected $scene_list: HTMLElement;
     protected scenes_map: Map<string, Scene> = new Map();
@@ -192,6 +193,7 @@ export class World {
             this.$scene_list.appendChild(this.$active_scene.$root);
         }
         this.$scene.appendChild(new_scene.$root);
+        this.$previous_scene = this.$active_scene;
         this.$active_scene = new_scene;
 
         window.music.change_scene();
@@ -218,5 +220,9 @@ export class World {
 
     public get_active_scene(): Scene | null {
         return this.$active_scene;
+    }
+
+    public get_previous_scene(): Scene | null {
+        return this.$previous_scene;
     }
 }

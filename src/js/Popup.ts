@@ -48,7 +48,7 @@ export class Popup {
 
     protected start() {
         window.world.hide_popup(PopupName.MENU);
-        window.world.show_scene(SceneName.START);
+        window.world.show_scene(SceneName.LOST_FOREST);
         window.music.play();
     }
 
@@ -61,7 +61,11 @@ export class Popup {
     }
 
     protected map() {
-        window.world.show_scene(SceneName.MAP);
+        if (window.world.get_active_scene()?.id === SceneName.MAP) {
+            window.world.show_scene(window.world.get_previous_scene()?.id ?? SceneName.LOST_FOREST);
+        } else {
+            window.world.show_scene(SceneName.MAP);
+        }
     }
 
     protected setting() {

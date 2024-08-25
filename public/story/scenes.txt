@@ -1,0 +1,34 @@
+Scene 1: The Lost Forest
+The player wakes up disoriented and must explore to find a way out.
+One path leads to a dead end, serving to disorient and heighten tension,
+while the other leads toward the next significant location.
+
+Scene 2: The Abandoned Cabin
+After navigating through the forest, the player finds an old cabin.
+Here, they can search for clues about their situation and possibly find a map that hints at the surrounding areas,
+driving them to explore further.
+
+Scene 3: The Murky Swamp
+The path from the cabin leads into a dark, treacherous swamp.
+The player must carefully navigate this area, avoiding dangers,
+and uncovering hidden items that might help them later in the game.
+
+Scene 4: The Riddle Bridge
+The swamp leads to a rickety bridge spanning a deep chasm.
+To cross safely, the player must solve a riddle or puzzle,
+adding a layer of challenge and preventing immediate progress without thinking.
+
+Scene 5: The Ruined Village
+On the other side of the bridge, the player discovers an abandoned village.
+Exploring the dilapidated houses offers more pieces of the puzzle,
+with remnants of past residents hinting at the dark force that may be pursuing them.
+
+Scene 6: The Watchtower
+From the village, the player spots a watchtower on a nearby hill.
+Climbing the tower provides a vantage point and reveals the final location on the map,
+driving the player towards their ultimate goal.
+
+Scene 7: The Cursed Shrine
+The player’s journey ends at an ancient shrine hidden deep within the forest.
+Here, they confront the dark force or entity that has been hunting them,
+leading to the story’s climax and resolution.

@@ -13,7 +13,7 @@ export class Scene {
         this.allowed_tacks = this.$root.allowed_tracks;
     }
 
-    public get_allowed_tracks() {
+    public get_allowed_tracks(): Array<string> {
         return this.allowed_tacks;
     }
 }
