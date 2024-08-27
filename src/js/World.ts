@@ -1,7 +1,7 @@
 import {get_element_by_id} from "@game.object/ts-game-toolbox";
 import {Popup} from "./Popup";
 import {Scene} from "./Scene";
-import {Cursor} from "./Cursor";
+import {Cursor, CursorOptionState} from "./Cursor";
 import {HTMLGameLocation} from "./custom-elements/HTMLGameLocation";
 import {AssetManager} from "./AssetManager";
 import {Progress} from "./Progress.js";
@@ -12,6 +12,7 @@ import {Settings} from "./Settings.js";
 import {Music} from "./Music.js";
 import {Keyboard} from "./Keyboard.js";
 import {LoadingScreen} from "./LoadingScreen.js";
+import {SceneName} from "./enums/SceneName.js";
 
 export class World {
 
@@ -81,6 +82,8 @@ class Logic {
 
         await this.parent.components.assets.load(asset_progress);
         this.parent.components.loading_screen.logic.finish();
+
+        this.parent.components.mouse.set_option_state(CursorOptionState.INTERACT);
     }
 
     public load_settings() {
@@ -133,7 +136,7 @@ class Logic {
         if (this.parent.props.active_scene) {
             this.parent.elements.$scene_list.appendChild(this.parent.props.active_scene.$root);
         }
-        this.parent.elements.$scene_list.appendChild(new_scene.$root);
+        this.parent.elements.$scene.appendChild(new_scene.$root);
         this.parent.props.previous_scene = this.parent.props.active_scene;
         this.parent.props.active_scene = new_scene;
 
@@ -155,6 +158,39 @@ class Logic {
 
     public get_previous_scene(): Scene | null {
         return this.parent.props.previous_scene;
+    }
+
+    public highlight_objects() {
+        if (!this.parent.props.active_scene || (this.parent.props.active_scene.id === SceneName.MAP)) {
+            return;
+        }
+        this.parent.elements.$scene.querySelectorAll('.click-area').forEach(($item) => {
+            if ($item instanceof HTMLObjectElement) {
+                const svg = $item.getSVGDocument();
+                if (svg) {
+                    svg.querySelectorAll('#shape path').forEach(($path)=>{
+                        $path.setAttribute('fill', 'red');
+                    });
+                }
+            }
+
+        });
+    }
+
+    public stop_highlight_objects() {
+        if (!this.parent.props.active_scene || (this.parent.props.active_scene.id === SceneName.MAP)) {
+            return;
+        }
+        this.parent.elements.$scene.querySelectorAll('.click-area').forEach(($item) => {
+            if ($item instanceof HTMLObjectElement) {
+                const svg = $item.getSVGDocument();
+                if (svg) {
+                    svg.querySelectorAll('#shape path').forEach(($path)=>{
+                        $path.setAttribute('fill', 'transparent');
+                    });
+                }
+            }
+        });
     }
 }
 
@@ -233,7 +269,6 @@ class Listeners {
     public constructor(
         public parent: World
     ) {
-
         this.parent.elements.$root.addEventListener('contextmenu', (event) => {
             event.preventDefault();
         });

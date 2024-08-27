@@ -18,7 +18,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="./images/map/main-road-3/main-road-bridge.svg"
+data-data="/public/images/map/main-road-3/main-road-bridge.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

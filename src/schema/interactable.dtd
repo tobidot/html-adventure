@@ -16,6 +16,7 @@
                 id     ID       #REQUIRED
                 style  PCDATA    #IMPLIED
                 class  PCDATA    #REQUIRED
+                data-hover PCDATA    #IMPLIED
                 >
 
         <!ATTLIST game-data
@@ -72,4 +73,5 @@
                 type   PCDATA    #FIXED "image/svg+xml"
                 data   PCDATA    #REQUIRED
                 data-data PCDATA    #IMPLIED
+                data-hover PCDATA    #IMPLIED
                 >

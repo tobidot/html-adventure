@@ -90,7 +90,7 @@ data-src="./images/objects/guard/guard.png"
     <object
         class="click-area"
         data="./images/dummy.png"
-data-data="./images/objects/guard/guard.svg"
+data-data="/public/images/objects/guard/guard.svg"
         type="image/svg+xml"
     ></object>
 </game-interactable>

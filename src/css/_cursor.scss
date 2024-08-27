@@ -50,6 +50,39 @@
         }
     }
 
+    &.js-mouse-active-option {
+        > .active-option {
+            visibility: visible;
+        }
+    }
+
+    &.js-mouse-hover-special {
+        > .active-option {
+            visibility: hidden;
+        }
+
+        > .special-option {
+            visibility: visible;
+        }
+    }
+
+    > .special-option {
+        position: absolute;
+        top: 50%;
+        left: 120%;
+        display: flex;
+        width: 35px;
+        height: auto;
+
+        visibility: hidden;
+
+        transform: translate(-50%, -50%);
+
+        &[src=""] {
+            display: none;
+        }
+    }
+
     > .active-option {
         position: absolute;
         top: 50%;
@@ -58,7 +91,7 @@
         width: 35px;
         height: auto;
 
-        visibility: visible;
+        visibility: hidden;
 
         transform: translate(-50%, -50%);
 

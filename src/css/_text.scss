@@ -31,6 +31,7 @@
 .output-entry {
     color: #333;
     background-color: rgba(255, 255, 255, 0.5);
+    animation: fade-out 0.5s ease-in-out 5s 1 forwards;
 }
 
 .options-entry {
@@ -45,4 +46,13 @@
     background: black;
     color: white;
     border-color: white;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

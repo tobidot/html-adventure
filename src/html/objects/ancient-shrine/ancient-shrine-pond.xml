@@ -18,7 +18,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="./images/map/ancient-shrine/ancient-shrine-pond.svg"
+data-data="/public/images/map/ancient-shrine/ancient-shrine-pond.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

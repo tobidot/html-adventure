@@ -1,8 +1,8 @@
-import { get_element_by_id, get_element_by_query_selector } from "@game.object/ts-game-toolbox";
-import { SceneObject } from "./SceneObject";
-import { get_element_by_class_name } from "@game.object/ts-game-toolbox/dist";
-import { CSSToken } from "./enums/CSSToken";
-import { HTMLGameInteractable } from "./custom-elements/HTMLGameInteractable";
+import {get_element_by_id, get_element_by_query_selector} from "@game.object/ts-game-toolbox";
+import {SceneObject} from "./SceneObject";
+import {get_element_by_class_name} from "@game.object/ts-game-toolbox/dist";
+import {CSSToken} from "./enums/CSSToken";
+import {HTMLGameInteractable} from "./custom-elements/HTMLGameInteractable";
 
 export enum CursorState {
     DEFAULT = "default",
@@ -26,6 +26,7 @@ export class Cursor {
     protected $mouse: HTMLElement;
     protected $options: HTMLElement;
     protected $active_option_image: HTMLImageElement;
+    protected $special_option: HTMLImageElement ;
     // update handle
     protected update_handle: number = 0;
     protected last_event: MouseEvent | null = null;
@@ -48,12 +49,12 @@ export class Cursor {
         this.$mouse = get_element_by_id("cursor");
         this.$options = get_element_by_query_selector(this.$mouse, "[data-state=\"options\"]");
         this.$active_option_image = get_element_by_query_selector(this.$mouse, ".active-option", HTMLImageElement);
-        this.$game.addEventListener("mousemove", this.on_mouse_move, { passive: true });
-        this.$game.addEventListener("mousedown", this.on_mouse_down, { passive: true });
-        this.$game.addEventListener("mouseup", this.on_mouse_up, { passive: true });
-        this.$game.addEventListener("mouseleave", this.on_mouse_leave, { passive: true });
-        this.$game.addEventListener("wheel", this.on_mouse_wheel, { passive: true });
-        this.set_option_state(CursorOptionState.INTERACT);
+        this.$special_option = get_element_by_query_selector(this.$mouse, ".special-option", HTMLImageElement);
+        this.$game.addEventListener("mousemove", this.on_mouse_move, {passive: true});
+        this.$game.addEventListener("mousedown", this.on_mouse_down, {passive: true});
+        this.$game.addEventListener("mouseup", this.on_mouse_up, {passive: true});
+        this.$game.addEventListener("mouseleave", this.on_mouse_leave, {passive: true});
+        this.$game.addEventListener("wheel", this.on_mouse_wheel, {passive: true});
     }
 
     public on_mouse_wheel = (event: WheelEvent) => {
@@ -123,7 +124,7 @@ export class Cursor {
 
     public handle_action() {
         if (this.$hovering && this.option_state !== CursorOptionState.NONE && this.$hovering instanceof HTMLGameInteractable) {
-            const object = new SceneObject({ $object: this.$hovering });
+            const object = new SceneObject({$object: this.$hovering});
             object.act(this.option_state);
         }
         console.log("walking", this.mouse_x, this.mouse_y);
@@ -162,15 +163,43 @@ export class Cursor {
         if (this.is_hovering()) {
             this.state = CursorState.HOVER;
             this.$mouse.dataset.state = CursorState.HOVER;
+            const special_hover = this.$hovering?.dataset.hover;
+            if (special_hover && this.option_state === CursorOptionState.INTERACT) {
+                this.$special_option.src = this.resolveSpecialHoverImage(special_hover);
+                this.$mouse.classList.add(CSSToken.CURSOR_HOVER_SPECIAL);
+            } else {
+                this.$special_option.src = '';
+                this.$mouse.classList.remove(CSSToken.CURSOR_HOVER_SPECIAL);
+            }
             return;
             // }
         } else {
             this.state = CursorState.DEFAULT;
             this.$mouse.dataset.state = CursorState.DEFAULT;
+            this.$mouse.classList.remove(CSSToken.CURSOR_HOVER_SPECIAL);
+            this.$special_option.src = '';
             return;
         }
     }
 
+    protected resolveSpecialHoverImage(special_hover: string): string {
+        switch (special_hover) {
+            case "left":
+                return "/public/images/icons/cursor-pointing-left.png";
+            case "right":
+                return "/public/images/icons/cursor-pointing-right.png";
+            case "up":
+                return "/public/images/icons/cursor-pointing-up.png";
+            case "down":
+                return "/public/images/icons/cursor-pointing-down.png";
+            case "forwards":
+                return "/public/images/icons/cursor-pointing-forward.png";
+            case "backwards":
+                return "/public/images/icons/cursor-pointing-backward.png";
+            default:
+                return special_hover;
+        }
+    }
 
     public is_hovering(): boolean {
         const $objects = window.world.components.inventory.is_open()
@@ -208,11 +237,7 @@ export class Cursor {
             return false;
         }
 
-        const $click_area = get_element_by_query_selector($object, ".click-area", HTMLObjectElement);
-
-        if (!$click_area) {
-            return true;
-        }
+        const $click_area = get_element_by_class_name($object, "click-area", HTMLObjectElement);
 
         const svg_document = $click_area.getSVGDocument();
 
@@ -254,6 +279,7 @@ export class Cursor {
             HTMLImageElement
         );
         this.$active_option_image.src = $image.src;
+        this.$mouse.classList.add(CSSToken.CURSOR_ACTIVE_OPTION);
 
     }
 
@@ -266,5 +292,6 @@ export class Cursor {
         this.$attached = item;
         const $image = get_element_by_class_name(item, "image", HTMLImageElement);
         this.$active_option_image.src = $image.src;
+        this.$mouse.classList.add(CSSToken.CURSOR_ACTIVE_OPTION);
     }
 }

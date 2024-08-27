@@ -18,7 +18,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="./images/map/main-road/abandoned-hut.svg"
+data-data="/public/images/map/main-road/abandoned-hut.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

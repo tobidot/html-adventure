@@ -33,7 +33,7 @@ data-src="./images/objects/bread/bread.png"
     <object
         class="click-area"
         data="./images/dummy.png"
-data-data="./images/objects/bread/bread.svg"
+data-data="/public/images/objects/bread/bread.svg"
         type="image/svg+xml"
     ></object>
 </game-interactable>
