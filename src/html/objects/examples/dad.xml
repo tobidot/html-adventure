@@ -34,12 +34,14 @@
     </game-data>
     <img
             class="image"
-            src="./images/objects/dad/dad.png"
+            src="./images/dummy.png"
+data-src="./images/objects/dad/dad.png"
             alt=""
     />
     <object
             class="click-area"
-            data="./images/objects/dad/dad.svg"
+            data="./images/dummy.png"
+data-data="./images/objects/dad/dad.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

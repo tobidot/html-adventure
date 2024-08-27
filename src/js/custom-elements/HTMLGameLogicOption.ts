@@ -25,7 +25,7 @@ export class HTMLGameLogicOption extends HTMLGameLogic {
     protected playOption(node: HTMLGameLogicOption) {
         const text = (node.text ?? "").trim();
         const index = node.index;
-        window.text.option(text, () => {
+        window.world.components.text.option(text, () => {
             const after_output_entry = {
                 run: (self: RunFunctionInput) => {
                     this.playAll(node);
@@ -53,11 +53,11 @@ export class HTMLGameLogicOption extends HTMLGameLogic {
                         stop();
                     });
                     // after that play the child nodes
-                    window.text.remove_option(text);
-                    window.queue.push(after_output_entry);
+                    window.world.components.text.remove_option(text);
+                    window.world.components.queue.push(after_output_entry);
                 }
             };
-            window.queue.push(entry);
+            window.world.components.queue.push(entry);
         }, index);
         return false;
     }

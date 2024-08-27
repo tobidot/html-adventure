@@ -2,7 +2,8 @@
 <game-location id="scene-abandoned-hut" class="scene" music="abandoned-hut">
     <img
         class="background"
-        src="/images/backgrounds/abandoned-hut.png"
+        src="./images/dummy.png"
+data-src="/public/images/backgrounds/abandoned-hut.png"
         alt="background"
     />
     <load src="/src/html/objects/abandoned-hut/abandoned-hut-interior.xml"/>

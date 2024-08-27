@@ -42,7 +42,7 @@ export class Settings {
     public set global_volume(value: number) {
         this._global_volume = value;
         window.localStorage.setItem("global_volume", value.toString());
-        window.music.$current_track.volume = this.music_volume;
+        window.world.components.music.$current_track.volume = this.music_volume;
     }
 
     public get music_volume(): number {
@@ -52,7 +52,7 @@ export class Settings {
     public set music_volume(value: number) {
         this._music_volume = value;
         window.localStorage.setItem("music_volume", value.toString());
-        window.music.$current_track.volume = this.music_volume;
+        window.world.components.music.$current_track.volume = this.music_volume;
     }
 
     public get sfx_volume(): number {

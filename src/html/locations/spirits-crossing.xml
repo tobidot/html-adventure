@@ -2,7 +2,8 @@
 <game-location id="scene-spirits-crossing" class="scene" music="spirits-crossing">
     <img
         class="background"
-        src="/images/backgrounds/spirits-crossing.png"
+        src="./images/dummy.png"
+data-src="/public/images/backgrounds/spirits-crossing.png"
         alt="background"
     />
 </game-location>

@@ -19,12 +19,14 @@
     </game-data>
     <img
             class="image"
-            src="./images/objects/unknown/unknown.png"
+            src="./images/dummy.png"
+data-src="./images/objects/unknown/unknown.png"
             alt=""
     />
     <object
             class="click-area"
-            data="/images/objects/unknown/unknown.svg"
+            data="./images/dummy.png"
+data-data="./images/objects/unknown/unknown.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

@@ -63,6 +63,7 @@
                 class  PCDATA    #FIXED "image"
                 src    PCDATA    #REQUIRED
                 alt    PCDATA    #REQUIRED
+                data-src PCDATA    #IMPLIED
                 >
 
         <!ATTLIST object
@@ -70,4 +71,5 @@
                 class  PCDATA    #FIXED "click-area"
                 type   PCDATA    #FIXED "image/svg+xml"
                 data   PCDATA    #REQUIRED
+                data-data PCDATA    #IMPLIED
                 >

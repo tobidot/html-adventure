@@ -11,13 +11,14 @@
         </game-data-action>
         <game-data-action type="inspect">
             <game-logic-action type="output">
-                Trees as far as I can see, and one small path.
+                I should get leave here quickly.
             </game-logic-action>
         </game-data-action>
     </game-data>
     <object
             class="click-area"
-            data="/images/map/ancient-shrine-tomb-1/ancient-shrine.svg"
+            data="./images/dummy.png"
+data-data="./images/map/ancient-shrine-tomb-1/ancient-shrine.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

@@ -50,7 +50,7 @@ export class SceneObject {
                         );
                     }
                 };
-                window.queue.push(entry);
+                window.world.components.queue.push(entry);
             }
         };
         const entry = {
@@ -70,8 +70,8 @@ export class SceneObject {
             }
         };
         console.log("act", action, entry);
-        if (window.queue.is_ready_to_push) {
-            window.queue.push(entry);
+        if (window.world.components.queue.is_ready_to_push) {
+            window.world.components.queue.push(entry);
             console.log("queued");
         } else {
             console.log("ignored");

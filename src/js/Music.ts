@@ -37,7 +37,7 @@ export class Music {
             console.error("Track not found", this.current_track);
             return;
         }
-        this.$current_track.volume = window.settings.music_volume;
+        this.$current_track.volume = window.world.components.settings.music_volume;
         this.$current_track.pause();
         this.$current_track = $track;
         $track.play()
@@ -53,7 +53,7 @@ export class Music {
     }
 
     public change_scene() {
-        const scene = window.world.get_active_scene();
+        const scene = window.world.logic.get_active_scene();
         if (!scene) {
             return;
         }
@@ -85,7 +85,7 @@ export class Music {
         }
         const t = (percent - 0.5) * 2;
         const t2 = t * t;
-        this.$current_track.volume = window.settings.music_volume * t2;
+        this.$current_track.volume = window.world.components.settings.music_volume * t2;
         requestAnimationFrame(this.handle_volume);
     };
 }

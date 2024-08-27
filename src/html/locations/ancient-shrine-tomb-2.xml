@@ -2,7 +2,8 @@
 <game-location id="scene-ancient-shrine-tomb-2" class="scene" music="ancient-shrine">
     <img
         class="background"
-        src="/images/backgrounds/ancient-shrine-tomb-2.png"
+        src="./images/dummy.png"
+data-src="/public/images/backgrounds/ancient-shrine-tomb-2.png"
         alt="background"
     />
     <load src="/src/html/objects/ancient-shrine-tomb-2/ancient-shrine-tomb-1.xml"/>

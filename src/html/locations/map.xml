@@ -3,7 +3,8 @@
     <!-- The geographic map of the area, click on certain locations to walk there -->
     <img
         class="background"
-        src="/images/backgrounds/map.png"
+        src="./images/dummy.png"
+data-src="/public/images/backgrounds/map.png"
         alt="Map of the area"
     />
     <load src="/src/html/objects/map/lost-forest.xml"/>

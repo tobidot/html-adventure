@@ -12,7 +12,8 @@
     </game-data>
     <object
             class="click-area"
-            data="/images/map/map/lost-forest.svg"
+            data="./images/dummy.png"
+data-data="./images/map/map/lost-forest.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

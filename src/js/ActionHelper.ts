@@ -28,7 +28,7 @@ export class ActionHelper {
      * @param content
      */
     public static outputText(content: string): void {
-        window.text.write(ActionHelper.getTextFromContent(content));
+        window.world.components.text.write(ActionHelper.getTextFromContent(content));
     }
 
 
@@ -64,7 +64,7 @@ export class ActionHelper {
      * @param about_to_end
      */
     public static triggerAudio($audio: HTMLAudioElement, ended: () => void, about_to_end?: ()=>void): ()=>void {
-        $audio.volume = window.settings.sfx_volume;
+        $audio.volume = window.world.components.settings.sfx_volume;
         $audio.play()
             .then(() => {
                 $audio.addEventListener("ended", ended, { once: true });

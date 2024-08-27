@@ -5,17 +5,17 @@
             <game-logic-action type="change-scene" value="scene-spirits-crossing"> </game-logic-action>
         </game-data-action>
         <game-data-action type="inspect">
-            <game-logic-action type="output">
-                Can't figure out what that is supposed to be. Looks like a dead end.
-            </game-logic-action>
-            <game-logic-action type="output">
-                It is the camps trash pile, the people here left all their junk there.
-            </game-logic-action>
+            <game-logic type="sequence">
+                <game-logic-action type="output">
+                    I can't quite make out what the map is showing ... I could investigate it.
+                </game-logic-action>
+            </game-logic>
         </game-data-action>
     </game-data>
     <object
             class="click-area"
-            data="/images/map/map/spirits-crossing.svg"
+            data="./images/dummy.png"
+data-data="./images/map/map/spirits-crossing.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

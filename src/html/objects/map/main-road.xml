@@ -5,17 +5,17 @@
             <game-logic-action type="change-scene" value="scene-main-road"> </game-logic-action>
         </game-data-action>
         <game-data-action type="inspect">
-            <game-logic-action type="output">
-                Can't figure out what that is supposed to be. Looks like a dead end.
-            </game-logic-action>
-            <game-logic-action type="output">
-                It is the camps trash pile, the people here left all their junk there.
-            </game-logic-action>
+            <game-logic type="sequence">
+                <game-logic-action type="output">
+                    This looks like the main road leading to this camp.
+                </game-logic-action>
+            </game-logic>
         </game-data-action>
     </game-data>
     <object
             class="click-area"
-            data="/images/map/map/main-road.svg"
+            data="./images/dummy.png"
+data-data="./images/map/map/main-road.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

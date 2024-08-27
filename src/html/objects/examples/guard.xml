@@ -83,12 +83,14 @@
     </game-data>
     <img
         class="image"
-        src="./images/objects/guard/guard.png"
+        src="./images/dummy.png"
+data-src="./images/objects/guard/guard.png"
         alt="guard with plate-armor and a spear, white background, sprite-sheet, Dos Adventure Game, Low Definition, Low Quality Art, Dithering, cropped out, person only"
     />
     <object
         class="click-area"
-        data="./images/objects/guard/guard.svg"
+        data="./images/dummy.png"
+data-data="./images/objects/guard/guard.svg"
         type="image/svg+xml"
     ></object>
 </game-interactable>

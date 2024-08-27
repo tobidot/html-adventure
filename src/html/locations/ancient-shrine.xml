@@ -2,7 +2,8 @@
 <game-location id="scene-ancient-shrine" class="scene" music="ancient-shrine">
     <img
         class="background"
-        src="/images/backgrounds/ancient-shrine.png"
+        src="./images/dummy.png"
+data-src="/public/images/backgrounds/ancient-shrine.png"
         alt="background"
     />
     <load src="/src/html/objects/ancient-shrine/ancient-shrine-pond.xml"/>

@@ -2,7 +2,10 @@
 <game-location id="scene-main-road" class="scene" music="main-road">
     <img
         class="background"
-        src="/images/backgrounds/main-road.png"
+        src="./images/dummy.png"
+data-src="/public/images/backgrounds/main-road.png"
         alt="background"
     />
+    <load src="/src/html/objects/main-road/abandoned-hut.xml"/>
+    <load src="/src/html/objects/main-road/main-road-2.xml"/>
 </game-location>

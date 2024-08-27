@@ -156,7 +156,7 @@ export class HTMLGameLogic extends HTMLGameDataLike {
 
     protected issueError(message: string) {
         console.error(message);
-        if (window.debug) {
+        if (window.world.props.debug) {
             throw new Error(message);
         }
     }

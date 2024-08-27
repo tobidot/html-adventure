@@ -36,8 +36,8 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
                 self.provide_shortcut(stop);
             }
         };
-        window.queue.push(entry);
-        console.log("queue", window.queue);
+        window.world.components.queue.push(entry);
+        console.log("queue", window.world.components.queue);
         return true;
     }
 
@@ -46,7 +46,7 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
      * @protected
      */
     protected playEndInteraction() {
-        window.text.clear_options();
+        window.world.components.text.clear_options();
         return true;
     }
 
@@ -68,10 +68,10 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
                 return false;
             }
             window.game_state.using = item_selector;
-            window.world.get_mouse().set_combine_option($item);
+            window.world.logic.get_mouse().set_combine_option($item);
         } catch (e) {
             console.error(e);
-            if (window.debug) {
+            if (window.world.props.debug) {
                 throw e;
             }
         }
@@ -96,10 +96,10 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
             if (!$item) {
                 return false;
             }
-            window.inventory.add_item($item);
+            window.world.components.inventory.add_item($item);
         } catch (e) {
             console.error(e);
-            if (window.debug) {
+            if (window.world.props.debug) {
                 throw e;
             }
         }
@@ -129,10 +129,12 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
         if (!scene.startsWith("scene-")) {
             scene = "scene-" + scene;
         }
-        if (!window.world.has_scene(scene)) {
+        console.log("change to", scene);
+        if (!window.world.logic.has_scene(scene)) {
+            console.log("not found");
             return false;
         }
-        window.world.show_scene(scene);
+        window.world.logic.show_scene(scene);
         return true;
     }
 }

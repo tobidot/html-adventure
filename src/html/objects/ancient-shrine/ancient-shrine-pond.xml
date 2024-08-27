@@ -11,13 +11,14 @@
         </game-data-action>
         <game-data-action type="inspect">
             <game-logic-action type="output">
-                Trees as far as I can see, and one small path.
+                It is not easy to spot, but the rocks are quite loose, and I can get behind the shrine walls here.
             </game-logic-action>
         </game-data-action>
     </game-data>
     <object
             class="click-area"
-            data="/images/map/ancient-shrine/ancient-shrine-pond.svg"
+            data="./images/dummy.png"
+data-data="./images/map/ancient-shrine/ancient-shrine-pond.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

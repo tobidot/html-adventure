@@ -8,14 +8,14 @@ export class Keyboard {
     protected on_keydown = (event: KeyboardEvent) => {
         switch (event.key) {
             case "Escape":
-                if (window.text.has_options()) {
-                    window.text.clear_options();
+                if (window.world.components.text.has_options()) {
+                    window.world.components.text.clear_options();
                 } else {
-                    window.world.toggle_popup(PopupName.MENU);
+                    window.world.logic.toggle_popup(PopupName.MENU);
                 }
                 break;
             case " ":
-                window.queue.shortcut();
+                window.world.components.queue.shortcut();
                 break;
             default:
                 console.log("Unknown key:", event.key);

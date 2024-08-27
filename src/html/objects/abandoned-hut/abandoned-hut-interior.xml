@@ -10,14 +10,20 @@
             </game-logic>
         </game-data-action>
         <game-data-action type="inspect">
-            <game-logic-action type="output">
-                Trees as far as I can see, and one small path.
-            </game-logic-action>
+            <game-logic type="sequence">
+                <game-logic-action type="output">
+                    A hut. It seems like it has been abandoned for a while.
+                </game-logic-action>
+                <game-logic-action type="output">
+                    I should have a look inside.
+                </game-logic-action>
+            </game-logic>
         </game-data-action>
     </game-data>
     <object
             class="click-area"
-            data="/images/map/abandoned-hut/abandoned-hut-interior.svg"
+            data="./images/dummy.png"
+data-data="./images/map/abandoned-hut/abandoned-hut-interior.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

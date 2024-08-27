@@ -1,179 +1,120 @@
 import {get_element_by_id} from "@game.object/ts-game-toolbox";
-import {CSSToken} from "./enums/CSSToken";
 import {Popup} from "./Popup";
 import {Scene} from "./Scene";
 import {Cursor} from "./Cursor";
 import {HTMLGameLocation} from "./custom-elements/HTMLGameLocation";
+import {AssetManager} from "./AssetManager";
+import {Progress} from "./Progress.js";
+import {Inventory} from "./Inventory.js";
+import {InfoText} from "./InfoText.js";
+import {Queue} from "./Queue.js";
+import {Settings} from "./Settings.js";
+import {Music} from "./Music.js";
+import {Keyboard} from "./Keyboard.js";
+import {LoadingScreen} from "./LoadingScreen.js";
 
 export class World {
+
+    public elements: Elements;
+    public logic: Logic;
+    public props: Properties;
+    public components: Components;
+    public listeners: Listeners;
     //
-    protected $active_scene: Scene | null = null;
-    protected $previous_scene: Scene | null = null;
-    protected $scene: HTMLElement;
-    protected $scene_list: HTMLElement;
-    protected scenes_map: Map<string, Scene> = new Map();
-    protected scenes_list: Array<Scene> = [];
     //
-    protected $popup: HTMLElement;
-    protected $popup_list: HTMLElement;
-    protected popups_map: Map<string, Popup> = new Map();
-    protected popups_list: Array<Popup> = [];
-    protected game_menu: Popup;
-    //
-    protected $game: HTMLElement;
-    //
-    protected mouse: Cursor = new Cursor();
 
 
     constructor() {
+        this.elements = new Elements(this);
+        this.logic = new Logic(this);
+        this.props = new Properties(this);
+        this.components = new Components(this);
+        this.listeners = new Listeners(this);
+    }
+
+}
+
+class Elements {
+    public $main: HTMLElement;
+    public $root: HTMLElement;
+    public $loading_screen: HTMLElement;
+
+    public $scene: HTMLElement;
+    public $scene_list: HTMLElement;
+
+    public $popup: HTMLElement;
+    public $popup_list: HTMLElement;
+    public $game_menu: Popup;
+
+    public constructor(
+        public parent: World
+    ) {
+        this.$root = get_element_by_id('game');
+        this.$main = get_element_by_id('main');
+        this.$loading_screen = get_element_by_id('loading-screen');
+        //
         this.$scene = get_element_by_id('scene');
         this.$scene_list = get_element_by_id('scene-list');
-        this.scenes_list = [];
-        for (let i = 0; i < this.$scene_list.children.length; i++) {
-            const $item = this.$scene_list.children[i];
-            if ($item instanceof HTMLGameLocation) {
-                const item = new Scene({$root: $item});
-                console.log('scene ', item.id);
-                this.scenes_list.push(item);
-                this.scenes_map.set(item.id, item);
-            }
-        }
-        for (const $scene of this.scenes_list) {
-            this.scenes_map.set($scene.id, $scene);
-        }
         //
         this.$popup = get_element_by_id('popup');
         this.$popup_list = get_element_by_id('popup-list');
-        this.popups_list = [];
-        for (let i = 0; i < this.$popup_list.children.length; i++) {
-            const $item = this.$popup_list.children[i];
-            if ($item instanceof HTMLElement) {
-                const item = new Popup({$root: $item});
-                this.popups_list.push(item);
-                this.popups_map.set(item.id, item);
-            }
-        }
+        this.$game_menu = new Popup({$root: get_element_by_id('game-menu')});
         //
-        this.$game = get_element_by_id('game');
-        this.$game.addEventListener('contextmenu', (event) => {
-            event.preventDefault();
-        });
-        this.game_menu = new Popup({$root: get_element_by_id('game-menu')});
+    }
+}
+
+class Logic {
+    public constructor(
+        public parent: World
+    ) {
     }
 
-    public async load_assets() {
+    public async load() {
+        this.load_settings();
 
-        const audio_list = document.querySelectorAll('audio');
-        const img_list = document.querySelectorAll('img');
-
-        const items = new Map<string, {
-            isReady: boolean,
-            checkReady: () => boolean,
-            markReady: () => void,
-            $element: HTMLElement,
-        }>();
-
-        let promises = new Array<Promise<void>>();
-
-        audio_list.forEach(($audio) => {
-            const promise = new Promise<void>((res, rej) => {
-                const handle = {
-                    isReady: false,
-                    checkReady: () => $audio.readyState === 4,
-                    markReady: () => {
-                        if (handle.isReady) return ;
-                        handle.isReady = true;
-                        res();
-                    },
-                    $element: $audio,
-                }
-                items.set($audio.src, handle);
-                if (handle.checkReady()) {
-                    handle.markReady();
-                } else {
-                    $audio.onload = () => {
-                        handle.markReady();
-                    }
-                    $audio.onerror = () => {
-                        rej();
-                    }
-                }
-            });
-            promises.push(promise);
+        this.parent.components.loading_screen.logic.update_progress(0);
+        const progress = new Progress();
+        const asset_progress = progress.make_child_progress(1);
+        asset_progress.listen((percent, self) => {
+            this.parent.components.loading_screen.logic.update_progress(percent);
         });
 
-        img_list.forEach(($image) => {
-            const promise = new Promise<void>((res, rej) => {
-                const handle = {
-                    isReady: false,
-                    checkReady: () => $image.complete,
-                    markReady: () => {
-                        if (handle.isReady) return ;
-                        handle.isReady = true;
-                        res();
-                    },
-                    $element: $image,
-                }
-                items.set($image.src, handle);
-                if (handle.checkReady()) {
-                    handle.markReady()
-                } else {
-                    $image.onload = () => {
-                        handle.markReady();
-                    }
-                    $image.onerror = () => {
-                        rej();
-                    }
-                }
-            });
-            promises.push(promise);
-        });
+        await this.parent.components.assets.load(asset_progress);
+        this.parent.components.loading_screen.logic.finish();
+    }
 
-        const interval = window.setInterval(() => {
-            let is_loaded = false;
-            let counter = 0;
-            for (let [src, item] of items.entries()) {
-                if (item.isReady) {
-                    counter++;
-                    continue;
-                }
-                if (item.checkReady()) {
-                    item.markReady();
-                    counter++;
-                }
-                console.log('waiting for: ' + src);
+    public load_settings() {
+        const $settings = get_element_by_id('settings', HTMLFormElement);
+        for (const key of ['global_volume', 'music_volume', 'sfx_volume'] as const) {
+            const $item = $settings.elements.namedItem(key);
+            if ($item instanceof HTMLInputElement) {
+                $item.value = (window.world.components.settings[key] * 100).toString();
             }
-            const percent = counter / items.size;
-            console.log(percent);
-        }, 1000);
-
-        await Promise.all(promises);
-        console.log('Loaded');
-        window.clearInterval(interval);
+        }
     }
 
     public show_popup(popup_id: string) {
-        const popup = this.popups_map.get(popup_id);
+        const popup = this.parent.props.popups_map.get(popup_id);
         if (!popup) {
             throw new Error(`Popup not found: ${popup_id}`);
         }
-        this.$popup.appendChild(popup.$root);
+        this.parent.elements.$popup.appendChild(popup.$root);
     }
 
     public hide_popup(popup_id: string) {
-        const popup = this.popups_map.get(popup_id);
+        const popup = this.parent.props.popups_map.get(popup_id);
         if (!popup) {
             throw new Error(`Popup not found: ${popup_id}`);
         }
-        this.$popup_list.appendChild(popup.$root);
+        this.parent.elements.$popup_list.appendChild(popup.$root);
     }
 
     public toggle_popup(popup_id: string) {
-        const popup = this.popups_map.get(popup_id);
+        const popup = this.parent.props.popups_map.get(popup_id);
         if (!popup) {
             throw new Error(`Popup not found: ${popup_id}`);
         }
-        if (this.$popup.contains(popup.$root)) {
+        if (this.parent.elements.$popup.contains(popup.$root)) {
             this.hide_popup(popup_id);
         } else {
             this.show_popup(popup_id);
@@ -182,47 +123,119 @@ export class World {
 
     public show_scene(scene_id: string) {
         // if scene did not change return
-        if (this.$active_scene && this.$active_scene.id === scene_id) {
+        if (this.parent.props.active_scene && this.parent.props.active_scene.id === scene_id) {
             return;
         }
-        const new_scene = this.scenes_map.get(scene_id) ?? null;
+        const new_scene = this.parent.props.scenes_map.get(scene_id) ?? null;
         if (!new_scene) {
             throw new Error(`Scene not found: ${scene_id}`);
         }
-        if (this.$active_scene) {
-            this.$scene_list.appendChild(this.$active_scene.$root);
+        if (this.parent.props.active_scene) {
+            this.parent.elements.$scene_list.appendChild(this.parent.props.active_scene.$root);
         }
-        this.$scene.appendChild(new_scene.$root);
-        this.$previous_scene = this.$active_scene;
-        this.$active_scene = new_scene;
+        this.parent.elements.$scene_list.appendChild(new_scene.$root);
+        this.parent.props.previous_scene = this.parent.props.active_scene;
+        this.parent.props.active_scene = new_scene;
 
-        window.music.change_scene();
+        window.world.components.music.change_scene();
         // Todo change music
     }
 
     public has_scene(scene: string): boolean {
-        return this.scenes_map.has(scene);
-    }
-
-    public load_settings() {
-        const $settings = get_element_by_id('settings', HTMLFormElement);
-        for (const key of ['global_volume', 'music_volume', 'sfx_volume'] as const) {
-            const $item = $settings.elements.namedItem(key);
-            if ($item instanceof HTMLInputElement) {
-                $item.value = (window.settings[key] * 100).toString();
-            }
-        }
+        return this.parent.props.scenes_map.has(scene);
     }
 
     public get_mouse(): Cursor {
-        return this.mouse;
+        return this.parent.components.mouse;
     }
 
     public get_active_scene(): Scene | null {
-        return this.$active_scene;
+        return this.parent.props.active_scene;
     }
 
     public get_previous_scene(): Scene | null {
-        return this.$previous_scene;
+        return this.parent.props.previous_scene;
+    }
+}
+
+class Properties {
+    public scenes_map: Map<string, Scene> = new Map();
+    public scenes_list: Array<Scene> = [];
+    public popups_map: Map<string, Popup> = new Map();
+    public popups_list: Array<Popup> = [];
+    //
+    public active_scene: Scene | null = null;
+    public previous_scene: Scene | null = null;
+    public debug = true;
+
+    public constructor(
+        public parent: World
+    ) {
+        for (const $scene of this.scenes_list) {
+            this.scenes_map.set($scene.id, $scene);
+        }
+        this.popups_list = [];
+        for (let i = 0; i < this.parent.elements.$popup_list.children.length; i++) {
+            const $item = this.parent.elements.$popup_list.children[i];
+            if ($item instanceof HTMLElement) {
+                const item = new Popup({$root: $item});
+                this.popups_list.push(item);
+                this.popups_map.set(item.id, item);
+            }
+        }
+        this.scenes_list = [];
+        for (let i = 0; i < this.parent.elements.$scene_list.children.length; i++) {
+            const $item = this.parent.elements.$scene_list.children[i];
+            if ($item instanceof HTMLGameLocation) {
+                const item = new Scene({$root: $item});
+                console.log('scene ', item.id);
+                this.scenes_list.push(item);
+                this.scenes_map.set(item.id, item);
+            }
+        }
+    }
+}
+
+class Components {
+    public assets: AssetManager;
+    public settings: Settings;
+    public loading_screen: LoadingScreen;
+    //
+    public queue: Queue;
+    public inventory: Inventory;
+    public text: InfoText;
+    public music: Music;
+    //
+    public mouse: Cursor;
+    public keyboard: Keyboard;
+
+    public constructor(
+        public parent: World
+    ) {
+        this.settings = new Settings();
+        this.assets = new AssetManager();
+        this.loading_screen = new LoadingScreen({
+            $root:this.parent.elements.$loading_screen,
+            $main:this.parent.elements.$main,
+        });
+        //
+        this.queue = new Queue();
+        this.inventory = new Inventory();
+        this.text = new InfoText();
+        this.music = new Music("title");
+        //
+        this.keyboard = new Keyboard();
+        this.mouse = new Cursor();
+    }
+}
+
+class Listeners {
+    public constructor(
+        public parent: World
+    ) {
+
+        this.parent.elements.$root.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
     }
 }

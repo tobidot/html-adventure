@@ -1,0 +1,64 @@
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+
+  pointer-events: all;
+  cursor: pointer;
+
+  * {
+    pointer-events: all;
+    cursor: pointer;
+  }
+
+}
+
+.loading-screen {
+  &__text {
+    font-size: 2rem;
+  }
+
+  &__bar {
+    position: relative;
+    display: flex;
+    width: 50%;
+    height: 2rem;
+    border: 3px solid white;
+    background: black;
+  }
+
+  &__progress {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    display: flex;
+    width: 50%;
+    height: 100%;
+
+    background-color: #bbb;
+
+  }
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 1.25rem;
+    color: white;
+    white-space: nowrap;
+
+    mix-blend-mode: difference;
+
+  }
+}

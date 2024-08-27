@@ -3,7 +3,8 @@
     <!-- The first screen the adventure wakes up at -->
     <img
         class="background"
-        src="/images/backgrounds/lost-forest.png"
+        src="./images/dummy.png"
+data-src="/public/images/backgrounds/lost-forest.png"
         alt="The awakening"
     />
     <load src="/src/html/objects/lost-forest/lost-forest-2.xml"/>

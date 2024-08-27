@@ -39,5 +39,6 @@
         </game-data-action>
     </game-data>
     <img id="farmer01Image" class="image" src="farmer.svg" alt="Wizened Farmer"/>
-    <object id="farmer01Object" class="click-area" type="image/svg+xml" data="farmerInteractive.svg"/>
+    <object id="farmer01Object" class="click-area" type="image/svg+xml" data="./images/dummy.png"
+data-data="farmerInteractive.svg"/>
 </game-interactable>

@@ -1,0 +1,24 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable id="main-road-bridge/main-road-cart" class="object map-object">
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic type="all">
+                <game-logic-action type="output">
+                    [Footsteps]
+                </game-logic-action>
+                <game-logic-action type="change-scene" value="scene-main-road-cart"> </game-logic-action>
+            </game-logic>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                I can go there.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <object
+            class="click-area"
+            data="./images/dummy.png"
+data-data="./images/map/main-road-bridge/main-road-cart.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

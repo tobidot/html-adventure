@@ -76,7 +76,7 @@ export class Cursor {
     };
 
     public on_mouse_down = (event: MouseEvent) => {
-        if (window.text.has_options()) {
+        if (window.world.components.text.has_options()) {
             return;
         }
         switch (event.button) {
@@ -94,7 +94,7 @@ export class Cursor {
     };
 
     public on_mouse_up = (event: MouseEvent) => {
-        if (window.text.has_options()) {
+        if (window.world.components.text.has_options()) {
             return;
         }
         switch (event.button) {
@@ -173,9 +173,9 @@ export class Cursor {
 
 
     public is_hovering(): boolean {
-        const $objects = window.inventory.is_open()
-            ? window.inventory.$items.querySelectorAll(".object")
-            : window.world.get_active_scene()?.$root.querySelectorAll(".object");
+        const $objects = window.world.components.inventory.is_open()
+            ? window.world.components.inventory.$items.querySelectorAll(".object")
+            : window.world.logic.get_active_scene()?.$root.querySelectorAll(".object");
         if (!$objects) {
             return false;
         }
@@ -260,7 +260,7 @@ export class Cursor {
     public set_combine_option(item: HTMLElement) {
         if (this.$attached) {
             // drop the item back into inventory
-            window.inventory.add_item(this.$attached);
+            window.world.components.inventory.add_item(this.$attached);
         }
         this.option_state = CursorOptionState.COMBINE;
         this.$attached = item;

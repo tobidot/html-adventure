@@ -2,7 +2,10 @@
 <game-location id="scene-murky-swamp" class="scene" music="murky-swamp">
     <img
         class="background"
-        src="/images/backgrounds/murky-swamp.png"
+        src="./images/dummy.png"
+data-src="/public/images/backgrounds/murky-swamp.png"
         alt="background"
     />
+    <load src="/src/html/objects/murky-swamp/murky-swamp-hut.xml"/>
+    <load src="/src/html/objects/murky-swamp/murky-swamp-1.xml"/>
 </game-location>

@@ -47,24 +47,24 @@ export class Popup {
     }
 
     protected start() {
-        window.world.hide_popup(PopupName.MENU);
-        window.world.show_scene(SceneName.LOST_FOREST);
-        window.music.play();
+        window.world.logic.hide_popup(PopupName.MENU);
+        window.world.logic.show_scene(SceneName.LOST_FOREST);
+        window.world.components.music.play();
     }
 
     protected menu() {
-        window.world.toggle_popup(PopupName.MENU);
+        window.world.logic.toggle_popup(PopupName.MENU);
     }
 
     protected inventory() {
-        window.world.toggle_popup(PopupName.INVENTORY);
+        window.world.logic.toggle_popup(PopupName.INVENTORY);
     }
 
     protected map() {
-        if (window.world.get_active_scene()?.id === SceneName.MAP) {
-            window.world.show_scene(window.world.get_previous_scene()?.id ?? SceneName.LOST_FOREST);
+        if (window.world.logic.get_active_scene()?.id === SceneName.MAP) {
+            window.world.logic.show_scene(window.world.logic.get_previous_scene()?.id ?? SceneName.LOST_FOREST);
         } else {
-            window.world.show_scene(SceneName.MAP);
+            window.world.logic.show_scene(SceneName.MAP);
         }
     }
 
@@ -72,7 +72,7 @@ export class Popup {
         const $settings = get_element_by_id('settings', HTMLFormElement);
         const data = new FormData($settings);
         data.forEach((value, key) => {
-            window.settings.set(key, value);
+            window.world.components.settings.set(key, value);
         });
     }
 }

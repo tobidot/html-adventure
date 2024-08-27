@@ -26,12 +26,14 @@
     </game-data>
     <img
         class="image"
-        src="./images/objects/bread/bread.png"
+        src="./images/dummy.png"
+data-src="./images/objects/bread/bread.png"
         alt="a loaf of bread, white background, sprite-sheet, Dos Adventure Game, Low Definition, Low Quality Art, Dithering, cropped out, object only"
     />
     <object
         class="click-area"
-        data="./images/objects/bread/bread.svg"
+        data="./images/dummy.png"
+data-data="./images/objects/bread/bread.svg"
         type="image/svg+xml"
     ></object>
 </game-interactable>
