@@ -23,10 +23,21 @@
         height: 100%;
         transform: unset;
 
+        &[data-visible="false"] {
+            display: none;
+        }
+
+        &[data-active="false"] {
+            display: none;
+        }
+
         > .click-area {
             visibility: visible;
             opacity: 0.5;
             filter: blur(5px);
         }
     }
+
+
+
 }

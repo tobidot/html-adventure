@@ -34,7 +34,7 @@ Then you can start creating the key-interactables that the users should find to 
 They should have their proper logic to play out the story.
 It is beneficial to map out the variables you are using throughout the actions and describe what you are using them for 
 and where/when you are changing them.
-Then you can start creating the locations and place the interactables inside them, where they would make sense storry wise.
+Then you can start creating the locations and place the interactables inside them, where they would make sense story wise.
 After you have done so, you should refine the locations with some optional interactable that the player can inspect to get more information about the world.
 
 Make sure all files and logic adhere to the schema and play out the way you want it to.

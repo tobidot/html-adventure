@@ -1,11 +1,11 @@
-import { HTMLGameDataLike } from "./HTMLGameDataLike";
-import { HTMLGameLogic } from "./HTMLGameLogic";
-import { get_element_by_id } from "@game.object/ts-game-toolbox/dist";
-import { ActionHelper } from "../ActionHelper";
-import { RunFunctionInput } from "../Queue";
+import {HTMLGameDataLike} from "./HTMLGameDataLike";
+import {HTMLGameLogic} from "./HTMLGameLogic";
+import {get_element_by_id} from "@game.object/ts-game-toolbox/dist";
+import {ActionHelper} from "../ActionHelper";
+import {RunFunctionInput} from "../Queue";
 
 export class HTMLGameLogicAction extends HTMLGameLogic {
-    public play() {
+    public async play(): Promise<boolean> {
         const type = this.type;
         switch (this.getAttribute("type")) {
             case "output":
@@ -18,6 +18,8 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
                 return this.playAddInventory(this);
             case "set-variable":
                 return this.playSetVariable(this);
+            case "set-attribute":
+                return this.playSetAttribute(this);
             case "change-scene":
                 return this.playChangeScene(this);
         }
@@ -29,16 +31,21 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
     /**
      * Outputs some text
      */
-    public playOutput(): boolean {
-        const entry = {
-            run: (self: RunFunctionInput) => {
-                const stop = ActionHelper.outputTextAndAudio(this.innerText.trim(), self.finished, self?.about_to_finish);
-                self.provide_shortcut(stop);
-            }
-        };
-        window.world.components.queue.push(entry);
-        console.log("queue", window.world.components.queue);
-        return true;
+    public async playOutput(): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            const entry = {
+                run: (self: RunFunctionInput) => {
+                    const old_finished = self.finished;
+                    self.finished = () => {
+                        old_finished();
+                        resolve(true);
+                    };
+                    const stop = ActionHelper.outputTextAndAudio(this.innerText.trim(), self.finished, self?.about_to_finish);
+                    self.provide_shortcut(stop);
+                }
+            };
+            return window.world.components.queue.push(entry).catch(reject);
+        });
     }
 
     /**
@@ -118,6 +125,33 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
         const setter = this.parseReferenceValueSetter(variable);
         const raw = node.getAttribute("value");
         setter?.(this.parseReferenceValue(raw));
+        return true;
+    }
+
+    /**
+     * Sets a ab elements attribute
+     * @param node
+     */
+    public playSetAttribute(node: HTMLElement): boolean {
+        const key = node.getAttribute("key");
+        if (!key) {
+            return false;
+        }
+        const [selector, attributeRaw] = key.split("@");
+        const attribute = attributeRaw.replaceAll(/-[a-z]/g, (match) => {
+            return match[1].toUpperCase();
+        });
+        const element = document.querySelector(selector);
+        if (!(element instanceof HTMLElement)) {
+            throw new Error(`Element not found: ${selector}`);
+        }
+        const raw = node.getAttribute("value");
+        const resolved_value = this.toRawValue(this.parseReferenceValue(raw));
+        if (resolved_value === null) {
+            element.removeAttribute(attribute);
+        } else {
+            element.dataset[attribute] = resolved_value;
+        }
         return true;
     }
 

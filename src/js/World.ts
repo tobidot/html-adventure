@@ -139,8 +139,10 @@ class Logic {
         this.parent.elements.$scene.appendChild(new_scene.$root);
         this.parent.props.previous_scene = this.parent.props.active_scene;
         this.parent.props.active_scene = new_scene;
+        new_scene.enter();
 
         window.world.components.music.change_scene();
+        this.get_mouse().update_cursor_state();
         // Todo change music
     }
 

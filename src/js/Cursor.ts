@@ -123,11 +123,14 @@ export class Cursor {
     };
 
     public handle_action() {
+        // if I have a queue that can be shortcut, do that instead of the action
+        if (window.world.components.queue.shortcut()) {
+            return;
+        }
         if (this.$hovering && this.option_state !== CursorOptionState.NONE && this.$hovering instanceof HTMLGameInteractable) {
             const object = new SceneObject({$object: this.$hovering});
             object.act(this.option_state);
         }
-        console.log("walking", this.mouse_x, this.mouse_y);
     }
 
     public update_cursor_state() {
@@ -184,6 +187,16 @@ export class Cursor {
 
     protected resolveSpecialHoverImage(special_hover: string): string {
         switch (special_hover) {
+            case "interact":
+                return "/public/images/icons/cursor-option-interact.png";
+            case "inspect":
+                return "/public/images/icons/cursor-option-inspect.png";
+            case "talk":
+                return "/public/images/icons/cursor-option-talk.png";
+            case "pick-up":
+                return "/public/images/icons/cursor-option-pick-up.png";
+            case "walk":
+                return "/public/images/icons/cursor-option-walk.png";
             case "left":
                 return "/public/images/icons/cursor-pointing-left.png";
             case "right":
@@ -242,6 +255,10 @@ export class Cursor {
             return false;
         }
         if (this.last_event.clientY > rect.bottom) {
+            return false;
+        }
+
+        if ($object.dataset.visible === "false") {
             return false;
         }
 

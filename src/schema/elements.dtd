@@ -1,0 +1,20 @@
+<!ELEMENT div (#PCDATA)>
+<!ELEMENT object (#PCDATA)>
+<!ELEMENT img (#PCDATA)>
+
+<!ATTLIST img
+        id     ID       #IMPLIED
+        class  PCDATA    #REQUIRED
+        src    PCDATA    #REQUIRED
+        alt    PCDATA    #REQUIRED
+        data-src PCDATA    #IMPLIED
+        >
+
+<!ATTLIST object
+        id     ID       #IMPLIED
+        class  PCDATA    #FIXED "click-area"
+        type   PCDATA    #FIXED "image/svg+xml"
+        data   PCDATA    #REQUIRED
+        data-data PCDATA    #IMPLIED
+        data-hover PCDATA    #IMPLIED
+        >

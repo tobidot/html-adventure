@@ -4,6 +4,11 @@
 
 - Describe what the project is about
 
+# The DSL
+
+This game(-engine) is driven by a custom language that is based on XML and should be valid HTML.
+See the [docs](./src/docs/v1/index.md) for more details on the language.
+
 ## Workflow
 
 Background images are generated using midjourney.

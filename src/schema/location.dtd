@@ -1,23 +1,20 @@
+<!ENTITY % elements SYSTEM "elements.dtd">
+%elements;
+<!ENTITY % actions SYSTEM "game-data.dtd">
+%actions;
+
 <!ELEMENT game-location (
-        img, load+
+        img, game-data, load+
         )>
-        <!ELEMENT img EMPTY>
-        <!ELEMENT load EMPTY>
+<!ELEMENT load EMPTY>
 
-        <!ATTLIST game-location
-                id     ID        #REQUIRED
-                class  PCDATA    #FIXED "scene"
-                music  NMTOKENS  #REQUIRED
-                >
-        <!ATTLIST img
-                id     ID        #IMPLIED
-                class  PCDATA    #FIXED "background"
-                src    PCDATA    #REQUIRED
-                data-src    PCDATA    #REQUIRED
-                alt    PCDATA    #REQUIRED
-                >
+<!ATTLIST game-location
+        id     ID        #REQUIRED
+        class  PCDATA    #FIXED "scene"
+        music  NMTOKENS  #REQUIRED
+        >
 
-        <!ATTLIST load
-                src    PCDATA    #REQUIRED
-                style  PCDATA    #IMPLIED
-                >
+<!ATTLIST load
+        src    PCDATA    #REQUIRED
+        style  PCDATA    #IMPLIED
+        >

@@ -1,8 +1,18 @@
 <!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
-<game-interactable id="map/spirits-crossing" class="object map-object">
+<game-interactable
+    id="map/spirits-crossing"
+    class="object map-object"
+    data-hover="walk"
+    data-visible="false"
+>
     <game-data class="data">
         <game-data-action type="interact">
-            <game-logic-action type="change-scene" value="scene-spirits-crossing-shrouded-woods"> </game-logic-action>
+            <game-logic type="all">
+                <game-logic-action type="output">
+                    [Footsteps]
+                </game-logic-action>
+                <game-logic-action type="change-scene" value="scene-spirits-crossing-shrouded-woods"> </game-logic-action>
+            </game-logic>
         </game-data-action>
         <game-data-action type="inspect">
             <game-logic type="sequence">

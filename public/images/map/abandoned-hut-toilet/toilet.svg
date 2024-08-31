@@ -3,6 +3,6 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="1456" height="816" viewBox="0 0 1456 816" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g id="shape">
-    <path id="toilet" fill="transparent" fill-rule="evenodd" d="M879.99 177.25 L830.14 133.2 L803.48 154.06 L804.64 213.18 L761.75 242.17 L697.99 293.17 L711.9 360.41 L797.68 380.11 L878.83 302.45 L921.72 215.5"/>
+    <path id="toilet" fill="transparent" fill-opacity="0.5"  fill-rule="evenodd" d="M879.99 177.25 L830.14 133.2 L803.48 154.06 L804.64 213.18 L761.75 242.17 L697.99 293.17 L711.9 360.41 L797.68 380.11 L878.83 302.45 L921.72 215.5"/>
   </g>
 </svg>

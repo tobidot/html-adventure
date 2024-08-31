@@ -6,6 +6,15 @@
         data-src="/public/images/backgrounds/abandoned-hut.png"
         alt="background"
     />
+    <game-data class="data">
+        <game-data-action type="enter">
+            <game-logic type="all">
+                <game-logic-action type="set-attribute" key="#game@sees-map" value="TRUE"> </game-logic-action>
+                <game-logic-action type="set-attribute" key="#map\/abandoned-hut@visible" value="TRUE"> </game-logic-action>
+                <game-logic-action type="set-attribute" key="#map\/lost-forest@visible" value="TRUE"> </game-logic-action>
+            </game-logic>
+        </game-data-action>
+    </game-data>
     <load src="/src/html/objects/abandoned-hut/abandoned-hut-interior.xml"/>
     <load src="/src/html/objects/abandoned-hut/spirits-crossing-shrouded-woods.xml"/>
     <load src="/src/html/objects/abandoned-hut/open-fields.xml"/>

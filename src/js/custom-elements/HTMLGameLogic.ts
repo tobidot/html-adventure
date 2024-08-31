@@ -4,7 +4,7 @@ import { get_element_by_query_selector } from "@game.object/ts-game-toolbox";
 import { HTMLGameDataProperty } from "./HTMLGameDataProperty";
 
 export class HTMLGameLogic extends HTMLGameDataLike {
-    public play(): boolean {
+    public async play(): Promise<boolean> {
         const type = this.type;
         switch (type) {
             case "first":
@@ -93,7 +93,7 @@ export class HTMLGameLogic extends HTMLGameDataLike {
                     /^#(?<element>[a-zA-Z0-9_]+)(?<sub>.+)$/
                 );
                 const element_id = match?.groups?.element ?? "";
-                const $element = get_element_by_id(element_id, HTMLElement);
+                const $element = get_element_by_id(CSS.escape(element_id), HTMLElement);
                 return this.parsePartialReferenceValue($element, match?.groups?.sub ?? null);
             }
         } catch (e) {
@@ -117,15 +117,15 @@ export class HTMLGameLogic extends HTMLGameDataLike {
             this.issueError("Invalid reference format");
             return null;
         }
-        if (sub === ".") {
-            const selector = `game-data > game-data-property[key="${key}"]`;
-            const $property = get_element_by_query_selector($element, selector, HTMLGameDataProperty);
-            return (value: ValueType) => {
-                $property.value = this.toRawValue(value);
-            };
+        if (sub != ".") {
+            this.issueError("Invalid reference sub format");
+            return null;
         }
-        this.issueError("Invalid reference sub format");
-        return null;
+        const selector = `game-data > game-data-property[key="${key}"]`;
+        const $property = get_element_by_query_selector($element, selector, HTMLGameDataProperty);
+        return (value: ValueType) => {
+            $property.value = this.toRawValue(value);
+        };
     }
 
     protected parsePartialReferenceValue(
@@ -148,7 +148,7 @@ export class HTMLGameLogic extends HTMLGameDataLike {
             return this.parseRawValue($property.value ?? null);
         }
         if (sub === "?") {
-            return $element.querySelectorAll(key)?.length ?? 0;
+            return $element.querySelectorAll(CSS.escape(key))?.length ?? 0;
         }
         this.issueError("Invalid reference sub format");
         return null;
@@ -181,12 +181,12 @@ export class HTMLGameLogic extends HTMLGameDataLike {
      * Plays only the first child node that is successful
      * @param node
      */
-    public playFirst(node: HTMLElement): boolean {
+    public async playFirst(node: HTMLElement): Promise<boolean> {
         const child_nodes = node.children;
         for (let i = 0; i < child_nodes.length; i++) {
             const child_node = child_nodes.item(i);
             if (child_node instanceof HTMLGameLogic) {
-                if (child_node.play()) {
+                if (await child_node.play()) {
                     return true;
                 }
             }
@@ -198,23 +198,25 @@ export class HTMLGameLogic extends HTMLGameDataLike {
      * Plays all child nodes
      * @param node
      */
-    public playAll(node: HTMLElement): boolean {
+    public async playAll(node: HTMLElement): Promise<boolean> {
         const child_nodes = node.children;
         let result = false;
         for (let i = 0; i < child_nodes.length; i++) {
             const child_node = child_nodes.item(i);
             if (child_node instanceof HTMLGameLogic) {
-                result = (!child_node.play()) || result;
+                console.log('before play', node.getAttribute('type'));
+                result = (!await child_node.play()) || result;
+                console.log('after play');
             }
         }
         return true;
     }
 
-    public playSequence(node: HTMLGameLogic): boolean {
+    public async playSequence(node: HTMLGameLogic): Promise<boolean> {
         const index = parseInt(node.getAttribute("sequence_index") ?? "0");
         const child_node = node.children.item(index) ?? null;
         if (child_node instanceof HTMLGameLogic) {
-            if (child_node.play()) {
+            if (await child_node.play()) {
                 node.setAttribute("sequence_index", ((index + 1) % node.children.length).toString());
             }
             return true;

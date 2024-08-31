@@ -11,9 +11,11 @@ export class Queue {
     protected _is_about_to_finish: boolean = true;
     protected _shortcut: TriggerFunction | null = null;
 
-    public push(entry: QueueEntry) {
+    public async push(entry: QueueEntry) : Promise<void> {
         this._entries.push(entry);
-        this.run().catch(console.error);
+        const run = this.run();
+        run.catch(console.error);
+        return run;
     }
 
     public async run() {
@@ -24,7 +26,6 @@ export class Queue {
         try {
             while (this._entries.length) {
                 const entry = this._entries.shift();
-                console.log("entry lost-forest", entry);
                 if (!entry) continue;
                 await (async () => {
                     this._is_about_to_finish = false;
@@ -41,11 +42,13 @@ export class Queue {
                     });
                 })()
                     .then(() => {
+                        this._shortcut = null;
                         console.log("entry done", entry);
                     })
                     .catch((error) => {
                         console.log("error in entry", entry, error);
                         this.is_running = false;
+                        this._shortcut = null;
                     });
             }
         } catch (error) {
@@ -91,12 +94,23 @@ export class Queue {
         return false;
     }
 
+    public is_empty(): boolean {
+        return this._entries.length < 1;
+    }
+
 }
 
 type QueueEntry = {
     run: RunFunction,
 }
 
+/**
+ * The input for the run function on the queue
+ * @property about_to_finish - Function that is called to check if the action can be shortcut
+ * @property failed - Function that is called when the action failed
+ * @property finished - Function that is called when the action is done
+ * @property provide_shortcut - Function that is called to provide a shortcut
+ */
 export type RunFunctionInput = QueueEntry & {
     about_to_finish?: TriggerFunction,
     failed: ((e: Error) => void),

@@ -14,7 +14,7 @@ export class HTMLGameLogicCondition extends HTMLGameLogic {
     /**
      * Checks for a condition and only then plays the child nodes
      */
-    public playCondition(): boolean {
+    public async playCondition(): Promise<boolean> {
         // # @ => element  || .<key> => element-key || ? => query selector count
         // $ => variable
         // ! => raw value

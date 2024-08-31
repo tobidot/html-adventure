@@ -4,7 +4,7 @@
     <!-- The game-data element contains the logic for the object, how does it interact with the world -->
     <game-data class="data">
         <!-- This is a property of the object, it can be referenced later in other logic -->
-        <game-data-property key="mood" value="angry"></game-data-property>
+        <game-data-property key="mood" value="angry"> </game-data-property>
         <!--
             The <game-data-action> element is a starting point for interactive logic.
             A <game-logic> element functions as a container for multiple logics to perform, it can define the flow of logic.
@@ -37,10 +37,10 @@
             <!-- '!' is used to make sure this value is a raw value, not a reference. You can also just omit the '!' -->
             <game-logic-condition key="@mood" value="!chill">
                 <!-- The 'set-variable' allows for changing values, here we set the mood property of this object to te literal value "angry" -->
-                <game-logic-action type="set-variable" key="@.mood" value="angry"></game-logic-action>
+                <game-logic-action type="set-variable" key="@.mood" value="angry"> </game-logic-action>
                 <game-logic-action type="output">The object is now angry</game-logic-action>
             </game-logic-condition>
-            <!-- '#' can be used to reference a property of any object, in this case we are referencing by it id define in the 'game-interactable' element -->
+            <!-- '#' can be used to reference a property of any object, in this case we are referencing by it by id defined in the 'game-interactable' element -->
             <!-- After the source element is defined either by (#element or @) it can be followed by a '.' to simply select for a property with that key on that object -->
             <game-logic-condition key="#example.mood" value="angry">
                 <game-logic-action type="output">Object: Summm!</game-logic-action>
@@ -48,7 +48,7 @@
             <!-- If the element is followed by a '?' the rest will be interpreted as a query selector and the value will be the number of matches for that selector -->
             <!-- In this case we are checking if the player has any bread in their inventory -->
             <game-logic-condition key="#inventory?#bread" operator="greater" value="0">
-                <game-logic-action type="set-variable" key="@.mood" value="angry"></game-logic-action>
+                <game-logic-action type="set-variable" key="@.mood" value="angry"> </game-logic-action>
                 <game-logic-action type="output">Object: Swirrr...</game-logic-action>
                 <game-logic-action type="output">The object sounds happy now.</game-logic-action>
             </game-logic-condition>
@@ -57,7 +57,7 @@
         <game-data-action type="pick-up">
             <!-- This should add the object to the player's inventory -->
             <!-- value is the id of the object to be added to the inventory -->
-            <game-logic-action type="add-inventory" value="example"></game-logic-action>
+            <game-logic-action type="add-inventory" value="example"> </game-logic-action>
         </game-data-action>
         <!-- The "talk" action is triggered when the player wants to lost-forest a dialogue. -->
         <game-data-action type="talk">
@@ -69,17 +69,17 @@
             <!-- The index attribute is used to determine the order of the options, the option to end a dialogue usually is at the end of the list -->
             <game-logic-option text="(Leave it alone)" index="10" >
                 <!-- This action ends the interaction and removes all options -->
-                <game-logic-action type="end-interaction"></game-logic-action>
+                <game-logic-action type="end-interaction"> </game-logic-action>
             </game-logic-option>
             <!-- The index attribute is used to determine the order of the options, the option to end a dialogue usually is at the end of the list -->
             <game-logic-option text="Bring me to the town!">
                 <!-- This action is meant to open another scene, the value is the id of the scene, with an implicit 'scene-' as a prefix -->
-                <game-logic-action type="change-scene" value="town"></game-logic-action>
+                <game-logic-action type="change-scene" value="town"> </game-logic-action>
             </game-logic-option>
             <!-- The index attribute is used to determine the order of the options, the option to end a dialogue usually is at the end of the list -->
             <game-logic-option text="(Show to)">
                 <!-- This action will attach the referenced object to the cursor, allowing the user to combine it with other objects -->
-                <game-logic-action type="add-cursor" value="example"></game-logic-action>
+                <game-logic-action type="add-cursor" value="example"> </game-logic-action>
             </game-logic-option>
         </game-data-action>
         <!-- The combine action is triggered, when the user currently carries another item and clicked on this object -->

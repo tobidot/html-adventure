@@ -13,7 +13,7 @@ export class HTMLGameLogicOption extends HTMLGameLogic {
         return parseInt(this.getAttribute("index") || "0");
     }
 
-    public play() {
+    public async play() {
         return this.playOption(this);
     }
 
@@ -22,7 +22,7 @@ export class HTMLGameLogicOption extends HTMLGameLogic {
      * @param node
      * @protected
      */
-    protected playOption(node: HTMLGameLogicOption) {
+    protected async playOption(node: HTMLGameLogicOption) : Promise<boolean> {
         const text = (node.text ?? "").trim();
         const index = node.index;
         window.world.components.text.option(text, () => {

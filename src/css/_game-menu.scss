@@ -38,3 +38,10 @@
         }
     }
 }
+
+
+#game[data-sees-map="false"] #game-menu {
+    .menu-item[data-action="map"] {
+        display: none;
+    }
+}
