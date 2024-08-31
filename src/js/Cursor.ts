@@ -189,11 +189,19 @@ export class Cursor {
             case "right":
                 return "/public/images/icons/cursor-pointing-right.png";
             case "up":
+            case "upward":
+            case "upwards":
                 return "/public/images/icons/cursor-pointing-up.png";
             case "down":
+            case "downward":
+            case "downwards":
                 return "/public/images/icons/cursor-pointing-down.png";
+            case "front":
+            case "forward":
             case "forwards":
                 return "/public/images/icons/cursor-pointing-forward.png";
+            case "back":
+            case "backward":
             case "backwards":
                 return "/public/images/icons/cursor-pointing-backward.png";
             default:

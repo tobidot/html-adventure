@@ -1,0 +1,32 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable id="abandoned-hut/spirits-crossing-shrouded-woods"
+                   class="object map-object"
+                   data-hover="left"
+>
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic type="all">
+                <game-logic-action type="output">
+                    [Footsteps]
+                </game-logic-action>
+                <game-logic-action type="change-scene" value="scene-spirits-crossing-shrouded-woods"> </game-logic-action>
+            </game-logic>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic type="sequence">
+                <game-logic-action type="output">
+                    A hut. It seems like it has been abandoned for a while.
+                </game-logic-action>
+                <game-logic-action type="output">
+                    I should have a look inside.
+                </game-logic-action>
+            </game-logic>
+        </game-data-action>
+    </game-data>
+    <object
+            class="click-area"
+            data="./images/dummy.png"
+            data-data="/public/images/map/abandoned-hut/left.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

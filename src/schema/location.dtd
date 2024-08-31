@@ -13,6 +13,7 @@
                 id     ID        #IMPLIED
                 class  PCDATA    #FIXED "background"
                 src    PCDATA    #REQUIRED
+                data-src    PCDATA    #REQUIRED
                 alt    PCDATA    #REQUIRED
                 >
 

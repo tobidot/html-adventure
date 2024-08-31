@@ -1,0 +1,27 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable id="spirits-crossing-altar/spirits-crossing-ancient-tree"
+                   class="object map-object"
+                   data-hover="left"
+>
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic type="all">
+                <game-logic-action type="output">
+                    [Footsteps]
+                </game-logic-action>
+                <game-logic-action type="change-scene" value="scene-spirits-crossing-ancient-tree"> </game-logic-action>
+            </game-logic>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                I can go there.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <object
+            class="click-area"
+            data="./images/dummy.png"
+            data-data="/public/images/map/spirits-crossing-altar/back.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

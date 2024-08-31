@@ -1,0 +1,12 @@
+<!DOCTYPE game-location SYSTEM "http://www.game-object.com/dtd/location">
+<game-location id="scene-stray-path" class="scene" music="lost-forest">
+    <img
+        class="background"
+        src="./images/dummy.png"
+        data-src="/public/images/backgrounds/stray-path.png"
+        alt="background"
+    />
+    <load src="/src/html/objects/stray-path/abandoned-hut.xml"/>
+    <load src="/src/html/objects/stray-path/ancient-shrine.xml"/>
+    <load src="/src/html/objects/stray-path/lost-forest.xml"/>
+</game-location>

@@ -1,0 +1,28 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable
+    id="lost-forest-2/stray-path"
+    class="object map-object"
+    data-hover="forwards"
+>
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic type="all">
+                <game-logic-action type="output">
+                    [Footsteps]
+                </game-logic-action>
+                <game-logic-action type="change-scene" value="scene-stray-path"> </game-logic-action>
+            </game-logic>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                It can see some sort of hut in that direction.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <object
+            class="click-area"
+            data="./images/dummy.png"
+            data-data="/public/images/map/lost-forest-2/forward.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

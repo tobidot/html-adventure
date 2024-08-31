@@ -1,5 +1,8 @@
 <!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
-<game-interactable id="abandoned-hut/abandoned-hut-interior" class="object map-object">
+<game-interactable id="abandoned-hut/abandoned-hut-interior"
+                   class="object map-object"
+                   data-hover="left"
+>
     <game-data class="data">
         <game-data-action type="interact">
             <game-logic type="all">
@@ -23,7 +26,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="/public/images/map/abandoned-hut/abandoned-hut-interior.svg"
+            data-data="/public/images/map/abandoned-hut/door.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

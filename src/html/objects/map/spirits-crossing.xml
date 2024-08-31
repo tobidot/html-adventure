@@ -2,7 +2,7 @@
 <game-interactable id="map/spirits-crossing" class="object map-object">
     <game-data class="data">
         <game-data-action type="interact">
-            <game-logic-action type="change-scene" value="scene-spirits-crossing"> </game-logic-action>
+            <game-logic-action type="change-scene" value="scene-spirits-crossing-shrouded-woods"> </game-logic-action>
         </game-data-action>
         <game-data-action type="inspect">
             <game-logic type="sequence">
@@ -15,7 +15,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="/public/images/map/map/spirits-crossing.svg"
+            data-data="/public/images/map/map/spirits-crossing.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

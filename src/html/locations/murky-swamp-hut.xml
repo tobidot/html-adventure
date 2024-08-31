@@ -3,9 +3,9 @@
     <img
         class="background"
         src="./images/dummy.png"
-data-src="/public/images/backgrounds/murky-swamp-hut.png"
+        data-src="/public/images/backgrounds/murky-swamp-hut.png"
         alt="background"
     />
-    <load src="/src/html/objects/murky-swamp-hut/murky-swamp-1.xml"/>
-    <load src="/src/html/objects/murky-swamp-hut/abandoned-hut.xml"/>
+    <load src="/src/html/objects/murky-swamp-hut/murky-swamp-quicksand.xml"/>
+    <load src="/src/html/objects/murky-swamp-hut/murky-swamp-enter.xml"/>
 </game-location>

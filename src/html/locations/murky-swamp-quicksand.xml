@@ -6,6 +6,6 @@
 data-src="/public/images/backgrounds/murky-swamp-quicksand.png"
         alt="background"
     />
-    <load src="/src/html/objects/murky-swamp-quicksand/murky-swamp-2.xml"/>
+    <load src="/src/html/objects/murky-swamp-quicksand/murky-swamp-hut.xml"/>
     <load src="/src/html/objects/murky-swamp-quicksand/murky-swamp-hanging-tree.xml"/>
 </game-location>

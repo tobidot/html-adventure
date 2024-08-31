@@ -1,0 +1,12 @@
+<!DOCTYPE game-location SYSTEM "http://www.game-object.com/dtd/location">
+<game-location id="scene-open-fields" class="scene" music="open-fields">
+    <img
+        class="background"
+        src="./images/dummy.png"
+        data-src="/public/images/backgrounds/open-fields.png"
+        alt="background"
+    />
+    <load src="/src/html/objects/open-fields/murky-swamp-enter.xml"/>
+    <load src="/src/html/objects/open-fields/main-road.xml"/>
+    <load src="/src/html/objects/open-fields/abandoned-hut.xml"/>
+</game-location>

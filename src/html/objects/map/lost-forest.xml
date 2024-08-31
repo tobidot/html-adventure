@@ -2,7 +2,7 @@
 <game-interactable id="map/lost-forest" class="object map-object">
     <game-data class="data">
         <game-data-action type="interact">
-            <game-logic-action type="change-scene" value="scene-lost-forest"> </game-logic-action>
+            <game-logic-action type="change-scene" value="scene-lost-forest-3"> </game-logic-action>
         </game-data-action>
         <game-data-action type="inspect">
             <game-logic-action type="output">

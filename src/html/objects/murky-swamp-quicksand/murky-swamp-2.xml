@@ -1,5 +1,8 @@
 <!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
-<game-interactable id="murky-swamp-quicksand/murky-swamp-hut" class="object map-object">
+<game-interactable id="murky-swamp-quicksand/murky-swamp-2"
+                   class="object map-object"
+                   data-hover="backwards"
+>
     <game-data class="data">
         <game-data-action type="interact">
             <game-logic type="all">

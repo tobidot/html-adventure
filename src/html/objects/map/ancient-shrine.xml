@@ -2,7 +2,7 @@
 <game-interactable id="map/ancient-shrine" class="object map-object">
     <game-data class="data">
         <game-data-action type="interact">
-            <game-logic-action type="change-scene" value="scene-ancient-shrine"> </game-logic-action>
+            <game-logic-action type="change-scene" value="scene-ancient-shrine-path"> </game-logic-action>
         </game-data-action>
         <game-data-action type="inspect">
             <game-logic type="sequence">

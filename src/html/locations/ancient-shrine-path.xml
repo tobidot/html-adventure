@@ -3,9 +3,9 @@
     <img
         class="background"
         src="./images/dummy.png"
-data-src="/public/images/backgrounds/ancient-shrine-path.png"
+        data-src="/public/images/backgrounds/ancient-shrine-path.png"
         alt="background"
     />
     <load src="/src/html/objects/ancient-shrine-path/ancient-shrine-entrance.xml"/>
-    <load src="/src/html/objects/ancient-shrine-path/lost-forest-3.xml"/>
+    <load src="/src/html/objects/ancient-shrine-path/stray-path.xml"/>
 </game-location>
