@@ -15,7 +15,7 @@ images/backgrounds/lost-forest.png,https://www.midjourney.com/jobs/973c54b5-35b3
 images/backgrounds/map-old.png,https://www.midjourney.com/jobs/24e2d2e9-5b73-4272-8651-3ace0cbaacaa?index=0
 audio/music/the-watcher-from-behind.mp3,https://suno.com/song/dbf4e1af-23b7-41ac-81f4-815cfed7e424
 audio/music/echoes-in-the-forest.mp3,https://suno.com/song/731bcf21-78e3-478c-83ee-4e1fa3c544d6
-audio/assets/footsteps.mp3,build with FL Studio
+effects/footsteps-fl.mp3,build with FL Studio
 images/backgrounds/lost-forest-3.png,https://www.midjourney.com/jobs/50928389-3c75-487e-9f9d-11ae035f3f7e?index=3
 images/backgrounds/lost-forest-2.png,https://www.midjourney.com/jobs/50928389-3c75-487e-9f9d-11ae035f3f7e?index=2
 images/backgrounds/lost-forest-bridge.png,https://www.midjourney.com/jobs/21ae1cff-6c2e-4001-9d3d-82075a9b7108?index=1
@@ -63,3 +63,7 @@ images/backgrounds/spirits-crossing-altar,https://www.midjourney.com/jobs/1b514c
 images/backgrounds/spirits-crossing-ancient-tree,https://www.midjourney.com/jobs/a5bbf218-4565-4f28-bd6e-06f0a756d615?index=1
 images/backgrounds/stray-path.png,https://www.midjourney.com/jobs/07c34846-b492-4910-b6e3-e7bcb2ecdb54?index=0
 images/icons/cursor-option-walk.png,https://www.midjourney.com/jobs/ef65997a-e4c8-45d7-999f-55fd7f7df510?index=0
+images/backgrounds/tutorial-background.png,https://www.midjourney.com/jobs/85fa776c-5537-4aa4-b2b5-6b183a2dec24?index=3
+effects/footsteps.mp3,11Labs: Quick steps on soft dirt ground
+effects/door.mp3,"11Labs: Old murky wooden door opens, in the forest"
+effects/footsteps-inside.mp3,11Labs: Solid Footsteps on old murky wood

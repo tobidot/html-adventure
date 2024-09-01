@@ -61,10 +61,12 @@ export class Popup {
     }
 
     protected map() {
-        if (window.world.logic.get_active_scene()?.id === SceneName.MAP) {
-            window.world.logic.show_scene(window.world.logic.get_previous_scene()?.id ?? SceneName.LOST_FOREST);
-        } else {
-            window.world.logic.show_scene(SceneName.MAP);
+        if (window.world.logic.can_show_map()) {
+            if (window.world.logic.get_active_scene()?.id === SceneName.MAP) {
+                window.world.logic.show_scene(window.world.logic.get_previous_scene()?.id ?? SceneName.LOST_FOREST);
+            } else {
+                window.world.logic.show_scene(SceneName.MAP);
+            }
         }
     }
 

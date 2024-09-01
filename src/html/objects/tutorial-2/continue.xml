@@ -1,0 +1,39 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable
+    id="tutorial-2/continue"
+    class="object"
+    cx="50%"
+    cy="90%"
+    width="15%"
+>
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic type="all">
+                <game-logic-action type="change-scene" value="scene-tutorial-3"> </game-logic-action>
+            </game-logic>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic-action type="output">
+                With the mousewheel, or holding down the right mouse button, you can switch between 4 types of actions to perform on the hovered object.
+                - Interact
+                - Inspect
+                - Pick Up
+                - Talk
+                "Interact" is the default action and will sometimes be shown as a different icon to indicate what the action will actually trigger.
+                For example walking to some other area is often indicated by an arrow pointing in the direction the player will walk.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <img
+            class="image"
+            src="./images/dummy.png"
+            data-src="/public/images/objects/continue/continue.png"
+            alt="Continue Button"
+    />
+    <object
+            class="click-area"
+            data="./images/dummy.png"
+            data-data="/public/images/objects/continue/click-area.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

@@ -12,7 +12,7 @@ window.addEventListener("click", () => {
     (async ()=>{
         await window.world.logic.load();
         // window.world.show_popup(PopupName.INVENTORY);
-        window.world.logic.show_scene(SceneName.LOST_FOREST);
+        window.world.logic.show_scene(SceneName.TUTORIAL);
     })();
 }, {once: true});
 

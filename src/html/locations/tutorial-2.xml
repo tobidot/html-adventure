@@ -1,0 +1,23 @@
+<!DOCTYPE game-location SYSTEM "http://www.game-object.com/dtd/location">
+<game-location id="scene-tutorial-2" class="scene" music="title">
+    <img
+        class="background"
+        src="./images/dummy.png"
+        data-src="/public/images/backgrounds/tutorial-2.png"
+        alt="Tutorial Page 2"
+    />
+    <game-data  class="data">
+        <game-data-action type="enter">
+            <game-logic-action type="output">
+                With the mousewheel, or holding down the right mouse button, you can switch between 4 types of actions to perform on the hovered object.
+                - Interact
+                - Inspect
+                - Pick Up
+                - Talk
+                "Interact" is the default action and will sometimes be shown as a different icon to indicate what the action will actually trigger.
+                For example walking to some other area is often indicated by an arrow pointing in the direction the player will walk.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <load src="/src/html/objects/tutorial-2/continue.xml"/>
+</game-location>

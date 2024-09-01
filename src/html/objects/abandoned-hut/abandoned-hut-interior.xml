@@ -7,7 +7,7 @@
         <game-data-action type="interact">
             <game-logic type="all">
                 <game-logic-action type="output">
-                    [Footsteps]
+                    [Door]
                 </game-logic-action>
                 <game-logic-action type="change-scene" value="scene-abandoned-hut-interior"> </game-logic-action>
             </game-logic>

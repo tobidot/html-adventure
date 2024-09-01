@@ -11,6 +11,9 @@
         id     ID       #REQUIRED
         style  PCDATA    #IMPLIED
         class  PCDATA    #REQUIRED
+        cx     PCDATA    #IMPLIED
+        cy     PCDATA    #IMPLIED
+        width  PCDATA    #IMPLIED
         data-hover PCDATA    #IMPLIED
         data-visible PCDATA    #IMPLIED
         >

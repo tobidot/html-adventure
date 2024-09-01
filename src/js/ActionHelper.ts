@@ -120,6 +120,6 @@ export class ActionHelper {
      */
     public static outputTextAndAudio(content: string, ended : ()=>void, about_to_end?: ()=>void):  ()=>void {
         this.outputText(content);
-        return this.outputAudio(content,ended, about_to_end);
+        return this.outputAudio(content, ended, about_to_end);
     }
 }

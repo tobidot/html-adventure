@@ -5,9 +5,9 @@
             <game-logic type="first">
                 <game-logic type="once">
                     <game-logic type="all">
-                        <game-logic-action type="add-inventory" value="bread"></game-logic-action>
+                        <game-logic-action type="add-inventory" value="bread"> </game-logic-action>
                         <game-logic-action type="output">I cannot wait to eat this.</game-logic-action>
-                        <game-logic-action type="set-variable" key="has_bread" value="TRUE"></game-logic-action>
+                        <game-logic-action type="set-variable" key="has_bread" value="TRUE"> </game-logic-action>
                     </game-logic>
                 </game-logic>
                 <game-logic-action type="add-cursor" value="bread"/>
@@ -27,13 +27,13 @@
     <img
         class="image"
         src="./images/dummy.png"
-data-src="./images/objects/bread/bread.png"
+        data-src="./images/objects/bread/bread.png"
         alt="a loaf of bread, white background, sprite-sheet, Dos Adventure Game, Low Definition, Low Quality Art, Dithering, cropped out, object only"
     />
     <object
         class="click-area"
         data="./images/dummy.png"
-data-data="/public/images/objects/bread/bread.svg"
+        data-data="/public/images/objects/bread/bread.svg"
         type="image/svg+xml"
-    ></object>
+    > </object>
 </game-interactable>

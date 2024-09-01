@@ -194,6 +194,10 @@ class Logic {
             }
         });
     }
+
+    public can_show_map() :boolean {
+        return this.parent.elements.$root.dataset.seesMap !== "false";
+    }
 }
 
 class Properties {

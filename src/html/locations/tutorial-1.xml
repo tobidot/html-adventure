@@ -1,0 +1,21 @@
+<!DOCTYPE game-location SYSTEM "http://www.game-object.com/dtd/location">
+<game-location id="scene-tutorial-1" class="scene" music="title">
+    <img
+        class="background"
+        src="./images/dummy.png"
+        data-src="/public/images/backgrounds/tutorial-1.png"
+        alt="Tutorial Page 1"
+    />
+    <game-data  class="data">
+        <game-data-action type="enter">
+            <game-logic-action type="output">
+                Move the mouse across the screen.
+                ...
+                If an item can be interacted with the cursor icon will change to indicate that.
+                ...
+                Left click to interact with the object below.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <load src="/src/html/objects/tutorial-1/continue.xml"/>
+</game-location>

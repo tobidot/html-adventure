@@ -1,0 +1,30 @@
+<!DOCTYPE game-location SYSTEM "http://www.game-object.com/dtd/location">
+<game-location id="scene-tutorial-3" class="scene" music="title">
+    <img
+        class="background"
+        src="./images/dummy.png"
+        data-src="/public/images/backgrounds/tutorial-3.png"
+        alt="Tutorial Page 3"
+    />
+    <game-data  class="data">
+        <game-data-action type="enter">
+            <game-logic-action type="output">
+                Objects that you picked up appear in the inventory, you can open the inventory by pressing "I" or "Control",
+                or by clicking on the button in the bottom right.
+                In the inventory you can interact with them like before,
+                the "pick up" action in this context turns into an attempt to use the item on something else.
+
+                At some point in the game you will reveal a map of the area to fast travel to certain points.
+                Use the keys "M", "Alt", or the button that will appear at the bottom right to access it.
+                You can only travel places you have already been to.
+
+                In case you are stuck or fed up searching the entire screen for objects to interact with.
+                Holding down the "Shift"-key will highlight all areas that area interactable in red.
+
+                If you want to speed up things, you can hit "Spacebar" or click anywhere, to cut off some audio or some animations,
+                for example when going to another scene.
+            </game-logic-action>
+        </game-data-action>
+    </game-data>
+    <load src="/src/html/objects/tutorial-3/continue.xml"/>
+</game-location>
