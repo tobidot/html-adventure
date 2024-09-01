@@ -11,14 +11,14 @@ export class HTMLGameData extends HTMLElement {
      * @param action
      * @param notify_errors
      */
-    public act(
+    public async act(
         action:string,
         notify_errors: boolean = true
-    ) {
+    ): Promise<boolean> {
         if (!window.world.components.queue.is_ready_to_push) {
-            return;
+            return false;
         }
-        this.queue(action, notify_errors);
+        return this.queue(action, notify_errors);
     }
 
     /**
@@ -26,12 +26,12 @@ export class HTMLGameData extends HTMLElement {
      * @param action
      * @param notify_errors
      */
-    public queue(
+    public async queue(
         action:string,
         notify_errors: boolean = true
-    ) {
+    ): Promise<boolean> {
         const entry = this.make_queue_entry(action, notify_errors);
-        window.world.components.queue.push(entry);
+        return window.world.components.queue.push(entry).then(()=>true).catch(()=>false);
     }
 
     /**

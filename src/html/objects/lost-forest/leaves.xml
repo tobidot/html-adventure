@@ -1,0 +1,48 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable
+    id="lost-forest/leaves"
+    class="object"
+    cx="50%"
+    cy="33%"
+    width="15%"
+>
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic type="all">
+                <game-logic-action type="output">
+                    [Leaves rustling]
+                </game-logic-action>
+                <game-logic-action type="set-attribute" key="#lost-forest\/leaves@shrink" value="true"> </game-logic-action>
+                <game-logic-action type="wait">0.5</game-logic-action>
+                <game-logic-action type="output">
+                    A murky piece of paper.
+                    I probably lost it, before losing consciousness.
+                </game-logic-action>
+            </game-logic>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic type="sequence">
+                <game-logic type="once">
+                    <game-logic-action type="output">
+                        A pile of leaves.
+                    </game-logic-action>
+                </game-logic>
+                <game-logic-action type="output">
+                    It looks like something is underneath it.
+                </game-logic-action>
+            </game-logic>
+        </game-data-action>
+    </game-data>
+    <img
+            class="image"
+            src="./images/dummy.png"
+            data-src="/public/images/objects/leaves/leaves.png"
+            alt="Continue Button"
+    />
+    <object
+            class="click-area"
+            data="./images/dummy.png"
+            data-data="/public/images/objects/leaves/leaves.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

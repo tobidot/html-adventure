@@ -3,6 +3,6 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="1456" height="816" viewBox="0 0 1456 816" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g id="shape">
-    <path id="lost-forest" fill="transparent" fill-opacity="0.5"  fill-rule="evenodd" d="M488.17 822.94 L249.36 684.99 L-10.31 566.75 L-16.1 822.94"/>
+    <path fill="transparent" id="lost-forest"    fill-rule="evenodd" d="M488.17 822.94 L249.36 684.99 L-10.31 566.75 L-16.1 822.94"/>
   </g>
 </svg>

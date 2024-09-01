@@ -34,6 +34,6 @@ export class SceneObject {
     }
 
     public act(action: CursorOptionState) {
-        this.$data.act(action);
+        return this.$data.act(action);
     }
 }

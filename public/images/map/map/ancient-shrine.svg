@@ -3,6 +3,6 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="1456" height="816" viewBox="0 0 1456 816" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g id="shape">
-    <path id="ancient-shrine" transform="matrix(1 0 0 1 -567.748535 18.314453)" fill="#909000ff" fill-opacity="0.5" fill-rule="evenodd" d="M1265.73 688.11 L1118.07 579.36 L937.21 547.31 L910.89 651.48 L976.13 799.14 L1166.14 791.13"/>
+    <path fill="transparent" id="ancient-shrine" transform="matrix(1 0 0 1 -567.748535 18.314453)" fill="#909000ff"  fill-rule="evenodd" d="M1265.73 688.11 L1118.07 579.36 L937.21 547.31 L910.89 651.48 L976.13 799.14 L1166.14 791.13"/>
   </g>
 </svg>

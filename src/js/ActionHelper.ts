@@ -106,7 +106,8 @@ export class ActionHelper {
             "$FAIL": [
                 "I can't do that.",
                 "That is impossible.",
-                "Now, why should i do that!?"
+                "Now, why should I do that!?",
+                "I am not insane, ... yet.",
             ]
         }[id] ?? "";
         return options[Math.floor(Math.random() * options.length)];

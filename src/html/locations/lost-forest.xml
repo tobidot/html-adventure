@@ -2,27 +2,30 @@
 <game-location id="scene-lost-forest" class="scene" music="title">
     <!-- The first screen the adventure wakes up at -->
     <img
-        class="background"
-        src="./images/dummy.png"
-data-src="/public/images/backgrounds/lost-forest.png"
-        alt="The awakening"
+            class="background"
+            src="./images/dummy.png"
+            data-src="/public/images/backgrounds/lost-forest.png"
+            alt="The awakening"
     />
-    <game-data  class="data">
+    <game-data class="data">
         <game-data-action type="enter">
-            <game-logic-action type="output">
-                Ouf!
-                ...
-                Where am I?
-            </game-logic-action>
-            <game-logic-action type="output">
-                I don't remember anything.
-            </game-logic-action>
-            <game-logic-action type="output">
-                Ah there is something in my pocket.
-                Maybe it will help me remember.
-            </game-logic-action>
+            <game-logic type="once">
+                <game-logic-action type="output">
+                    Ouf!
+                    ...
+                    Where am I?
+                </game-logic-action>
+                <game-logic-action type="output">
+                    I don't remember anything.
+                </game-logic-action>
+                <game-logic-action type="output">
+                    I should look around to figure out what's going on.
+                </game-logic-action>
+            </game-logic>
         </game-data-action>
     </game-data>
     <load src="/src/html/objects/lost-forest/lost-forest-2.xml"/>
     <load src="/src/html/objects/lost-forest/lost-forest-3.xml"/>
+    <load src="/src/html/objects/lost-forest/leaves.xml"/>
+    <load src="/src/html/objects/lost-forest/footprints.xml"/>
 </game-location>

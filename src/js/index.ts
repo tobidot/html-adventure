@@ -13,6 +13,8 @@ window.addEventListener("click", () => {
         await window.world.logic.load();
         // window.world.show_popup(PopupName.INVENTORY);
         window.world.logic.show_scene(SceneName.TUTORIAL);
+        window.world.logic.highlight_objects();
+        window.world.logic.stop_highlight_objects();
     })();
 }, {once: true});
 

@@ -51,6 +51,19 @@
     background-size: cover;
 
     transform: translate(-50%, -50%);
+    transition: left, top, width, height, transform, opacity, visibility, filter, 0.5s;
+
+    &[data-visible="false"] {
+        display: none;
+    }
+
+    &[data-active="false"] {
+        display: none;
+    }
+
+    &[data-shrink="true"] {
+        width: 0 !important;
+    }
 
     > .image {
         position: static;
@@ -72,4 +85,8 @@
     > .data {
         display: none;
     }
+}
+
+#game[data-show-click-areas="true"] .object .click-area {
+    visibility: visible;
 }

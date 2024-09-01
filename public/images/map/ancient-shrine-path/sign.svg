@@ -3,6 +3,6 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="1456" height="816" viewBox="0 0 1456 816" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g id="shape">
-    <path id="sign" fill="transparent" fill-opacity="0.5"  fill-rule="evenodd" d="M1063.15 9.16 L1230.08 12.64 L1196.46 133.2 L1034.17 127.4"/>
+    <path fill="transparent" id="sign"    fill-rule="evenodd" d="M1063.15 9.16 L1230.08 12.64 L1196.46 133.2 L1034.17 127.4"/>
   </g>
 </svg>

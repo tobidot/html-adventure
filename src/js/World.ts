@@ -139,6 +139,7 @@ class Logic {
         this.parent.elements.$scene.appendChild(new_scene.$root);
         this.parent.props.previous_scene = this.parent.props.active_scene;
         this.parent.props.active_scene = new_scene;
+        this.stop_highlight_objects();
         new_scene.enter();
 
         window.world.components.music.change_scene();
@@ -166,13 +167,22 @@ class Logic {
         if (!this.parent.props.active_scene || (this.parent.props.active_scene.id === SceneName.MAP)) {
             return;
         }
+        this.parent.elements.$root.dataset.showClickAreas = "true";
         this.parent.elements.$scene.querySelectorAll('.click-area').forEach(($item) => {
             if ($item instanceof HTMLObjectElement) {
-                const svg = $item.getSVGDocument();
+                const svg = $item.contentDocument;
                 if (svg) {
-                    svg.querySelectorAll('#shape path').forEach(($path)=>{
-                        $path.setAttribute('fill', 'red');
+                    svg.querySelectorAll('*').forEach(($shape) => {
+                        $shape.removeAttribute('fill');
+                        $shape.removeAttribute('fill-opacity');
                     });
+                    svg.querySelectorAll('#shape').forEach(($shape) => {
+                        $shape.setAttribute('fill', 'red');
+                        $shape.setAttribute('fill-opacity', '0.5');
+                    });
+                } else {
+                    console.error('SVG not found', $item);
+                    debugger;
                 }
             }
 
@@ -183,19 +193,23 @@ class Logic {
         if (!this.parent.props.active_scene || (this.parent.props.active_scene.id === SceneName.MAP)) {
             return;
         }
+        delete this.parent.elements.$root.dataset.showClickAreas;
         this.parent.elements.$scene.querySelectorAll('.click-area').forEach(($item) => {
-            if ($item instanceof HTMLObjectElement) {
-                const svg = $item.getSVGDocument();
-                if (svg) {
-                    svg.querySelectorAll('#shape path').forEach(($path)=>{
-                        $path.setAttribute('fill', 'transparent');
-                    });
-                }
+            if (!($item instanceof HTMLObjectElement)) {
+                return ;
             }
+            const svg = $item.contentDocument;
+            if (!svg) {
+                return ;
+            }
+            svg.querySelectorAll('#shape').forEach(($path) => {
+                $path.setAttribute('fill', 'transparent');
+                console.info('SVG', $path.getAttribute('fill'));
+            });
         });
     }
 
-    public can_show_map() :boolean {
+    public can_show_map(): boolean {
         return this.parent.elements.$root.dataset.seesMap !== "false";
     }
 }
@@ -257,8 +271,8 @@ class Components {
         this.settings = new Settings();
         this.assets = new AssetManager();
         this.loading_screen = new LoadingScreen({
-            $root:this.parent.elements.$loading_screen,
-            $main:this.parent.elements.$main,
+            $root: this.parent.elements.$loading_screen,
+            $main: this.parent.elements.$main,
         });
         //
         this.queue = new Queue();
@@ -277,6 +291,29 @@ class Listeners {
     ) {
         this.parent.elements.$root.addEventListener('contextmenu', (event) => {
             event.preventDefault();
+        });
+        // make sure all click areas hide on load
+        this.parent.elements.$main.querySelectorAll('.click-area').forEach(($item) => {
+            const id = $item.closest('.object')?.id;
+            console.info('Object Item ', id);
+            $item.addEventListener('load', this.on_load_click_area);
+        });
+    }
+
+    public on_load_click_area = (event: Event) => {
+        const $item = event.target;
+        if (!($item instanceof HTMLObjectElement)) {
+            console.info('No html object element', $item);
+            return;
+        }
+        const svg = $item.contentDocument;
+        if (svg === null) {
+            console.error('SVG not found');
+            return;
+        }
+        svg.querySelectorAll('#shape').forEach(($path) => {
+            $path.setAttribute('fill', 'transparent');
+            console.info('SVG', $path.getAttribute('fill'));
         });
     }
 }

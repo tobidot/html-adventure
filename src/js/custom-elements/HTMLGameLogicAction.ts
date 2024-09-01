@@ -3,11 +3,16 @@ import {HTMLGameLogic} from "./HTMLGameLogic";
 import {get_element_by_id} from "@game.object/ts-game-toolbox/dist";
 import {ActionHelper} from "../ActionHelper";
 import {RunFunctionInput} from "../Queue";
+import {HTMLGameData} from "./HTMLGameData.js";
 
 export class HTMLGameLogicAction extends HTMLGameLogic {
     public async play(): Promise<boolean> {
         const type = this.type;
         switch (this.getAttribute("type")) {
+            case "wait":
+                return this.playWait();
+            case "trigger":
+                return this.playTrigger();
             case "output":
                 return this.playOutput();
             case "add-cursor":
@@ -27,6 +32,53 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
         return false;
     }
 
+
+    /**
+     * Triggers a different node
+     */
+    public async playTrigger(): Promise<boolean> {
+        const target = this.innerText.trim() || this.value;
+        if (!target) {
+            return false;
+        }
+        try {
+            const $game_data = this.closest('game-data');
+            if (! ($game_data instanceof HTMLGameData) ){
+                return false;
+            }
+            return $game_data.queue(target);
+        } catch (e) {
+            console.error(e);
+            if (window.world.props.debug) {
+                throw e;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Waits for some time
+     */
+    public async playWait(): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            const entry = {
+                run: (self: RunFunctionInput) => {
+                    const old_finished = self.finished;
+                    self.finished = () => {
+                        old_finished();
+                        resolve(true);
+                    };
+                    const duration = parseFloat(this.innerText ?? this.dataset.value ?? '1') * 1000;
+                    const handle = setTimeout(self.finished, duration);
+                    self.provide_shortcut(() => {
+                        clearTimeout(handle);
+                        self.finished();
+                    });
+                }
+            };
+            return window.world.components.queue.push(entry).catch(reject);
+        });
+    }
 
     /**
      * Outputs some text
