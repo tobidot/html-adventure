@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-data-src="/public/images/backgrounds/main-road-fork.png"
+data-src="/assets/images/backgrounds/main-road-fork.png"
         alt="background"
     />
     <load src="/src/html/objects/main-road-fork/main-road-cart.xml"/>

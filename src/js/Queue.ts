@@ -43,7 +43,6 @@ export class Queue {
                 })()
                     .then(() => {
                         this._shortcut = null;
-                        console.log("entry done", entry);
                     })
                     .catch((error) => {
                         console.log("error in entry", entry, error);
@@ -67,7 +66,6 @@ export class Queue {
     }
 
     protected set is_running(value: boolean) {
-        console.log("set is_running", value);
         this._is_running = value;
     }
 

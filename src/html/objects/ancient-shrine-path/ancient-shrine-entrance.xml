@@ -21,7 +21,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="/public/images/map/ancient-shrine-path/ancient-shrine-entrance.svg"
+data-data="/assets/images/map/ancient-shrine-path/ancient-shrine-entrance.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-        data-src="/public/images/backgrounds/stray-path.png"
+        data-src="/assets/images/backgrounds/stray-path.png"
         alt="background"
     />
     <load src="/src/html/objects/stray-path/abandoned-hut.xml"/>

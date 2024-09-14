@@ -8,6 +8,7 @@ import {HTMLGameData} from "./HTMLGameData.js";
 export class HTMLGameLogicAction extends HTMLGameLogic {
     public async play(): Promise<boolean> {
         const type = this.type;
+        console.log("play", type);
         switch (this.getAttribute("type")) {
             case "wait":
                 return this.playWait();
@@ -43,7 +44,7 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
         }
         try {
             const $game_data = this.closest('game-data');
-            if (! ($game_data instanceof HTMLGameData) ){
+            if (!($game_data instanceof HTMLGameData)) {
                 return false;
             }
             return $game_data.queue(target);
@@ -202,7 +203,7 @@ export class HTMLGameLogicAction extends HTMLGameLogic {
         if (resolved_value === null) {
             element.removeAttribute(attribute);
         } else {
-            element.dataset[attribute] = resolved_value;
+            element.setAttribute(attribute, resolved_value);
         }
         return true;
     }

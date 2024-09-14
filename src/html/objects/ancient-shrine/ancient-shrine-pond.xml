@@ -1,27 +1,36 @@
 <!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
-<game-interactable id="ancient-shrine/ancient-shrine-pond"
-                   class="object map-object"
-                   data-hover="forwards"
+<game-interactable
+       id="ancient-shrine/ancient-shrine-pond"
+       class="object map-object"
+       data-hover="forwards"
+       data-is-open="FALSE"
 >
     <game-data class="data">
         <game-data-action type="interact">
-            <game-logic type="all">
+            <game-logic type="first">
+                <game-logic-condition key="@is-open" value="TRUE">
+                    <game-logic type="all">
+                        <game-logic-action type="output">
+                            [Footsteps]
+                        </game-logic-action>
+                        <game-logic-action type="change-scene" value="scene-ancient-shrine-pond"> </game-logic-action>
+                    </game-logic>
+                </game-logic-condition>
                 <game-logic-action type="output">
-                    [Footsteps]
+                    Not with my bare hands.
                 </game-logic-action>
-                <game-logic-action type="change-scene" value="scene-ancient-shrine-pond"> </game-logic-action>
             </game-logic>
         </game-data-action>
         <game-data-action type="inspect">
             <game-logic-action type="output">
-                It is not easy to spot, but the rocks are quite loose, and I can get behind the shrine walls here.
+                The wall seems brittle at this point. It looks like it could be broken with a strong enough force.
             </game-logic-action>
         </game-data-action>
     </game-data>
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="/public/images/map/ancient-shrine/ancient-shrine-pond.svg"
+            data-data="/assets/images/map/ancient-shrine/ancient-shrine-pond.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

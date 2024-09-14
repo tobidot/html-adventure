@@ -4,7 +4,7 @@
     height: 50px;
     padding: 2px 10px;
 
-    background-image: url(/public/images/backgrounds/border-bottom.png);
+    background-image: url(/assets/images/backgrounds/border-bottom.png);
     background-size: 100%   100%;
 
     grid-template-columns: 1fr 100px 100px;
@@ -22,7 +22,7 @@
         border: unset;
         font-weight: bold;
         background-color: unset;
-        background-image: url(/public/images/icons/button-2.png);
+        background-image: url(/assets/images/icons/button-2.png);
         background-size: 100% 100%;
 
         aspect-ratio: 2/1;

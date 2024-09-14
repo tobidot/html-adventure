@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-data-src="/public/images/backgrounds/main-road-bridge.png"
+data-src="/assets/images/backgrounds/main-road-bridge.png"
         alt="background"
     />
     <load src="/src/html/objects/main-road-bridge/main-road-3.xml"/>

@@ -1,0 +1,51 @@
+<!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
+<game-interactable
+    id="area-map"
+    class="object"
+    cx="50%"
+    cy="33%"
+    width="15%"
+>
+    <game-data class="data">
+        <game-data-action type="interact">
+            <game-logic-action type="output">
+                [Paper Rustling]
+            </game-logic-action>
+            <game-logic-action type="change-scene" value="scene-map"> </game-logic-action>
+        </game-data-action>
+        <game-data-action type="pick-up">
+            <game-logic-action type="output">
+                [Grab]
+            </game-logic-action>
+            <game-logic-action type="add-inventory" value="area-map"> </game-logic-action>
+        </game-data-action>
+        <game-data-action type="inspect">
+            <game-logic type="sequence">
+                <game-logic-action type="output">
+                    It is a map of the area.
+                </game-logic-action>
+                <game-logic-action type="output">
+                    Lucky me, it is in a good shape.
+                </game-logic-action>
+                <game-logic-action type="output">
+                    I should find a way out with it.
+                </game-logic-action>
+                <game-logic-action type="output">
+                    The top right looks like the main road to this area.
+                </game-logic-action>
+            </game-logic>
+        </game-data-action>
+    </game-data>
+    <img
+            class="image"
+            src="./images/dummy.png"
+            data-src="/assets/images/objects/dummy/dummy.png"
+            alt=""
+    />
+    <object
+            class="click-area"
+            data="./images/dummy.png"
+            data-data="/assets/images/objects/dummy/dummy.svg"
+            type="image/svg+xml"
+    > </object>
+</game-interactable>

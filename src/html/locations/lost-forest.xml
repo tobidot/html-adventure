@@ -1,10 +1,12 @@
 <!DOCTYPE game-location SYSTEM "http://www.game-object.com/dtd/location">
 <game-location id="scene-lost-forest" class="scene" music="title">
-    <!-- The first screen the adventure wakes up at -->
+    <!--
+    The first screen the adventure wakes up at
+    -->
     <img
             class="background"
             src="./images/dummy.png"
-            data-src="/public/images/backgrounds/lost-forest.png"
+            data-src="/assets/images/backgrounds/lost-forest.png"
             alt="The awakening"
     />
     <game-data class="data">

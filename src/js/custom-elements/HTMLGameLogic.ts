@@ -204,22 +204,24 @@ export class HTMLGameLogic extends HTMLGameDataLike {
         for (let i = 0; i < child_nodes.length; i++) {
             const child_node = child_nodes.item(i);
             if (child_node instanceof HTMLGameLogic) {
-                console.log('before play', node.getAttribute('type'));
                 result = (!await child_node.play()) || result;
-                console.log('after play');
             }
         }
         return true;
     }
 
     public async playSequence(node: HTMLGameLogic): Promise<boolean> {
-        const index = parseInt(node.getAttribute("sequence_index") ?? "0");
-        const child_node = node.children.item(index) ?? null;
-        if (child_node instanceof HTMLGameLogic) {
-            if (await child_node.play()) {
-                node.setAttribute("sequence_index", ((index + 1) % node.children.length).toString());
+        const current_index = parseInt(node.getAttribute("sequence_index") ?? "0");
+        const child_nodes = node.children;
+        for (let i = 0; i < child_nodes.length; i++) {
+            const index = (current_index + i) % child_nodes.length;
+            const child_node = child_nodes.item(index);
+            if (child_node instanceof HTMLGameLogic) {
+                if ( await child_node.play() ) {
+                    node.setAttribute("sequence_index", ((index + 1) % node.children.length).toString());
+                    return true;
+                }
             }
-            return true;
         }
         return false;
     }

@@ -3,7 +3,7 @@
 
 // export class DeveloperAgent extends Agent {
 //
-//     public async init() {
+//     assets async init() {
 //         super.init();
 //         // this.assistant = "asst_2bioQvkuXU4rn2MH2UpOg4Zf";
 //         // this.messages.push({

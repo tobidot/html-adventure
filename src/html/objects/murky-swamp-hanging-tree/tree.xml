@@ -14,7 +14,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="/public/images/map/murky-swamp-hanging-tree/tree.svg"
+data-data="/assets/images/map/murky-swamp-hanging-tree/tree.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

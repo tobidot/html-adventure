@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-data-src="/public/images/backgrounds/murky-swamp-1.png"
+data-src="/assets/images/backgrounds/murky-swamp-1.png"
         alt="background"
     />
     <load src="/src/html/objects/murky-swamp-1/murky-swamp-enter.xml"/>

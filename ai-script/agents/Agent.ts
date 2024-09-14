@@ -3,17 +3,17 @@
 // import { APIPromise } from "openai/core";
 //
 // export abstract class Agent {
-//     public model: string = "gpt-3.5-turbo";
+//     assets model: string = "gpt-3.5-turbo";
 //
 //     constructor(
-//         public readonly openai: OpenAI
+//         assets readonly openai: OpenAI
 //     ) {
 //         // ...
 //     }
 //
-//     public async init() {}
+//     assets async init() {}
 //
-//     public async pushMessage(content: string, role: string = "user") {};
+//     assets async pushMessage(content: string, role: string = "user") {};
 //
-//     public abstract query(message?: string): Promise<void>;
+//     assets abstract query(message?: string): Promise<void>;
 // }

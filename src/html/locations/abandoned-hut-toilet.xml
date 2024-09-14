@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-data-src="/public/images/backgrounds/abandoned-hut-toilet.png"
+data-src="/assets/images/backgrounds/abandoned-hut-toilet.png"
         alt="background"
     />
     <load src="/src/html/objects/abandoned-hut-toilet/abandoned-hut-interior.xml"/>

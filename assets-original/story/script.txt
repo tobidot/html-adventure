@@ -1,0 +1,42 @@
+# Primary Story Elements (Mandatory for Player Progression):
+
+## Standard Story:
+
+- The player wakes up in the Lost Forest, and finds to the abandoned hut.
+- They learn about the curse and the need to keep moving.
+- Attempting to escape the forest via the main road, the player gets stopped by a landslide.
+- In the ancient shrine the player finds a relic that allows him to communicate with the spirit.
+- In the spirits crossing the player is able to confront the spirit, but ultimately just learns that he needs to run.
+- The spirit also reveals that there was a mining operation nearby, granting access to some dynamite.
+- The player uses the dynamite to blow up the landslide and escape the forest.
+- Escaping from the road a cutscene plays where the player runs and runs through some fog until he loses consciousness.
+
+Trigger:
+- The player leaves through the main road.
+
+Outcome:
+- The player either decides to continue running, leading to a loop where they wake up again in the Lost Forest (implying the curse continues).
+
+
+## Alternate Ending (Good ending):
+
+Trigger:
+
+- The player has the talisman and revealed key information like the reason why the spirit exists.
+
+Outcome:
+
+- With the talisman, the player has a chance to appease the spirit and release it to the next plane, breaking the cycle.
+- And the player can leave through the main road.
+
+## Alternate Ending (Bad ending):
+
+Trigger:
+
+- If the player fails certain puzzles (at the spirits crossing)
+- If the player is on the same scene for too long.
+
+Outcome:
+
+- The player is overtaken by the spirit, leading to their demise.
+It will join the lost spirits in the spirits crossing area.

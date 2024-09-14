@@ -1,27 +1,38 @@
 <!DOCTYPE game-interactable SYSTEM "http://www.game-object.com/dtd/interactable">
-<game-interactable id="ancient-shrine/ancient-shrine-tomb-1"
-                   class="object map-object"
-                   data-hover="down"
+<game-interactable
+       id="ancient-shrine/ancient-shrine-tomb-1"
+       class="object map-object"
+       data-hover="down"
+       data-is-open="FALSE"
 >
     <game-data class="data">
         <game-data-action type="interact">
-            <game-logic type="all">
-                <game-logic-action type="output">
-                    [Footsteps]
-                </game-logic-action>
-                <game-logic-action type="change-scene" value="scene-ancient-shrine-tomb-1"> </game-logic-action>
+            <game-logic type="first">
+                <game-logic-condition key="@is-open" value="TRUE">
+                    <game-logic type="all">
+                        <game-logic type="once">
+                            <game-logic-action type="output">
+                                The stone plate is pushed aside, revealing a hidden passage.
+                            </game-logic-action>
+                        </game-logic>
+                        <game-logic-action type="output">
+                            [Footsteps]
+                        </game-logic-action>
+                        <game-logic-action type="change-scene" value="scene-ancient-shrine-tomb-1"> </game-logic-action>
+                    </game-logic>
+                </game-logic-condition>
             </game-logic>
         </game-data-action>
         <game-data-action type="inspect">
             <game-logic-action type="output">
-                Holy ... there is a path that leads under the earth underneath these stones.
+                Looks like a big stone plate, with some symbols engraved.
             </game-logic-action>
         </game-data-action>
     </game-data>
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="/public/images/map/ancient-shrine/ancient-shrine-tomb-1.svg"
+            data-data="/assets/images/map/ancient-shrine/ancient-shrine-tomb-1.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

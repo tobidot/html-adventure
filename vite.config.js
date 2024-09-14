@@ -6,7 +6,7 @@ import path from 'path';
 import alias from "@rollup/plugin-alias";
 
 export default defineConfig({
-	// set the public directory to relative path when building for production
+	// set the assets directory to relative path when building for production
 	base: './',
 	plugins: [
 		injectHTML(),
@@ -14,10 +14,13 @@ export default defineConfig({
 	],
 	resolve: {
 		alias: {
-			'+': path.resolve(__dirname, './public'),
+			// '+': path.resolve(__dirname, './assets'),
 		},
 	},
 	assetsInclude: [
-		'**/*.svg'
+		// '**/*.svg'
 	],
+	build: {
+		assetsInlineLimit: 0,
+	}
 });

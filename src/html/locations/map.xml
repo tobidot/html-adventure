@@ -4,7 +4,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-        data-src="/public/images/backgrounds/map.png"
+        data-src="/assets/images/backgrounds/map.png"
         alt="Map of the area"
     />
     <load src="/src/html/objects/map/lost-forest.xml"/>

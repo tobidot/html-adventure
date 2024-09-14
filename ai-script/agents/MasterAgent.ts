@@ -3,7 +3,7 @@
 //
 // export class MasterAgent extends Agent {
 //
-//     public init() {
+//     assets init() {
 //         super.init();
 //         this.assistant = " \"assistant_id\": \"asst_ToSF7Gb04YMj8AMMm50ZLLtY\""
 //         this.messages.push({

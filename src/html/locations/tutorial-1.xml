@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-        data-src="/public/images/backgrounds/tutorial-1.png"
+        data-src="/assets/images/backgrounds/tutorial-1.png"
         alt="Tutorial Page 1"
     />
     <game-data  class="data">

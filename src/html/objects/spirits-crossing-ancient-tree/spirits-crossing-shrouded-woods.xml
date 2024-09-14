@@ -21,7 +21,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-            data-data="/public/images/map/spirits-crossing-ancient-tree/back.svg"
+            data-data="/assets/images/map/spirits-crossing-ancient-tree/back.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

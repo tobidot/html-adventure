@@ -1,0 +1,68 @@
+## Lost Forest:
+
+Purpose:
+- Introduce the player to the game world and the central mystery of the forest.
+- Setting the vibe and atmosphere of the game (mystery horror).
+
+Key Interactions:
+- Find a rusty key at the dead end.
+- To proceed past to the hut, the player must get his shoes back, which a bird has stolen and put into its nest.
+- With some long stick the player can get his shoes back from the bird's nest.
+
+## Abandoned Hut:
+
+Purpose:
+- Provides the first significant clues about the spirit that hunts those who become complacent.
+- The player learns about the curse and the need to keep running.
+- The player finds the map
+
+Key Interactions:
+- Discover old journals, broken furniture, and remnants of past occupants telling the idea of the curse.
+- The map of the area.
+- A pickaxe the player need to get past some obstacles.
+- A locked door behind which the player finds some dynamite.
+
+## Ancient Ruins:
+
+Purpose:
+- A key location that ties the history of the spirit to the land.
+- The player learns about the origin of the curse and the magic binding it here.
+
+Key Interactions:
+- The entrance is guarded by a puzzle that requires the player to click some icons in a certain order.
+- Use the pickaxe to get past the rubble. To the pond.
+- The pond reveals the code to solve puzzles which reveals a hidden entrance to the tombs below the shrine.
+- In the tomb a talisman is hidden (behind another short puzzle).
+
+## Spirit’s Crossing:
+
+Purpose:
+- A mystical, challenging area that tests the player's understanding of the spirit and their resolve to keep moving.
+
+Key Interactions:
+- Inspecting the stone plate, the player learns about the spirits in the area and what is needed to free them.
+
+Optional Interactions (Affecting Endings):
+- Activating the stones correctly after placing the talisman in the middle performs a ritual and allows a short discussion with the spirit.
+
+## Main Road:
+
+Purpose:
+- A distraction making the player think he can escape from here.
+- The player might encounter remnants of other travelers, further emphasizing the need to keep moving.
+
+Key Interactions:
+- A landslide halts the player on the first attempt.
+- The end of the road triggers the default ending repeating the loop.
+
+## Murky Swamp (Sidequest):
+
+Purpose:
+- The player learns about the past and how the spirit came to be, crucial information to appease the spirit.
+
+Key Interactions:
+- Navigate the treacherous swamp, encounter eerie whispers and hidden dangers.
+- In the hanging tree the player can find a talisman that may change the outcome of their encounter with the spirit.
+
+# Different Endings (Based on Player Choices):
+- Revealing to the spirit that his methods are wrong will lift the curse.

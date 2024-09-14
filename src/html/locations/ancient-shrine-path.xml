@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-        data-src="/public/images/backgrounds/ancient-shrine-path.png"
+        data-src="/assets/images/backgrounds/ancient-shrine-path.png"
         alt="background"
     />
     <load src="/src/html/objects/ancient-shrine-path/ancient-shrine-entrance.xml"/>

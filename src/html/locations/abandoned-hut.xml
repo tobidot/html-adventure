@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-        data-src="/public/images/backgrounds/abandoned-hut.png"
+        data-src="/assets/images/backgrounds/abandoned-hut.png"
         alt="background"
     />
     <game-data class="data">

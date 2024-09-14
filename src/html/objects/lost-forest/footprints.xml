@@ -21,13 +21,13 @@
     <img
             class="image"
             src="./images/dummy.png"
-            data-src="/public/images/objects/footprints/footprints.png"
+            data-src="/assets/images/objects/footprints/footprints.png"
             alt="Continue Button"
     />
     <object
             class="click-area"
             data="./images/dummy.png"
-            data-data="/public/images/objects/footprints/footprints.svg"
+            data-data="/assets/images/objects/footprints/footprints.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

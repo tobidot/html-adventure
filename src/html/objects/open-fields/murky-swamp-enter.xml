@@ -21,7 +21,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-            data-data="/public/images/map/open-fields/left.svg"
+            data-data="/assets/images/map/open-fields/left.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-data-src="/public/images/backgrounds/murky-swamp-hanging-tree.png"
+data-src="/assets/images/backgrounds/murky-swamp-hanging-tree.png"
         alt="background"
     />
     <load src="/src/html/objects/murky-swamp-hanging-tree/murky-swamp-quicksand.xml"/>

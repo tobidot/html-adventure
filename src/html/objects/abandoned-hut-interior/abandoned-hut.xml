@@ -21,7 +21,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="/public/images/map/abandoned-hut-interior/abandoned-hut.svg"
+data-data="/assets/images/map/abandoned-hut-interior/abandoned-hut.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

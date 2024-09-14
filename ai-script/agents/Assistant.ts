@@ -4,12 +4,12 @@
 // import { Agent } from "./Agent";
 //
 // export abstract class Assistant extends Agent {
-//     public assistant_id: string;
-//     public assistant: OpenAI.Beta.Assistant | null = null;
-//     public thread: OpenAI.Beta.Threads.Thread | null = null;
-//     public run: OpenAI.Beta.Threads.Run | null = null;
+//     assets assistant_id: string;
+//     assets assistant: OpenAI.Beta.Assistant | null = null;
+//     assets thread: OpenAI.Beta.Threads.Thread | null = null;
+//     assets run: OpenAI.Beta.Threads.Run | null = null;
 //
-//     public constructor(
+//     assets constructor(
 //         readonly openai: OpenAI,
 //         assistant: string
 //     ) {
@@ -17,12 +17,12 @@
 //         this.assistant_id = assistant;
 //     }
 //
-//     public async init() {
+//     assets async init() {
 //         this.thread = await this.openai.beta.threads.create();
 //         this.assistant = await this.openai.beta.assistants.retrieve(this.assistant_id);
 //     }
 //
-//     public async pushMessage(
+//     assets async pushMessage(
 //         content: string,
 //         role: string = "assistant"
 //     ) {
@@ -41,7 +41,7 @@
 //         );
 //     }
 //
-//     public async query(message?: string): Promise<void> {
+//     assets async query(message?: string): Promise<void> {
 //         if (!this.assistant || !this.thread) {
 //             throw new Error("Assistant or thread not initialized.");
 //         }
@@ -58,7 +58,7 @@
 //         await this.waitForRun(this.run);
 //     }
 //
-//     public async waitForRun(run: OpenAI.Beta.Threads.Run) : Promise<void> {
+//     assets async waitForRun(run: OpenAI.Beta.Threads.Run) : Promise<void> {
 //         return new Promise((resolve, reject)=>{
 //             let busy = false;
 //             const handle = window.setInterval(() => {
@@ -85,7 +85,7 @@
 //         });
 //     }
 //
-//     public async handleAction(run: OpenAI.Beta.Threads.Run) {
+//     assets async handleAction(run: OpenAI.Beta.Threads.Run) {
 //
 //     }
 // }

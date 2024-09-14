@@ -4,6 +4,18 @@ import {get_element_by_class_name} from "@game.object/ts-game-toolbox/dist";
 import {CSSToken} from "./enums/CSSToken";
 import {HTMLGameInteractable} from "./custom-elements/HTMLGameInteractable";
 
+import cursorOptionInteractUrl from "/assets/images/icons/cursor-option-interact.png";
+import cursorOptionInspectUrl from "/assets/images/icons/cursor-option-inspect.png";
+import cursorOptionTalkUrl from "/assets/images/icons/cursor-option-talk.png";
+import cursorOptionPickUpUrl from "/assets/images/icons/cursor-option-pick-up.png";
+import cursorOptionWalkUrl from "/assets/images/icons/cursor-option-walk.png";
+import cursorPointingLeftUrl from "/assets/images/icons/cursor-pointing-left.png";
+import cursorPointingRightUrl from "/assets/images/icons/cursor-pointing-right.png";
+import cursorPointingUpUrl from "/assets/images/icons/cursor-pointing-up.png";
+import cursorPointingDownUrl from "/assets/images/icons/cursor-pointing-down.png";
+import cursorPointingForwardUrl from "/assets/images/icons/cursor-pointing-forward.png";
+import cursorPointingBackwardUrl from "/assets/images/icons/cursor-pointing-backward.png";
+
 export enum CursorState {
     DEFAULT = "default",
     HOVER = "hover",
@@ -188,35 +200,35 @@ export class Cursor {
     protected resolveSpecialHoverImage(special_hover: string): string {
         switch (special_hover) {
             case "interact":
-                return "/public/images/icons/cursor-option-interact.png";
+                return cursorOptionInteractUrl;
             case "inspect":
-                return "/public/images/icons/cursor-option-inspect.png";
+                return cursorOptionInspectUrl;
             case "talk":
-                return "/public/images/icons/cursor-option-talk.png";
+                return cursorOptionTalkUrl;
             case "pick-up":
-                return "/public/images/icons/cursor-option-pick-up.png";
+                return cursorOptionPickUpUrl;
             case "walk":
-                return "/public/images/icons/cursor-option-walk.png";
+                return cursorOptionWalkUrl;
             case "left":
-                return "/public/images/icons/cursor-pointing-left.png";
+                return cursorPointingLeftUrl;
             case "right":
-                return "/public/images/icons/cursor-pointing-right.png";
+                return cursorPointingRightUrl;
             case "up":
             case "upward":
             case "upwards":
-                return "/public/images/icons/cursor-pointing-up.png";
+                return cursorPointingUpUrl;
             case "down":
             case "downward":
             case "downwards":
-                return "/public/images/icons/cursor-pointing-down.png";
+                return cursorPointingDownUrl;
             case "front":
             case "forward":
             case "forwards":
-                return "/public/images/icons/cursor-pointing-forward.png";
+                return cursorPointingForwardUrl;
             case "back":
             case "backward":
             case "backwards":
-                return "/public/images/icons/cursor-pointing-backward.png";
+                return cursorPointingBackwardUrl;
             default:
                 return special_hover;
         }

@@ -97,7 +97,7 @@ export class AssetManager {
 
     public async load_images(progress: Progress) {
         return this.load_assets(
-            import.meta.glob("/public/images/**/*.png", {query: "url", eager: true, import: 'default'}),
+            import.meta.glob("/assets/images/**/*.png", {query: "url", eager: true, import: 'default'}),
             progress,
             async (single_progress, path, url) => {
                 return new Promise<void>((resolve, reject) => {
@@ -123,7 +123,7 @@ export class AssetManager {
 
     public async load_svgs(progress: Progress) {
         return this.load_assets(
-            import.meta.glob("/public/images/**/*.svg", {query: "url", eager: true, import: 'default'}),
+            import.meta.glob("/assets/images/**/*.svg", {query: "url", eager: true, import: 'default'}),
             progress,
             async (single_progress, path, url) => {
                 return fetch(url)
@@ -153,7 +153,7 @@ export class AssetManager {
 
     public async load_audio(progress: Progress) {
         return this.load_assets(
-            import.meta.glob("/public/audio/**/*.mp3", {query: "url", eager: true, import: 'default'}),
+            import.meta.glob("/assets/audio/**/*.mp3", {query: "url", eager: true, import: 'default'}),
             progress,
             async (single_progress, path, url) => {
                 return new Promise<void>((resolve, reject) => {
@@ -180,7 +180,7 @@ export class AssetManager {
 
     public async load_music(progress: Progress) {
         return this.load_assets(
-            import.meta.glob("/public/music/**/*.mp3", {query: "url", eager: true, import: 'default'}),
+            import.meta.glob("/assets/music/**/*.mp3", {query: "url", eager: true, import: 'default'}),
             progress,
             async (single_progress, path, url) => {
                 return new Promise<void>((resolve, reject) => {
@@ -206,8 +206,9 @@ export class AssetManager {
     }
 
     public async load_sfx(progress: Progress) {
+        console.log(import.meta.glob("/assets/effects/**/*.mp3", {query: "url", eager: true, import: 'default'}));
         return this.load_assets(
-            import.meta.glob("/public/effects/**/*.mp3", {query: "url", eager: true, import: 'default'}),
+            import.meta.glob("/assets/effects/**/*.mp3", {query: "url", eager: true, import: 'default'}),
             progress,
             async (single_progress, path, url) => {
                 return new Promise<void>((resolve, reject) => {

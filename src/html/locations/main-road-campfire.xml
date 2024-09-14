@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-data-src="/public/images/backgrounds/main-road-campfire.png"
+data-src="/assets/images/backgrounds/main-road-campfire.png"
         alt="background"
     />
     <load src="/src/html/objects/main-road-campfire/main-road-fork.xml"/>

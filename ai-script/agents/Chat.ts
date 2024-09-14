@@ -4,20 +4,20 @@
 // import { Agent } from "./Agent";
 //
 // export abstract class Chat extends Agent {
-//     public messages: Array<ChatCompletionMessageParam> = [];
-//     public assistant: string | null = null;
-//     public model: string = "gpt-3.5-turbo";
+//     assets messages: Array<ChatCompletionMessageParam> = [];
+//     assets assistant: string | null = null;
+//     assets model: string = "gpt-3.5-turbo";
 //
-//     public constructor(
+//     assets constructor(
 //         readonly openai: OpenAI
 //     ) {
 //         super(openai);
 //     }
 //
-//     public async init() {
+//     assets async init() {
 //     }
 //
-//     public pushUserMessage(
+//     assets pushUserMessage(
 //         content: string
 //     ) {
 //         this.messages.push({
@@ -26,7 +26,7 @@
 //         });
 //     }
 //
-//     public async query(message?: string): Promise<OpenAI.Chat.Completions.ChatCompletion> {
+//     assets async query(message?: string): Promise<OpenAI.Chat.Completions.ChatCompletion> {
 //         // if (message) {
 //         //     this.pushUserMessage(message);
 //         // }

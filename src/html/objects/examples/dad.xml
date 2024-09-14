@@ -41,7 +41,7 @@ data-src="./images/objects/dad/dad.png"
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="/public/images/objects/dad/dad.svg"
+data-data="/assets/images/objects/dad/dad.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

@@ -21,7 +21,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-data-data="/public/images/map/main-road-fork/main-road-fog.svg"
+data-data="/assets/images/map/main-road-fork/main-road-fog.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

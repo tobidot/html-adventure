@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-        data-src="/public/images/backgrounds/spirits-crossing-ancient-tree.png"
+        data-src="/assets/images/backgrounds/spirits-crossing-ancient-tree.png"
         alt="background"
     />
     <load src="/src/html/objects/spirits-crossing-ancient-tree/spirits-crossing-shrouded-woods.xml"/>

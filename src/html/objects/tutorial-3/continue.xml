@@ -34,13 +34,13 @@
     <img
             class="image"
             src="./images/dummy.png"
-            data-src="/public/images/objects/continue/continue.png"
+            data-src="/assets/images/objects/continue/continue.png"
             alt="Continue Button"
     />
     <object
             class="click-area"
             data="./images/dummy.png"
-            data-data="/public/images/objects/continue/click-area.svg"
+            data-data="/assets/images/objects/continue/click-area.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

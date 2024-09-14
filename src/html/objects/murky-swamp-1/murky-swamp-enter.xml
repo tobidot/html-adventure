@@ -21,7 +21,7 @@
     <object
             class="click-area"
             data="./images/dummy.png"
-            data-data="/public/images/map/murky-swamp-1/back.svg"
+            data-data="/assets/images/map/murky-swamp-1/back.svg"
             type="image/svg+xml"
     > </object>
 </game-interactable>

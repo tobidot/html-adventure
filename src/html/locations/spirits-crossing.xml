@@ -3,7 +3,7 @@
     <img
         class="background"
         src="./images/dummy.png"
-data-src="/public/images/backgrounds/spirits-crossing.png"
+data-src="/assets/images/backgrounds/spirits-crossing.png"
         alt="background"
     />
 </game-location>
